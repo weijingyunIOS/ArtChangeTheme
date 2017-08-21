@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ArtModule1ViewController.h"
 
 @interface ViewController ()
 
@@ -23,6 +24,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    ArtModule1ViewController *vc = [ArtModule1ViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

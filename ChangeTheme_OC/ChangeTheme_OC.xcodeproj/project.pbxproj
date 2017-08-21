@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C05F8181F4B150100F672E8 /* UIColor+UIStyleModule1.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C05F8171F4B150100F672E8 /* UIColor+UIStyleModule1.m */; };
+		5C05F81A1F4B160800F672E8 /* Module1Style.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C05F8191F4B160800F672E8 /* Module1Style.plist */; };
+		5C05F81E1F4B16D500F672E8 /* ArtModule1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C05F81D1F4B16D500F672E8 /* ArtModule1ViewController.m */; };
 		5C8ECB1C1F4ACE7A00985FB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ECB1B1F4ACE7A00985FB1 /* main.m */; };
 		5C8ECB1F1F4ACE7A00985FB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ECB1E1F4ACE7A00985FB1 /* AppDelegate.m */; };
 		5C8ECB221F4ACE7A00985FB1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ECB211F4ACE7A00985FB1 /* ViewController.m */; };
@@ -37,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C05F8161F4B150100F672E8 /* UIColor+UIStyleModule1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+UIStyleModule1.h"; sourceTree = "<group>"; };
+		5C05F8171F4B150100F672E8 /* UIColor+UIStyleModule1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+UIStyleModule1.m"; sourceTree = "<group>"; };
+		5C05F8191F4B160800F672E8 /* Module1Style.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Module1Style.plist; sourceTree = "<group>"; };
+		5C05F81C1F4B16D500F672E8 /* ArtModule1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtModule1ViewController.h; sourceTree = "<group>"; };
+		5C05F81D1F4B16D500F672E8 /* ArtModule1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtModule1ViewController.m; sourceTree = "<group>"; };
 		5C8ECB171F4ACE7A00985FB1 /* ChangeTheme_OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeTheme_OC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8ECB1B1F4ACE7A00985FB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C8ECB1D1F4ACE7A00985FB1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +92,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C05F80E1F4B13F400F672E8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5C05F80F1F4B13F400F672E8 /* Module1 */,
+				5C05F8101F4B13F400F672E8 /* Module2 */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5C05F80F1F4B13F400F672E8 /* Module1 */ = {
+			isa = PBXGroup;
+			children = (
+				5C05F8111F4B140B00F672E8 /* UIStyle */,
+				5C05F81B1F4B16B600F672E8 /* UI */,
+			);
+			path = Module1;
+			sourceTree = "<group>";
+		};
+		5C05F8101F4B13F400F672E8 /* Module2 */ = {
+			isa = PBXGroup;
+			children = (
+				5C05F8121F4B141A00F672E8 /* UIStyle */,
+			);
+			path = Module2;
+			sourceTree = "<group>";
+		};
+		5C05F8111F4B140B00F672E8 /* UIStyle */ = {
+			isa = PBXGroup;
+			children = (
+				5C05F8191F4B160800F672E8 /* Module1Style.plist */,
+				5C05F8161F4B150100F672E8 /* UIColor+UIStyleModule1.h */,
+				5C05F8171F4B150100F672E8 /* UIColor+UIStyleModule1.m */,
+			);
+			path = UIStyle;
+			sourceTree = "<group>";
+		};
+		5C05F8121F4B141A00F672E8 /* UIStyle */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIStyle;
+			sourceTree = "<group>";
+		};
+		5C05F81B1F4B16B600F672E8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5C05F81C1F4B16D500F672E8 /* ArtModule1ViewController.h */,
+				5C05F81D1F4B16D500F672E8 /* ArtModule1ViewController.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		5C8ECB0E1F4ACE7A00985FB1 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				5C8ECB4E1F4AD21700985FB1 /* UIStyle */,
+				5C05F80E1F4B13F400F672E8 /* App */,
 				5C8ECB1D1F4ACE7A00985FB1 /* AppDelegate.h */,
 				5C8ECB1E1F4ACE7A00985FB1 /* AppDelegate.m */,
 				5C8ECB201F4ACE7A00985FB1 /* ViewController.h */,
@@ -267,6 +328,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C05F81A1F4B160800F672E8 /* Module1Style.plist in Resources */,
 				5C8ECB2A1F4ACE7A00985FB1 /* LaunchScreen.storyboard in Resources */,
 				5C8ECB271F4ACE7A00985FB1 /* Assets.xcassets in Resources */,
 				5C8ECB251F4ACE7A00985FB1 /* Main.storyboard in Resources */,
@@ -295,9 +357,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C8ECB221F4ACE7A00985FB1 /* ViewController.m in Sources */,
+				5C05F8181F4B150100F672E8 /* UIColor+UIStyleModule1.m in Sources */,
 				5C8ECB511F4AD25200985FB1 /* ArtUIStyle.m in Sources */,
 				5C8ECB541F4AD30300985FB1 /* UIColor+HexColor.m in Sources */,
 				5C8ECB1F1F4ACE7A00985FB1 /* AppDelegate.m in Sources */,
+				5C05F81E1F4B16D500F672E8 /* ArtModule1ViewController.m in Sources */,
 				5C8ECB1C1F4ACE7A00985FB1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -63,7 +63,7 @@ NSString* const kArtUIStyleColorKey = @"color";
 
 - (void)buildAppStyle
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"ArtUIStyleConfig" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Module1Style" ofType:@"plist"];
     [self load:path];
 }
 
