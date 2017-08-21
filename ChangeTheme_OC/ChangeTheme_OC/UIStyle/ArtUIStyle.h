@@ -15,6 +15,13 @@
 extern NSString* const kArtUIStyleFontKey;
 extern NSString* const kArtUIStyleColorKey;
 
+@interface ArtUIStyleManager : NSObject
+
++ (instancetype)shared;
+- (void)saveCall;
+
+@end
+
 @interface ArtUIStyle : NSObject
 
 + (ArtUIStyle *)styleForKey:(NSString *)aKey;
@@ -30,12 +37,12 @@ extern NSString* const kArtUIStyleColorKey;
 
 @interface UIColor (ArtUIStyleApp)
 
-+ (UIColor *)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey;
++ (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey block:(void(^)(UIColor *))aBlock;
 
 @end
 
 @interface UIFont (ArtUIStyleApp)
 
-+ (UIFont *)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey;
++ (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey block:(void(^)(UIFont *))aBlock;
 
 @end

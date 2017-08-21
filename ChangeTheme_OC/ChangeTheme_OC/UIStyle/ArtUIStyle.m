@@ -14,11 +14,9 @@ NSString* const kArtUIStyleColorKey = @"color";
 
 #pragma mark - ArtUIStyleManager
 
-@interface ArtUIStyleManager : NSObject
+@interface ArtUIStyleManager ()
 
 @property (nonatomic, strong) NSMutableDictionary* styles;
-
-+ (instancetype)shared;
 
 @end
 
@@ -43,6 +41,11 @@ NSString* const kArtUIStyleColorKey = @"color";
     [self build];
     
     return self;
+}
+
+- (void)saveCall {
+    NSArray *array = [NSThread callStackSymbols];
+    
 }
 
 - (void)load:(NSString *)aPath
@@ -132,16 +135,18 @@ NSString* const kArtUIStyleColorKey = @"color";
 
 @implementation UIColor (ArtUIStyleApp)
 
-+ (UIColor *)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey {
-    return [[[ArtUIStyle styleForKey:aModule] styleForKey:aColorKey] color];
++ (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey block:(void(^)(UIColor *))aBlock {
+    UIColor *color = [[[ArtUIStyle styleForKey:aModule] styleForKey:aColorKey] color];
+    aBlock(color);
 }
 
 @end
 
 @implementation UIFont (ArtUIStyleApp)
 
-+ (UIFont *)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey {
-    return [[[ArtUIStyle styleForKey:aModule] styleForKey:aFontKey] font];
++ (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey block:(void(^)(UIFont *))aBlock {
+    UIFont *font = [[[ArtUIStyle styleForKey:aModule] styleForKey:aFontKey] font];
+    aBlock(font);
 }
 
 @end

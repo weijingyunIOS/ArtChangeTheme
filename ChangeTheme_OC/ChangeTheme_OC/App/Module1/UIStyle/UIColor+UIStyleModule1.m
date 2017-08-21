@@ -11,16 +11,16 @@
 
 @implementation UIColor (UIStyleModule1)
 
-+ (UIColor *)artModule1ForKey:(NSString *)aColorKey {
-    return [self artModule:@"Module1" colorForKey:aColorKey];
++ (void)artModule1ForKey:(NSString *)aColorKey block:(void(^)(UIColor *))aBlock{
+    [self artModule:@"Module1" colorForKey:aColorKey block:aBlock];
 }
 
 @end
 
 @implementation UIFont (UIStyleCourseware)
 
-+ (UIFont *)artModule1ForKey:(NSString *)aFontKey {
-    return [self artModule:@"Module1" fontForKey:aFontKey];
++ (void)artModule1ForKey:(NSString *)aFontKey block:(void(^)(UIFont *))aBlock {
+    [self artModule:@"Module1" fontForKey:aFontKey block:aBlock];
 }
 
 @end

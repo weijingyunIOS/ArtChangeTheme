@@ -8,7 +8,7 @@
 
 #import "ArtModule1ViewController.h"
 #import "UIColor+UIStyleModule1.h"
-
+#import "ArtUIStyle.h"
 @interface ArtModule1ViewController ()
 
 @end
@@ -18,7 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor artModule1ForKey:kUIStyleModule1MainLabel];
+    [UIColor artModule1ForKey:kUIStyleModule1MainLabel block:^(UIColor *color) {
+        self.view.backgroundColor = color;
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
