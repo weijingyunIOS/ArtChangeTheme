@@ -12,13 +12,15 @@
 
 @interface UIColor (UIStyleModule1)
 
-+ (void)artModule1ForKey:(NSString *)aColorKey block:(void(^)(UIColor *))aBlock;
++ (void)artModule1ForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock;
+
++ (void)artModule1ForKey:(NSString *)aColorKey block:(id(^)(UIColor *))aBlock;
 
 @end
 
 
 @interface UIFont (UIStyleModule1)
 
-+ (void)artModule1ForKey:(NSString *)aFontKey block:(void(^)(UIFont *))aBlock;
++ (void)artModule1ForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock;
 
 @end

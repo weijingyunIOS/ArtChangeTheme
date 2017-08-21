@@ -56,6 +56,7 @@ NSString* const kArtUIStyleColorKey = @"color";
             obj();
         }
     }];
+    NSLog(@"%tu",self.blocks.count);
 }
 
 - (void)load:(NSString *)aPath
@@ -145,21 +146,42 @@ NSString* const kArtUIStyleColorKey = @"color";
 
 @implementation UIColor (ArtUIStyleApp)
 
-+ (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey block:(void(^)(UIColor *))aBlock {
++ (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock {
     UIColor *color = [[[ArtUIStyle styleForKey:aModule] styleForKey:aColorKey] color];
-    aBlock(color);
-    [[ArtUIStyleManager shared].blocks addObject:^() {
-        [self artModule:aModule colorForKey:aColorKey block:aBlock];
-    }];
+    aBlock(color,strongSelf);
+    if (strongSelf) {
+        __weak id weakSelf = strongSelf;
+        [[ArtUIStyleManager shared].blocks addObject:^() {
+            __strong id strongSelf = weakSelf;
+            [self artModule:aModule colorForKey:aColorKey strongSelf:strongSelf block:aBlock];
+        }];
+    }else {
+        NSLog(@"%@",strongSelf);
+    }
+}
+
++ (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey block:(id(^)(UIColor *))aBlock {
+    UIColor *color = [[[ArtUIStyle styleForKey:aModule] styleForKey:aColorKey] color];
+    id key = aBlock(color);
+    if (key != nil) {
+        [[ArtUIStyleManager shared].blocks addObject:^() {
+            [self artModule:aModule colorForKey:aColorKey block:aBlock];
+        }];
+    }else {
+        NSLog(@"%@",key);
+    }
 }
 
 @end
 
 @implementation UIFont (ArtUIStyleApp)
 
-+ (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey block:(void(^)(UIFont *))aBlock {
++ (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock {
     UIFont *font = [[[ArtUIStyle styleForKey:aModule] styleForKey:aFontKey] font];
     aBlock(font);
+    [[ArtUIStyleManager shared].blocks addObject:^() {
+        [self artModule:aModule fontForKey:aFontKey block:aBlock];
+    }];
 }
 
 @end

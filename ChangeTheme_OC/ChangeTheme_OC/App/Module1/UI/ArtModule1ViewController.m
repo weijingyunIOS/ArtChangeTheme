@@ -18,9 +18,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [UIColor artModule1ForKey:kUIStyleModule1MainLabel block:^(UIColor *color) {
-        self.view.backgroundColor = color;
+//    __weak typeof(self) weakSelf = self;
+//    [UIColor artModule1ForKey:kUIStyleModule1MainLabel block:^id(UIColor *color) {
+//        weakSelf.view.backgroundColor = color;
+//        return weakSelf;
+//    }];
+    
+    [UIColor artModule1ForKey:kUIStyleModule1MainLabel strongSelf:self block:^(UIColor *color, ArtModule1ViewController *weakSelf) {
+        weakSelf.view.backgroundColor = color;
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

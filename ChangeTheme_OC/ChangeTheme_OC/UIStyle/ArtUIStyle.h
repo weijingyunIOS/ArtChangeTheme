@@ -37,12 +37,14 @@ extern NSString* const kArtUIStyleColorKey;
 
 @interface UIColor (ArtUIStyleApp)
 
-+ (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey block:(void(^)(UIColor *))aBlock;
++ (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock;
+
++ (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey block:(id(^)(UIColor *))aBlock;
 
 @end
 
 @interface UIFont (ArtUIStyleApp)
 
-+ (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey block:(void(^)(UIFont *))aBlock;
++ (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock;
 
 @end
