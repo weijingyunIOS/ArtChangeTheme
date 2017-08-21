@@ -18,7 +18,7 @@ extern NSString* const kArtUIStyleColorKey;
 @interface ArtUIStyleManager : NSObject
 
 + (instancetype)shared;
-- (void)saveCall;
+- (void)reload:(NSString *)aPath;
 
 @end
 

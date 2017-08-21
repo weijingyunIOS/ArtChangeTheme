@@ -28,6 +28,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Module1Style1" ofType:@"plist"];
+    [[ArtUIStyleManager shared] reload:path];
+}
+
 /*
 #pragma mark - Navigation
 

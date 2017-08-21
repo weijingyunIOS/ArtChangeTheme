@@ -43,9 +43,9 @@ NSString* const kArtUIStyleColorKey = @"color";
     return self;
 }
 
-- (void)saveCall {
-    NSArray *array = [NSThread callStackSymbols];
-    
+- (void)reload:(NSString *)aPath {
+    [self.styles removeAllObjects];
+    [self load:aPath];
 }
 
 - (void)load:(NSString *)aPath
