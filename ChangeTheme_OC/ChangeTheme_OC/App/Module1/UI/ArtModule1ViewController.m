@@ -43,4 +43,8 @@
 }
 */
 
+- (void)dealloc {
+    NSLog(@"正常释放 %s",__func__);
+}
+
 @end

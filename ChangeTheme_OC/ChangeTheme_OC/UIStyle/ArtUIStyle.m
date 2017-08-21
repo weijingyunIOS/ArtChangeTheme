@@ -17,6 +17,7 @@ NSString* const kArtUIStyleColorKey = @"color";
 @interface ArtUIStyleManager ()
 
 @property (nonatomic, strong) NSMutableDictionary* styles;
+@property (nonatomic, strong) NSMutableArray<void(^)()> *blocks;
 
 @end
 
@@ -37,6 +38,7 @@ NSString* const kArtUIStyleColorKey = @"color";
     self = [super init];
     
     self.styles = [NSMutableDictionary dictionary];
+    self.blocks = [NSMutableArray new];
     
     [self build];
     
@@ -46,6 +48,14 @@ NSString* const kArtUIStyleColorKey = @"color";
 - (void)reload:(NSString *)aPath {
     [self.styles removeAllObjects];
     [self load:aPath];
+    
+    NSArray *blocks = [self.blocks copy];
+    self.blocks = [NSMutableArray new];
+    [blocks enumerateObjectsUsingBlock:^(void (^ _Nonnull obj)(), NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj) {
+            obj();
+        }
+    }];
 }
 
 - (void)load:(NSString *)aPath
@@ -138,6 +148,9 @@ NSString* const kArtUIStyleColorKey = @"color";
 + (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey block:(void(^)(UIColor *))aBlock {
     UIColor *color = [[[ArtUIStyle styleForKey:aModule] styleForKey:aColorKey] color];
     aBlock(color);
+    [[ArtUIStyleManager shared].blocks addObject:^() {
+        [self artModule:aModule colorForKey:aColorKey block:aBlock];
+    }];
 }
 
 @end
