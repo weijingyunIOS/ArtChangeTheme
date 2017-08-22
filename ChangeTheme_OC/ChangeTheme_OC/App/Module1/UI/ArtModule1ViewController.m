@@ -37,9 +37,10 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    NSString * bundlePath = [[ NSBundle mainBundle] pathForResource:@"styleBundle1" ofType :@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-    [[ArtUIStyleManager shared] reloadStyleBundle:bundle];
+    [[ArtUIStyleManager shared] reloadStyleBundleName:@"styleBundle1"];
+//    NSString * bundlePath = [[ NSBundle mainBundle] pathForResource:@"styleBundle1" ofType :@"bundle"];
+//    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+//    [[ArtUIStyleManager shared] reloadStyleBundle:bundle];
 }
 
 /*

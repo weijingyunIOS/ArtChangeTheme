@@ -26,6 +26,7 @@ extern NSString* const kArtUIStyleColorKey;
 - (void)addEntriesFromPath:(NSString *)aPath;
 
 - (void)reloadStylePath:(NSString *)aStylePath;
+- (void)reloadStyleBundleName:(NSString *)aStyleBundleName;
 - (void)reloadStyleBundle:(NSBundle *)aStyleBundle;
 
 @end

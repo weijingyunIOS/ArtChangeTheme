@@ -103,6 +103,13 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     }];
 }
 
+- (void)reloadStyleBundleName:(NSString *)aStyleBundleName {
+    NSString * bundlePath = [[ NSBundle mainBundle] pathForResource:aStyleBundleName ofType :@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    NSAssert(bundle != nil, @"bundle 不存在");
+    [self reloadStyleBundle:bundle];
+}
+
 - (void)reloadStyleBundle:(NSBundle *)aStyleBundle {
     [self reloadStyle:^(ArtUIStyleManager *manager) {
         [manager buildAppStyle:^(NSString *styleName) {
