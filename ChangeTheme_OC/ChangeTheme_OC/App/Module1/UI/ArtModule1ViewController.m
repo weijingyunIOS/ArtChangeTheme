@@ -36,8 +36,11 @@
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Module1Style1" ofType:@"plist"];
-    [[ArtUIStyleManager shared] reload:path];
+    
+    [[ArtUIStyleManager shared] reloadStyle:^(ArtUIStyleManager *manager) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"Module1Style1" ofType:@"plist"];
+        [manager addEntriesFromPath:path];
+    }];
 }
 
 /*

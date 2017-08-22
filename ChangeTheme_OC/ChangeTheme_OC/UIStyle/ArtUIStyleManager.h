@@ -23,6 +23,7 @@ extern NSString* const kArtUIStyleColorKey;
 
 
 + (instancetype)shared;
-- (void)reload:(NSString *)aPath;
+- (void)addEntriesFromPath:(NSString *)aPath;
+- (void)reloadStyle:(void(^)(ArtUIStyleManager *manager))aBlock;
 
 @end

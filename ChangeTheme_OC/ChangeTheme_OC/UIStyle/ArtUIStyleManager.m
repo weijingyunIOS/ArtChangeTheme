@@ -61,6 +61,9 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 }
 
 - (void)saveKey:(id)aKey block:(void(^)())aBlock {
+    
+    NSAssert([NSThread isMainThread], @"界面相关操作请放主线程");
+    
     // 使用弱引用
     NSDictionary *dic = @{kArtUIStyleClearKey:artMakeWeakReference(aKey),
                           kArtUIStyleBlockKey:aBlock};
@@ -80,12 +83,15 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     }];
 }
 
-- (void)reload:(NSString *)aPath {
+- (void)reloadStyle:(void(^)(ArtUIStyleManager *manager))aBlock {
+    NSAssert([NSThread isMainThread], @"界面相关操作请放主线程");
     [self.styles removeAllObjects];
-    [self load:aPath];
+    
+    if (aBlock) {
+        aBlock(self);
+    }
     
     NSArray *blocks = [self.blocks copy];
-    NSLog(@"ks%tu",self.blocks.count);
     self.blocks = [NSMutableArray new];
     [blocks enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         ArtSaveBlock block = obj[kArtUIStyleBlockKey];
@@ -93,13 +99,12 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
             block();
         }
     }];
-    NSLog(@"js%tu",self.blocks.count);
 }
 
-- (void)load:(NSString *)aPath
-{
+- (void)addEntriesFromPath:(NSString *)aPath {
     [self.styles addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:aPath]];
 }
+
 
 - (void)build
 {
@@ -115,7 +120,7 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 - (void)buildAppStyle
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Module1Style" ofType:@"plist"];
-    [self load:path];
+    [self addEntriesFromPath:path];
 }
 
 @end
