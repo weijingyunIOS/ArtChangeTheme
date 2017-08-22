@@ -12,12 +12,30 @@
 NSString* const kArtUIStyleFontKey = @"font";
 NSString* const kArtUIStyleColorKey = @"color";
 
+NSString* const kArtUIStyleClearKey = @"kArtUIStyleClearKey";
+NSString* const kArtUIStyleBlockKey = @"kArtUIStyleBlockKey";
+
+typedef void (^SaveBlock)(void);
+
+typedef id (^WeakReference)(void);
+
+WeakReference makeWeakReference(id object) {
+    __weak id weakref = object;
+    return ^{
+        return weakref;
+    };
+}
+
+id weakReferenceNonretainedObjectValue(WeakReference ref) {
+    return ref ? ref() : nil;
+}
+
 #pragma mark - ArtUIStyleManager
 
 @interface ArtUIStyleManager ()
 
 @property (nonatomic, strong) NSMutableDictionary* styles;
-@property (nonatomic, strong) NSMutableArray<void(^)()> *blocks;
+@property (nonatomic, strong) NSMutableArray<NSDictionary *> *blocks;
 
 @end
 
@@ -39,10 +57,29 @@ NSString* const kArtUIStyleColorKey = @"color";
     
     self.styles = [NSMutableDictionary dictionary];
     self.blocks = [NSMutableArray new];
-    
     [self build];
     
     return self;
+}
+
+- (void)saveKey:(id)aKey block:(void(^)())aBlock {
+    // 使用弱引用
+    NSDictionary *dic = @{kArtUIStyleClearKey:makeWeakReference(aKey),
+                          kArtUIStyleBlockKey:aBlock};
+    [self.blocks addObject:dic];
+    [self clearInvalidBlock];
+}
+
+// 清理无效的，已被释放的block
+- (void)clearInvalidBlock {
+    NSArray<NSDictionary *> *allkey = [self.blocks copy];
+    [allkey enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        WeakReference value = obj[kArtUIStyleClearKey];
+        id key = weakReferenceNonretainedObjectValue(value);
+        if (key == nil) {
+            [self.blocks removeObject:obj];
+        }
+    }];
 }
 
 - (void)reload:(NSString *)aPath {
@@ -50,13 +87,15 @@ NSString* const kArtUIStyleColorKey = @"color";
     [self load:aPath];
     
     NSArray *blocks = [self.blocks copy];
+     NSLog(@"ks%tu",self.blocks.count);
     self.blocks = [NSMutableArray new];
-    [blocks enumerateObjectsUsingBlock:^(void (^ _Nonnull obj)(), NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj) {
-            obj();
+    [blocks enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        SaveBlock block = obj[kArtUIStyleBlockKey];
+        if (block) {
+            block();
         }
     }];
-    NSLog(@"%tu",self.blocks.count);
+    NSLog(@"js%tu",self.blocks.count);
 }
 
 - (void)load:(NSString *)aPath
@@ -151,12 +190,10 @@ NSString* const kArtUIStyleColorKey = @"color";
     aBlock(color,strongSelf);
     if (strongSelf) {
         __weak id weakSelf = strongSelf;
-        [[ArtUIStyleManager shared].blocks addObject:^() {
+        [[ArtUIStyleManager shared] saveKey:strongSelf block:^{
             __strong id strongSelf = weakSelf;
             [self artModule:aModule colorForKey:aColorKey strongSelf:strongSelf block:aBlock];
         }];
-    }else {
-        NSLog(@"%@",strongSelf);
     }
 }
 
@@ -164,11 +201,9 @@ NSString* const kArtUIStyleColorKey = @"color";
     UIColor *color = [[[ArtUIStyle styleForKey:aModule] styleForKey:aColorKey] color];
     id key = aBlock(color);
     if (key != nil) {
-        [[ArtUIStyleManager shared].blocks addObject:^() {
+        [[ArtUIStyleManager shared] saveKey:key block:^{
             [self artModule:aModule colorForKey:aColorKey block:aBlock];
         }];
-    }else {
-        NSLog(@"%@",key);
     }
 }
 
@@ -178,10 +213,12 @@ NSString* const kArtUIStyleColorKey = @"color";
 
 + (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock {
     UIFont *font = [[[ArtUIStyle styleForKey:aModule] styleForKey:aFontKey] font];
-    aBlock(font);
-    [[ArtUIStyleManager shared].blocks addObject:^() {
-        [self artModule:aModule fontForKey:aFontKey block:aBlock];
-    }];
+    id key = aBlock(font);
+    if (key != nil) {
+        [[ArtUIStyleManager shared] saveKey:key block:^{
+            [self artModule:aModule fontForKey:aFontKey block:aBlock];
+        }];
+    }
 }
 
 @end
