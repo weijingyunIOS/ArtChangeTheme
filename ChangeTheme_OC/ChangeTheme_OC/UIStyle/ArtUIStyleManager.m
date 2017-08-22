@@ -7,6 +7,8 @@
 //
 
 #import "ArtUIStyleManager.h"
+#import "NSObject+ArtPrefix.h"
+
 NSString* const kArtUIStyleFontKey = @"font";
 NSString* const kArtUIStyleColorKey = @"color";
 
@@ -55,7 +57,11 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     
     self.styles = [NSMutableDictionary dictionary];
     self.blocks = [NSMutableArray new];
-    [self build];
+    [self buildAppStyle:^(NSString *styleName) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
+        NSAssert(path.length > 0, @"%@不存在请检查",styleName);
+        [self addEntriesFromPath:path];
+    }];
     
     return self;
 }
@@ -118,16 +124,18 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 }
 
 
-- (void)build
+- (void)buildAppStyle:(void(^)(NSString *styleName))aBlock
 {
-    [self buildAppStyle];
-}
-
-
-- (void)buildAppStyle
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Module1Style" ofType:@"plist"];
-    [self addEntriesFromPath:path];
+    NSArray <NSString *> *selArray = [self art_getMethodByListPrefix:@"getStyleName_"];
+    [selArray enumerateObjectsUsingBlock:^(NSString * _Nonnull selString, NSUInteger idx, BOOL * _Nonnull stop) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        NSString *styleName = [self performSelector:NSSelectorFromString(selString)];
+#pragma clang diagnostic pop
+        if (aBlock) {
+            aBlock(styleName);
+        }
+    }];
 }
 
 @end
