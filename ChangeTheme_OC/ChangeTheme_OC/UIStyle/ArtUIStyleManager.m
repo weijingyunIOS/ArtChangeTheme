@@ -83,6 +83,18 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     }];
 }
 
+- (void)reloadStylePath:(NSString *)aStylePath {
+    [self reloadStyle:^(ArtUIStyleManager *manager) {
+        
+    }];
+}
+
+- (void)reloadStyleBundle:(NSBundle *)aStyleBundle {
+    [self reloadStyle:^(ArtUIStyleManager *manager) {
+        
+    }];
+}
+
 - (void)reloadStyle:(void(^)(ArtUIStyleManager *manager))aBlock {
     NSAssert([NSThread isMainThread], @"界面相关操作请放主线程");
     [self.styles removeAllObjects];
@@ -111,11 +123,6 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     [self buildAppStyle];
 }
 
-// 全局样式
-- (NSDictionary *)scrollTabStyle
-{
-    return @{kArtUIStyleFontKey:[UIFont systemFontOfSize:16]};
-}
 
 - (void)buildAppStyle
 {

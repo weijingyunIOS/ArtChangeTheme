@@ -37,10 +37,11 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    [[ArtUIStyleManager shared] reloadStyle:^(ArtUIStyleManager *manager) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"Module1Style1" ofType:@"plist"];
-        [manager addEntriesFromPath:path];
-    }];
+//    [ArtUIStyleManager shared] reloadStyleBundle:<#(NSString *)#>
+//    [[ArtUIStyleManager shared] reloadStyle:^(ArtUIStyleManager *manager) {
+//        NSString *path = [[NSBundle mainBundle] pathForResource:@"Module1Style1" ofType:@"plist"];
+//        [manager addEntriesFromPath:path];
+//    }];
 }
 
 /*
