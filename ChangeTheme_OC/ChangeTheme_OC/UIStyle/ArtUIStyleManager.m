@@ -91,13 +91,29 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 
 - (void)reloadStylePath:(NSString *)aStylePath {
     [self reloadStyle:^(ArtUIStyleManager *manager) {
-        
+        [manager buildAppStyle:^(NSString *styleName) {
+            
+            NSString *path = [aStylePath stringByAppendingPathComponent:styleName];
+            if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                NSLog(@"waring--该bundle无 %@",styleName);
+                path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
+            }
+            [self addEntriesFromPath:path];
+        }];
     }];
 }
 
 - (void)reloadStyleBundle:(NSBundle *)aStyleBundle {
     [self reloadStyle:^(ArtUIStyleManager *manager) {
-        
+        [manager buildAppStyle:^(NSString *styleName) {
+            
+            NSString *path = [aStyleBundle pathForResource:styleName ofType:nil];
+            if (path.length <= 0) {
+                NSLog(@"waring--该bundle无 %@",styleName);
+                path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
+            }
+            [self addEntriesFromPath:path];
+        }];
     }];
 }
 
