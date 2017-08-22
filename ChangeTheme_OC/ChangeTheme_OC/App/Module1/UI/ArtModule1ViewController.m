@@ -8,7 +8,7 @@
 
 #import "ArtModule1ViewController.h"
 #import "UIColor+UIStyleModule1.h"
-#import "ArtUIStyle.h"
+#import "ArtUIStyleManager.h"
 @interface ArtModule1ViewController ()
 
 @end

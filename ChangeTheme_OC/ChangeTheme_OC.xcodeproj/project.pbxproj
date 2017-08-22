@@ -11,6 +11,7 @@
 		5C05F81A1F4B160800F672E8 /* Module1Style.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C05F8191F4B160800F672E8 /* Module1Style.plist */; };
 		5C05F81E1F4B16D500F672E8 /* ArtModule1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C05F81D1F4B16D500F672E8 /* ArtModule1ViewController.m */; };
 		5C05F8201F4B1CD300F672E8 /* Module1Style1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C05F81F1F4B1CD300F672E8 /* Module1Style1.plist */; };
+		5C2606FB1F4C2EA1001A25AA /* ArtUIStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2606FA1F4C2EA1001A25AA /* ArtUIStyleManager.m */; };
 		5C8ECB1C1F4ACE7A00985FB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ECB1B1F4ACE7A00985FB1 /* main.m */; };
 		5C8ECB1F1F4ACE7A00985FB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ECB1E1F4ACE7A00985FB1 /* AppDelegate.m */; };
 		5C8ECB221F4ACE7A00985FB1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ECB211F4ACE7A00985FB1 /* ViewController.m */; };
@@ -47,6 +48,8 @@
 		5C05F81C1F4B16D500F672E8 /* ArtModule1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtModule1ViewController.h; sourceTree = "<group>"; };
 		5C05F81D1F4B16D500F672E8 /* ArtModule1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtModule1ViewController.m; sourceTree = "<group>"; };
 		5C05F81F1F4B1CD300F672E8 /* Module1Style1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Module1Style1.plist; sourceTree = "<group>"; };
+		5C2606F91F4C2EA1001A25AA /* ArtUIStyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtUIStyleManager.h; sourceTree = "<group>"; };
+		5C2606FA1F4C2EA1001A25AA /* ArtUIStyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtUIStyleManager.m; sourceTree = "<group>"; };
 		5C8ECB171F4ACE7A00985FB1 /* ChangeTheme_OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeTheme_OC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8ECB1B1F4ACE7A00985FB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C8ECB1D1F4ACE7A00985FB1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 				5C8ECB531F4AD30300985FB1 /* UIColor+HexColor.m */,
 				5C8ECB4F1F4AD25200985FB1 /* ArtUIStyle.h */,
 				5C8ECB501F4AD25200985FB1 /* ArtUIStyle.m */,
+				5C2606F91F4C2EA1001A25AA /* ArtUIStyleManager.h */,
+				5C2606FA1F4C2EA1001A25AA /* ArtUIStyleManager.m */,
 			);
 			path = UIStyle;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				5C8ECB1F1F4ACE7A00985FB1 /* AppDelegate.m in Sources */,
 				5C05F81E1F4B16D500F672E8 /* ArtModule1ViewController.m in Sources */,
 				5C8ECB1C1F4ACE7A00985FB1 /* main.m in Sources */,
+				5C2606FB1F4C2EA1001A25AA /* ArtUIStyleManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

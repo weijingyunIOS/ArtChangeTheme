@@ -7,21 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-/**
- *  样式配置
- *  将UI相关抽离出来，统一管理和配置，支持从文件中导入和运行时调整
- */
-
-extern NSString* const kArtUIStyleFontKey;
-extern NSString* const kArtUIStyleColorKey;
-
-@interface ArtUIStyleManager : NSObject
-
-+ (instancetype)shared;
-- (void)reload:(NSString *)aPath;
-
-@end
-
 @interface ArtUIStyle : NSObject
 
 + (ArtUIStyle *)styleForKey:(NSString *)aKey;
