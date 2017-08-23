@@ -100,6 +100,19 @@
 
 @implementation UIFont (ArtUIStyleApp)
 
++ (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock {
+   
+    UIFont *font = [[[ArtUIStyle styleForKey:aModule] styleForKey:aFontKey] font];
+    aBlock(font,strongSelf);
+    if (strongSelf) {
+        __weak id weakSelf = strongSelf;
+        [[ArtUIStyleManager shared] saveKey:strongSelf block:^{
+            __strong id strongSelf = weakSelf;
+            [self artModule:aModule fontForKey:aFontKey strongSelf:strongSelf block:aBlock];
+        }];
+    }
+}
+
 + (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock {
     UIFont *font = [[[ArtUIStyle styleForKey:aModule] styleForKey:aFontKey] font];
     id key = aBlock(font);
