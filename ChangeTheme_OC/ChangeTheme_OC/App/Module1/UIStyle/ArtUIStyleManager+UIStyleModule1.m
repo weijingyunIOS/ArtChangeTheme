@@ -7,11 +7,29 @@
 //
 
 #import "ArtUIStyleManager+UIStyleModule1.h"
+#import "ArtUIStyle.h"
 
 @implementation ArtUIStyleManager (UIStyleModule1)
 
 - (NSString *)getStyleName_Module1 {
     return @"Module1Style.plist";
+}
+
+@end
+
+
+@implementation UIColor (UIStyleModule1)
+
++ (void)artModule1ForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock {
+    [self artModule:@"Module1" colorForKey:aColorKey strongSelf:strongSelf block:aBlock];
+}
+
+@end
+
+@implementation UIFont (UIStyleCourseware)
+
++ (void)artModule1ForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock {
+    [self artModule:@"Module1" fontForKey:aFontKey block:aBlock];
 }
 
 @end
