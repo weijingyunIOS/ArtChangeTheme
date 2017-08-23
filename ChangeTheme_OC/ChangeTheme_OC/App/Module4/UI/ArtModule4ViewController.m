@@ -1,30 +1,30 @@
 //
-//  ArtModule1ViewController.m
+//  ArtModule4ViewController.m
 //  ChangeTheme_OC
 //
 //  Created by weijingyun on 2017/8/21.
 //  Copyright © 2017年 weijingyun. All rights reserved.
 //
 
-#import "ArtModule1ViewController.h"
-#import "ArtUIStyleManager+UIStyleModule1.h"
+#import "ArtModule4ViewController.h"
+#import "ArtUIStyleManager+UIStyleModule4.h"
 #import "ArtUIStyleManager.h"
-@interface ArtModule1ViewController ()
+@interface ArtModule4ViewController ()
 
 @end
 
-@implementation ArtModule1ViewController
+@implementation ArtModule4ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    __weak typeof(self) weakSelf = self;
-//    [UIColor artModule1ForKey:kUIStyleModule1MainLabel block:^id(UIColor *color) {
+//    [UIColor artModule4ForKey:kUIStyleModule4MainLabel block:^id(UIColor *color) {
 //        weakSelf.view.backgroundColor = color;
 //        return weakSelf;
 //    }];
     
-    [UIColor artModule1ForKey:kUIStyleModule1MainLabel strongSelf:self block:^(UIColor *color, ArtModule1ViewController *weakSelf) {
+    [UIColor artModule4ForKey:kUIStyleModule4MainLabel strongSelf:self block:^(UIColor *color, ArtModule4ViewController *weakSelf) {
         weakSelf.view.backgroundColor = color;
     }];
     
