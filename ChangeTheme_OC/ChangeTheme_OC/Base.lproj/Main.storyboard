@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="1881" y="443"/>
         </scene>
-        <!--View Controller-->
+        <!--Art Module3 View Controller-->
         <scene sceneID="bg0-ag-wIW">
             <objects>
-                <viewController id="aBD-iT-tWB" sceneMemberID="viewController">
+                <viewController id="aBD-iT-tWB" customClass="ArtModule3ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2cA-iV-CgB"/>
                         <viewControllerLayoutGuide type="bottom" id="zoN-eb-Tiv"/>

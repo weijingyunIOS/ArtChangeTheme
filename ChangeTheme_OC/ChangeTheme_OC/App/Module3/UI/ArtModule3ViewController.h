@@ -1,5 +1,5 @@
 //
-//  ArtModule1ViewController.h
+//  ArtModule3ViewController.h
 //  ChangeTheme_OC
 //
 //  Created by weijingyun on 2017/8/21.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ArtModule1ViewController : UIViewController
+@interface ArtModule3ViewController : UIViewController
 
 @end

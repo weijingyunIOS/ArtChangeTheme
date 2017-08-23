@@ -25,6 +25,9 @@
 		5CDDFD781F4DB83600679475 /* ArtModule2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFD631F4DB83600679475 /* ArtModule2ViewController.m */; };
 		5CDDFD791F4DB83600679475 /* ArtUIStyleManager+UIStyleModule2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFD661F4DB83600679475 /* ArtUIStyleManager+UIStyleModule2.m */; };
 		5CDDFD7A1F4DB83600679475 /* Module2Style.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFD671F4DB83600679475 /* Module2Style.plist */; };
+		5CDDFD891F4DB95D00679475 /* ArtModule3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFD841F4DB95D00679475 /* ArtModule3ViewController.m */; };
+		5CDDFD8A1F4DB95D00679475 /* ArtUIStyleManager+UIStyleModule3.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFD871F4DB95D00679475 /* ArtUIStyleManager+UIStyleModule3.m */; };
+		5CDDFD8B1F4DB95D00679475 /* Module3Style.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFD881F4DB95D00679475 /* Module3Style.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +81,11 @@
 		5CDDFD651F4DB83600679475 /* ArtUIStyleManager+UIStyleModule2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtUIStyleManager+UIStyleModule2.h"; sourceTree = "<group>"; };
 		5CDDFD661F4DB83600679475 /* ArtUIStyleManager+UIStyleModule2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArtUIStyleManager+UIStyleModule2.m"; sourceTree = "<group>"; };
 		5CDDFD671F4DB83600679475 /* Module2Style.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Module2Style.plist; sourceTree = "<group>"; };
+		5CDDFD831F4DB95D00679475 /* ArtModule3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtModule3ViewController.h; sourceTree = "<group>"; };
+		5CDDFD841F4DB95D00679475 /* ArtModule3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtModule3ViewController.m; sourceTree = "<group>"; };
+		5CDDFD861F4DB95D00679475 /* ArtUIStyleManager+UIStyleModule3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtUIStyleManager+UIStyleModule3.h"; sourceTree = "<group>"; };
+		5CDDFD871F4DB95D00679475 /* ArtUIStyleManager+UIStyleModule3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArtUIStyleManager+UIStyleModule3.m"; sourceTree = "<group>"; };
+		5CDDFD881F4DB95D00679475 /* Module3Style.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Module3Style.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +116,7 @@
 		5C05F80E1F4B13F400F672E8 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				5CDDFD811F4DB95D00679475 /* Module3 */,
 				5C05F80F1F4B13F400F672E8 /* Module1 */,
 				5CDDFD601F4DB83600679475 /* Module2 */,
 			);
@@ -248,6 +257,34 @@
 			path = UIStyle;
 			sourceTree = "<group>";
 		};
+		5CDDFD811F4DB95D00679475 /* Module3 */ = {
+			isa = PBXGroup;
+			children = (
+				5CDDFD851F4DB95D00679475 /* UIStyle */,
+				5CDDFD821F4DB95D00679475 /* UI */,
+			);
+			path = Module3;
+			sourceTree = "<group>";
+		};
+		5CDDFD821F4DB95D00679475 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5CDDFD831F4DB95D00679475 /* ArtModule3ViewController.h */,
+				5CDDFD841F4DB95D00679475 /* ArtModule3ViewController.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		5CDDFD851F4DB95D00679475 /* UIStyle */ = {
+			isa = PBXGroup;
+			children = (
+				5CDDFD861F4DB95D00679475 /* ArtUIStyleManager+UIStyleModule3.h */,
+				5CDDFD871F4DB95D00679475 /* ArtUIStyleManager+UIStyleModule3.m */,
+				5CDDFD881F4DB95D00679475 /* Module3Style.plist */,
+			);
+			path = UIStyle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -361,6 +398,7 @@
 				5C8ECB2A1F4ACE7A00985FB1 /* LaunchScreen.storyboard in Resources */,
 				5C05F8201F4B1CD300F672E8 /* Module1Style.plist in Resources */,
 				5C8ECB271F4ACE7A00985FB1 /* Assets.xcassets in Resources */,
+				5CDDFD8B1F4DB95D00679475 /* Module3Style.plist in Resources */,
 				5C8ECB251F4ACE7A00985FB1 /* Main.storyboard in Resources */,
 				5C2607001F4C42B4001A25AA /* styleBundle1.bundle in Resources */,
 			);
@@ -390,9 +428,11 @@
 				5C2607031F4C449A001A25AA /* NSObject+ArtPrefix.m in Sources */,
 				5CDDFD791F4DB83600679475 /* ArtUIStyleManager+UIStyleModule2.m in Sources */,
 				5C8ECB511F4AD25200985FB1 /* ArtUIStyle.m in Sources */,
+				5CDDFD8A1F4DB95D00679475 /* ArtUIStyleManager+UIStyleModule3.m in Sources */,
 				5C8ECB541F4AD30300985FB1 /* UIColor+HexColor.m in Sources */,
 				5C8ECB1F1F4ACE7A00985FB1 /* AppDelegate.m in Sources */,
 				5CDDFD781F4DB83600679475 /* ArtModule2ViewController.m in Sources */,
+				5CDDFD891F4DB95D00679475 /* ArtModule3ViewController.m in Sources */,
 				5C05F81E1F4B16D500F672E8 /* ArtModule1ViewController.m in Sources */,
 				5C2606FE1F4C4005001A25AA /* ArtUIStyleManager+UIStyleModule1.m in Sources */,
 				5C8ECB1C1F4ACE7A00985FB1 /* main.m in Sources */,

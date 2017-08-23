@@ -2,12 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Module1</key>
+	<key>Module3</key>
 	<dict>
 		<key>MainLabel</key>
 		<dict>
 			<key>color</key>
-			<string>32be78</string>
+			<string>f3f4f5</string>
 			<key>font</key>
 			<integer>15</integer>
 			<key>备注</key>
