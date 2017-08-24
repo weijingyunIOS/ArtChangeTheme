@@ -8,8 +8,13 @@
 
 #import "ArtModule1ViewController.h"
 #import "ArtUIStyleManager+UIStyleModule1.h"
-#import "ArtUIStyleManager.h"
+#import "ArtUIStyleManager+UIStyleApp.h"
+
 @interface ArtModule1ViewController ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *testImage;
+@property (weak, nonatomic) IBOutlet UILabel *testMainLabel;
+@property (weak, nonatomic) IBOutlet UIView *testview;
 
 @end
 
@@ -17,15 +22,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    __weak typeof(self) weakSelf = self;
-//    [UIColor artModule1ForKey:kUIStyleModule1MainLabel block:^id(UIColor *color) {
-//        weakSelf.view.backgroundColor = color;
-//        return weakSelf;
-//    }];
+    [self configUI];
+}
+
+- (void)configUI {
     
-    [UIColor artModule1ForKey:kUIStyleModule1MainLabel strongSelf:self block:^(UIColor *color, ArtModule1ViewController *weakSelf) {
+    [UIColor artAppForKey:kUIStyleAppVCBackground strongSelf:self block:^(UIColor *color, ArtModule1ViewController *weakSelf) {
         weakSelf.view.backgroundColor = color;
+    }];
+    
+    [UIColor artAppForKey:kUIStyleAppMainLabel strongSelf:self block:^(UIColor *color, ArtModule1ViewController *weakSelf) {
+        weakSelf.testMainLabel.backgroundColor = color;
+    }];
+    
+    [UIColor artModule1ForKey:kUIStyleModule1Test strongSelf:self block:^(UIColor *color, ArtModule1ViewController *weakSelf) {
+        weakSelf.testview.backgroundColor = color;
     }];
     
 }

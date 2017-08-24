@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ArtUIStyle.h"
 
 /**
  *  样式配置

@@ -4,7 +4,7 @@
 <dict>
 	<key>Module1</key>
 	<dict>
-		<key>MainLabel</key>
+		<key>Test</key>
 		<dict>
 			<key>color</key>
 			<string>32be78</string>

@@ -15,7 +15,7 @@
 @end
 
 
-#define kUIStyleModule1MainLabel  @"MainLabel" // 备注
+#define kUIStyleModule1Test  @"Test" // 备注
 
 @interface UIColor (UIStyleModule1)
 

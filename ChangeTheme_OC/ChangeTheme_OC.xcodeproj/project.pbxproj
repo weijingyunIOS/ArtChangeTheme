@@ -33,6 +33,7 @@
 		5CDDFD961F4DBA2C00679475 /* Module4Style.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFD931F4DBA2C00679475 /* Module4Style.plist */; };
 		5CDDFD9B1F4E7DC900679475 /* AppStyle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFD9A1F4E7DC900679475 /* AppStyle.plist */; };
 		5CDDFD9E1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFD9D1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m */; };
+		5CDDFDA01F4E82CD00679475 /* Module1.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFD9F1F4E82CD00679475 /* Module1.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		5CDDFD9A1F4E7DC900679475 /* AppStyle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppStyle.plist; sourceTree = "<group>"; };
 		5CDDFD9C1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtUIStyleManager+UIStyleApp.h"; sourceTree = "<group>"; };
 		5CDDFD9D1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArtUIStyleManager+UIStyleApp.m"; sourceTree = "<group>"; };
+		5CDDFD9F1F4E82CD00679475 /* Module1.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Module1.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				5C05F81F1F4B1CD300F672E8 /* Module1Style.plist */,
 				5C2606FC1F4C4005001A25AA /* ArtUIStyleManager+UIStyleModule1.h */,
 				5C2606FD1F4C4005001A25AA /* ArtUIStyleManager+UIStyleModule1.m */,
+				5CDDFD9F1F4E82CD00679475 /* Module1.xcassets */,
 			);
 			path = UIStyle;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				5CDDFD7A1F4DB83600679475 /* Module2Style.plist in Resources */,
 				5C8ECB2A1F4ACE7A00985FB1 /* LaunchScreen.storyboard in Resources */,
 				5CDDFD9B1F4E7DC900679475 /* AppStyle.plist in Resources */,
+				5CDDFDA01F4E82CD00679475 /* Module1.xcassets in Resources */,
 				5C05F8201F4B1CD300F672E8 /* Module1Style.plist in Resources */,
 				5C8ECB271F4ACE7A00985FB1 /* Assets.xcassets in Resources */,
 				5CDDFD961F4DBA2C00679475 /* Module4Style.plist in Resources */,

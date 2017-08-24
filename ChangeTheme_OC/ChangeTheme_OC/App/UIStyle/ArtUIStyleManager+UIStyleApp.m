@@ -15,3 +15,20 @@
 }
 
 @end
+
+
+@implementation UIColor (UIStyleApp)
+
++ (void)artAppForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock {
+    [self artModule:@"App_Main" colorForKey:aColorKey strongSelf:strongSelf block:aBlock];
+}
+
+@end
+
+@implementation UIFont (UIStyleCourseware)
+
++ (void)artAppForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *color, id weakSelf))aBlock {
+    [self artModule:@"App_Main" fontForKey:aFontKey strongSelf:strongSelf block:aBlock];
+}
+
+@end

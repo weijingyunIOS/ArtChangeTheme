@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,9 +21,41 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Module1_test" translatesAutoresizingMaskIntoConstraints="NO" id="PSg-fS-gGk" customClass="Module1_test">
+                                <rect key="frame" x="26" y="74" width="20" height="16"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xba-aK-uh6">
+                                <rect key="frame" x="307" y="74" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPE-Y9-pga">
+                                <rect key="frame" x="76" y="210" width="240" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.76138045369999996" blue="0.17250329210000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="dYh-Rf-lEX"/>
+                                    <constraint firstAttribute="height" constant="128" id="i43-CD-rxa"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="xba-aK-uh6" secondAttribute="trailing" constant="10" id="7kA-3q-5yQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oPE-Y9-pga" secondAttribute="trailing" constant="43" id="Jqd-9v-Qll"/>
+                            <constraint firstItem="PSg-fS-gGk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="Kfz-hx-kJE"/>
+                            <constraint firstItem="xba-aK-uh6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="loo-dp-dHB"/>
+                            <constraint firstItem="oPE-Y9-pga" firstAttribute="top" secondItem="xba-aK-uh6" secondAttribute="bottom" constant="115" id="nas-eM-L9W"/>
+                            <constraint firstItem="PSg-fS-gGk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="oNf-Ep-sAU"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yht-ZJ-9BA"/>
+                    <connections>
+                        <outlet property="testImage" destination="PSg-fS-gGk" id="tc2-Vy-i3V"/>
+                        <outlet property="testMainLabel" destination="xba-aK-uh6" id="fSx-xO-6Ry"/>
+                        <outlet property="testview" destination="oPE-Y9-pga" id="4sM-ES-pPe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -182,4 +215,7 @@
             <point key="canvasLocation" x="934" y="1933"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Module1_test" width="20" height="16"/>
+    </resources>
 </document>
