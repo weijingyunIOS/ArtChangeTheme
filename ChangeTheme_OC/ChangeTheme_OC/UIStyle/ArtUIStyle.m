@@ -15,9 +15,12 @@
 
 @interface ArtUIStyle ()
 
+@property (nonatomic, strong) NSCache *cache;
 @property (nonatomic, strong) NSDictionary* style;
+
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) UIFont *font;
+@property (nonatomic, strong) ArtLayoutInfo *layoutInfo;
 @property (nonatomic, strong) UIImage *image;
 
 @end
@@ -32,18 +35,45 @@
 
 - (id)initWithStyle:(NSDictionary *)aStyle
 {
-    self = [super init];
-    
-    _style = aStyle;
-    
+    if (self = [super init]) {
+        _style = aStyle;
+        _cache = [NSCache new];
+        _cache.countLimit = 50;
+    }
     return self;
 }
 
+- (ArtUIStyle *)styleForKey:(NSString *)aKey
+{
+    NSString *key = [NSString stringWithFormat:@"Style_%@",aKey];
+    ArtUIStyle *style = [self.cache objectForKey:key];
+    if (style == nil) {
+        style = [[ArtUIStyle alloc] initWithStyle:self.style[@"Style"][aKey]];
+        [self.cache setObject:style forKey:key];
+    }
+    return style;
+}
+
+- (ArtUIStyle *)imageForKey:(NSString *)aKey
+{
+    NSString *key = [NSString stringWithFormat:@"Image_%@",aKey];
+    ArtUIStyle *style = [self.cache objectForKey:key];
+    if (style == nil) {
+        style = [[ArtUIStyle alloc] initWithStyle:self.style[@"Image"][aKey]];
+        [self.cache setObject:style forKey:key];
+    }
+    return style;
+}
+
+
 - (UIFont *)font
 {
-    NSNumber *num = [self.style objectForKey:kArtUIStyleFontKey];
-    NSAssert(num != nil, @"配置的字体大小不存在请检查");
-    return [UIFont systemFontOfSize:[num doubleValue]];
+    if (_font) {
+        NSNumber *num = [self.style objectForKey:kArtUIStyleFontKey];
+        NSAssert(num != nil, @"配置的字体大小不存在请检查");
+        _font = [UIFont systemFontOfSize:[num doubleValue]];
+    }
+    return _font;
 }
 
 - (UIColor *)color
@@ -60,30 +90,20 @@
         }
         _color = [UIColor art_colorWithHexString:hexStr alpha:alpha];
         
-    }else {
-        NSLog(@"aaaaaa");
     }
     return [_color copy];
 }
 
 - (ArtLayoutInfo *)layoutInfo {
     
-    NSAssert(self.style.count > 0, @"不存在该配置请检查");
-    ArtLayoutInfo *info = [ArtLayoutInfo new];
-    [info setValuesForKeysWithDictionary:self.style];
-    return info;
+    if (!_layoutInfo) {
+        NSAssert(self.style.count > 0, @"不存在该配置请检查");
+        ArtLayoutInfo *info = [ArtLayoutInfo new];
+        [info setValuesForKeysWithDictionary:self.style];
+        _layoutInfo = info;
+    }
+    return _layoutInfo;
 }
-
-- (ArtUIStyle *)styleForKey:(NSString *)aKey
-{
-    return [[ArtUIStyle alloc] initWithStyle:self.style[@"Style"][aKey]];
-}
-
-- (ArtUIStyle *)imageForKey:(NSString *)aKey
-{
-    return [[ArtUIStyle alloc] initWithStyle:self.style[@"Image"][aKey]];
-}
-
 
 @end
 
