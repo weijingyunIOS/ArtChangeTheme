@@ -36,6 +36,7 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 
 @property (nonatomic, strong) NSMutableDictionary* styles;
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *blocks;
+@property (nonatomic, strong) NSCache *styleCache;
 
 @end
 
@@ -57,6 +58,9 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     
     self.styles = [NSMutableDictionary dictionary];
     self.blocks = [NSMutableArray new];
+    self.styleCache = [NSCache new];
+    self.styleCache.countLimit = 100;
+    
     [self buildAppStyle:^(NSString *styleName) {
         NSString *path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
         NSAssert(path.length > 0, @"%@不存在请检查",styleName);
@@ -64,6 +68,17 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     }];
     
     return self;
+}
+
+- (ArtUIStyle *)styleForKey:(NSString *)aKey {
+    
+    ArtUIStyle* style = [self.styleCache objectForKey:aKey];
+    if (style == nil) {
+        style = [[ArtUIStyle alloc] init];
+        style.style = [self.styles objectForKey:aKey];
+        [self.styleCache setObject:style forKey:aKey];
+    }
+    return style;
 }
 
 - (void)saveKey:(id)aKey block:(void(^)())aBlock {
@@ -127,6 +142,7 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 - (void)reloadStyle:(void(^)(ArtUIStyleManager *manager))aBlock {
     NSAssert([NSThread isMainThread], @"界面相关操作请放主线程");
     [self.styles removeAllObjects];
+    [self.styleCache removeAllObjects];
     
     if (aBlock) {
         aBlock(self);

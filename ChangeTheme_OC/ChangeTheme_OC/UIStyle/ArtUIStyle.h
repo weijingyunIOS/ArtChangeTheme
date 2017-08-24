@@ -11,13 +11,7 @@
 
 @interface ArtUIStyle : NSObject
 
-+ (ArtUIStyle *)styleForKey:(NSString *)aKey;
-// 外部定制自己的Style
-+ (void)addStyle:(NSDictionary *)aStyle key:(NSString *)aKey;
-
-- (UIFont *)font;
-- (UIColor *)color;
-- (ArtUIStyle *)styleForKey:(NSString *)aKey;
+@property (nonatomic, strong) NSDictionary* style;
 
 @end
 
@@ -47,6 +41,16 @@
 
 // 该方法不建议使用
 + (void)artModule:(NSString *)aModule layoutForKey:(NSString *)aLayoutKey block:(id(^)(ArtLayoutInfo *layoutInfo))aBlock;
+
+@end
+
+
+@interface UIImage (ArtUIStyleApp)
+
++ (void)artModule:(NSString *)aModule imageString:(NSString *)aImageString strongSelf:(id)strongSelf block:(void(^)(UIImage *image, id weakSelf))aBlock;
+
+// 该方法不建议使用
++ (void)artModule:(NSString *)aModule imageString:(NSString *)aImageString block:(id(^)(UIImage *image))aBlock;
 
 @end
 

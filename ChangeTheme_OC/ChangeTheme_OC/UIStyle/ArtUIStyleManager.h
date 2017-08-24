@@ -21,11 +21,11 @@ extern NSString* const kArtUIStyleColorKey;
 
 @property (nonatomic, strong,readonly) NSMutableDictionary* styles;
 - (void)saveKey:(id)aKey block:(void(^)())aBlock;
+- (ArtUIStyle *)styleForKey:(NSString *)aKey;
 
-
+#pragma mark - 外部使用
 + (instancetype)shared;
 - (void)addEntriesFromPath:(NSString *)aPath;
-
 - (void)reloadStylePath:(NSString *)aStylePath;
 - (void)reloadStyleBundleName:(NSString *)aStyleBundleName;
 - (void)reloadStyleBundle:(NSBundle *)aStyleBundle;

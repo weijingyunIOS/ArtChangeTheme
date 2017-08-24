@@ -155,10 +155,10 @@
 		5C05F8111F4B140B00F672E8 /* UIStyle */ = {
 			isa = PBXGroup;
 			children = (
+				5CDDFD9F1F4E82CD00679475 /* Module1.xcassets */,
 				5C05F81F1F4B1CD300F672E8 /* Module1Style.plist */,
 				5C2606FC1F4C4005001A25AA /* ArtUIStyleManager+UIStyleModule1.h */,
 				5C2606FD1F4C4005001A25AA /* ArtUIStyleManager+UIStyleModule1.m */,
-				5CDDFD9F1F4E82CD00679475 /* Module1.xcassets */,
 			);
 			path = UIStyle;
 			sourceTree = "<group>";

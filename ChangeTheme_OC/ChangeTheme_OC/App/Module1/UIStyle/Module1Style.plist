@@ -4,14 +4,31 @@
 <dict>
 	<key>Module1</key>
 	<dict>
-		<key>Test</key>
+		<key>Image</key>
 		<dict>
-			<key>color</key>
-			<string>000000</string>
-			<key>font</key>
-			<integer>15</integer>
-			<key>备注</key>
-			<string>描述哪里的</string>
+			<key>toPath</key>
+			<string>Module1</string>
+			<key>imageConfigs</key>
+			<array>
+				<dict>
+					<key>imageName</key>
+					<string>Module1_test</string>
+					<key>备注</key>
+					<string>我是备注</string>
+				</dict>
+			</array>
+		</dict>
+		<key>Style</key>
+		<dict>
+			<key>Test</key>
+			<dict>
+				<key>color</key>
+				<string>000000</string>
+				<key>font</key>
+				<integer>15</integer>
+				<key>备注</key>
+				<string>描述哪里的</string>
+			</dict>
 		</dict>
 	</dict>
 </dict>

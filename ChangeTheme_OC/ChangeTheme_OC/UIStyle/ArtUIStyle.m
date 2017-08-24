@@ -15,7 +15,9 @@
 
 @interface ArtUIStyle ()
 
-@property (nonatomic, strong) NSDictionary* style;
+@property (nonatomic, strong) UIColor *color;
+@property (nonatomic, strong) UIFont *font;
+@property (nonatomic, strong) UIImage *image;
 
 @end
 
@@ -23,17 +25,9 @@
 
 + (ArtUIStyle *)styleForKey:(NSString *)aKey
 {
-    ArtUIStyle* style = [[ArtUIStyle alloc] init];
-    
-    style.style = [[ArtUIStyleManager shared].styles objectForKey:aKey];
-    
-    return style;
+    return [[ArtUIStyleManager shared] styleForKey:aKey];
 }
 
-+ (void)addStyle:(NSDictionary *)aStyle key:(NSString *)aKey
-{
-    [[ArtUIStyleManager shared].styles setObject:aStyle forKey:aKey];
-}
 
 - (id)initWithStyle:(NSDictionary *)aStyle
 {
@@ -53,16 +47,22 @@
 
 - (UIColor *)color
 {
-    NSString *colorStr = [self.style objectForKey:kArtUIStyleColorKey];
-    colorStr = [colorStr stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSAssert(colorStr.length > 0, @"配置的颜色值不存在请检查");
-    NSArray<NSString *> *colorArray = [colorStr componentsSeparatedByString:@","];
-    NSString *hexStr = colorArray.firstObject;
-    CGFloat alpha = 1.0;
-    if (colorArray.count == 2) {
-        alpha = [colorArray.lastObject doubleValue];
+    if (!_color) {
+        NSString *colorStr = [self.style objectForKey:kArtUIStyleColorKey];
+        colorStr = [colorStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+        NSAssert(colorStr.length > 0, @"配置的颜色值不存在请检查");
+        NSArray<NSString *> *colorArray = [colorStr componentsSeparatedByString:@","];
+        NSString *hexStr = colorArray.firstObject;
+        CGFloat alpha = 1.0;
+        if (colorArray.count == 2) {
+            alpha = [colorArray.lastObject doubleValue];
+        }
+        _color = [UIColor art_colorWithHexString:hexStr alpha:alpha];
+        
+    }else {
+        NSLog(@"aaaaaa");
     }
-    return [UIColor art_colorWithHexString:hexStr alpha:alpha];
+    return [_color copy];
 }
 
 - (ArtLayoutInfo *)layoutInfo {
@@ -75,8 +75,14 @@
 
 - (ArtUIStyle *)styleForKey:(NSString *)aKey
 {
-    return [[ArtUIStyle alloc] initWithStyle:[self.style objectForKey:aKey]];
+    return [[ArtUIStyle alloc] initWithStyle:self.style[@"Style"][aKey]];
 }
+
+- (ArtUIStyle *)imageForKey:(NSString *)aKey
+{
+    return [[ArtUIStyle alloc] initWithStyle:self.style[@"Image"][aKey]];
+}
+
 
 @end
 
@@ -159,6 +165,20 @@
             [self artModule:aModule layoutForKey:aLayoutKey block:aBlock];
         }];
     }
+}
+
+@end
+
+
+@implementation UIImage (ArtUIStyleApp)
+
++ (void)artModule:(NSString *)aModule imageString:(NSString *)aImageString strongSelf:(id)strongSelf block:(void(^)(UIImage *image, id weakSelf))aBlock {
+    
+}
+
+// 该方法不建议使用
++ (void)artModule:(NSString *)aModule imageString:(NSString *)aImageString block:(id(^)(UIImage *image))aBlock {
+
 }
 
 @end

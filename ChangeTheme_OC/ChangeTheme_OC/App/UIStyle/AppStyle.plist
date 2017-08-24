@@ -4,26 +4,36 @@
 <dict>
 	<key>App_Main</key>
 	<dict>
-		<key>vcBackground</key>
+		<key>Image</key>
 		<dict>
-			<key>color</key>
-			<string>f2f2f2</string>
-			<key>备注</key>
-			<string>控制器背景色</string>
+			<key>toPath</key>
+			<string>App_Main</string>
+			<key>imageConfigs</key>
+			<array/>
 		</dict>
-		<key>MainLabel</key>
+		<key>Style</key>
 		<dict>
-			<key>color</key>
-			<string>000000</string>
-			<key>font</key>
-			<string>15</string>
-		</dict>
-		<key>ViceLabel</key>
-		<dict>
-			<key>color</key>
-			<string>333333</string>
-			<key>font</key>
-			<string>13</string>
+			<key>vcBackground</key>
+			<dict>
+				<key>color</key>
+				<string>f2f2f2</string>
+				<key>备注</key>
+				<string>控制器背景色</string>
+			</dict>
+			<key>ViceLabel</key>
+			<dict>
+				<key>color</key>
+				<string>333333</string>
+				<key>font</key>
+				<string>13</string>
+			</dict>
+			<key>MainLabel</key>
+			<dict>
+				<key>color</key>
+				<string>000000</string>
+				<key>font</key>
+				<string>15</string>
+			</dict>
 		</dict>
 	</dict>
 </dict>

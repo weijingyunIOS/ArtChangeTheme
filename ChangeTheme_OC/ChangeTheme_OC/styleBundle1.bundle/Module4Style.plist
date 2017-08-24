@@ -4,18 +4,21 @@
 <dict>
 	<key>Module4</key>
 	<dict>
-		<key>Test</key>
+		<key>Style</key>
 		<dict>
-			<key>color</key>
-			<string>32be78</string>
-			<key>font</key>
-			<integer>15</integer>
-			<key>备注</key>
-			<string>描述哪里的</string>
-			<key>width</key>
-			<string>200</string>
-			<key>height</key>
-			<string>100</string>
+			<key>Test</key>
+			<dict>
+				<key>color</key>
+				<string>32be78</string>
+				<key>font</key>
+				<integer>15</integer>
+				<key>备注</key>
+				<string>描述哪里的</string>
+				<key>width</key>
+				<string>200</string>
+				<key>height</key>
+				<string>100</string>
+			</dict>
 		</dict>
 	</dict>
 </dict>

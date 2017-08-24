@@ -4,14 +4,24 @@
 <dict>
 	<key>Module2</key>
 	<dict>
-		<key>MainLabel</key>
+		<key>Image</key>
 		<dict>
-			<key>color</key>
-			<string>020e08</string>
-			<key>font</key>
-			<integer>15</integer>
-			<key>备注</key>
-			<string>描述哪里的</string>
+			<key>toPath</key>
+			<string>Module2</string>
+			<key>imageConfigs</key>
+			<array/>
+		</dict>
+		<key>Style</key>
+		<dict>
+			<key>MainLabel</key>
+			<dict>
+				<key>color</key>
+				<string>020e08</string>
+				<key>font</key>
+				<integer>15</integer>
+				<key>备注</key>
+				<string>描述哪里的</string>
+			</dict>
 		</dict>
 	</dict>
 </dict>
