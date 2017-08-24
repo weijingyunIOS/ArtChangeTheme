@@ -15,7 +15,7 @@
 @end
 
 
-#define kUIStyleModule4MainLabel  @"MainLabel" // 备注
+#define kUIStyleModule4Test  @"Test" // 备注
 
 @interface UIColor (UIStyleModule4)
 
@@ -26,6 +26,12 @@
 
 @interface UIFont (UIStyleModule4)
 
-+ (void)artModule4ForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock;
++ (void)artModule4ForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock;
+
+@end
+
+@interface ArtLayoutInfo (UIStyleModule4)
+
++ (void)artModule4ForKey:(NSString *)aLayoutKey strongSelf:(id)strongSelf block:(void(^)(ArtLayoutInfo *layoutInfo, id weakSelf))aBlock;
 
 @end

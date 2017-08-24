@@ -8,6 +8,7 @@
 
 #import "ArtModule4ViewController.h"
 #import "ArtUIStyleManager+UIStyleModule4.h"
+#import "ArtUIStyleManager+UIStyleApp.h"
 
 @interface ArtModule4ViewController ()
 
@@ -23,17 +24,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    __weak typeof(self) weakSelf = self;
-//    [UIColor artModule4ForKey:kUIStyleModule4MainLabel block:^id(UIColor *color) {
-//        weakSelf.view.backgroundColor = color;
-//        return weakSelf;
-//    }];
-    
-    [UIColor artModule4ForKey:kUIStyleModule4MainLabel strongSelf:self block:^(UIColor *color, ArtModule4ViewController *weakSelf) {
+    [self configUI];
+}
+
+
+- (void)configUI {
+    [UIColor artAppForKey:kUIStyleAppVCBackground strongSelf:self block:^(UIColor *color, ArtModule4ViewController *weakSelf) {
         weakSelf.view.backgroundColor = color;
     }];
     
+    [UIColor artModule4ForKey:kUIStyleModule4Test strongSelf:self block:^(UIColor *color, ArtModule4ViewController *weakSelf) {
+        weakSelf.testview.backgroundColor = color;
+    }];
+    
+    [ArtLayoutInfo artModule4ForKey:kUIStyleModule4Test strongSelf:self block:^(ArtLayoutInfo *layoutInfo, ArtModule4ViewController *weakSelf) {
+        weakSelf.testviewWidth.constant = layoutInfo.width;
+        weakSelf.testviewHeight.constant = layoutInfo.height;
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -34,6 +34,7 @@
 		5CDDFD9B1F4E7DC900679475 /* AppStyle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFD9A1F4E7DC900679475 /* AppStyle.plist */; };
 		5CDDFD9E1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFD9D1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m */; };
 		5CDDFDA01F4E82CD00679475 /* Module1.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFD9F1F4E82CD00679475 /* Module1.xcassets */; };
+		5CDDFDA31F4EA38800679475 /* ArtLayoutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFDA21F4EA38800679475 /* ArtLayoutInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		5CDDFD9C1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtUIStyleManager+UIStyleApp.h"; sourceTree = "<group>"; };
 		5CDDFD9D1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArtUIStyleManager+UIStyleApp.m"; sourceTree = "<group>"; };
 		5CDDFD9F1F4E82CD00679475 /* Module1.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Module1.xcassets; sourceTree = "<group>"; };
+		5CDDFDA11F4EA38800679475 /* ArtLayoutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtLayoutInfo.h; sourceTree = "<group>"; };
+		5CDDFDA21F4EA38800679475 /* ArtLayoutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtLayoutInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +242,8 @@
 				5C2607021F4C449A001A25AA /* NSObject+ArtPrefix.m */,
 				5C8ECB521F4AD30300985FB1 /* UIColor+HexColor.h */,
 				5C8ECB531F4AD30300985FB1 /* UIColor+HexColor.m */,
+				5CDDFDA11F4EA38800679475 /* ArtLayoutInfo.h */,
+				5CDDFDA21F4EA38800679475 /* ArtLayoutInfo.m */,
 				5C8ECB4F1F4AD25200985FB1 /* ArtUIStyle.h */,
 				5C8ECB501F4AD25200985FB1 /* ArtUIStyle.m */,
 				5C2606F91F4C2EA1001A25AA /* ArtUIStyleManager.h */,
@@ -495,6 +500,7 @@
 				5CDDFD781F4DB83600679475 /* ArtModule2ViewController.m in Sources */,
 				5CDDFD891F4DB95D00679475 /* ArtModule3ViewController.m in Sources */,
 				5C05F81E1F4B16D500F672E8 /* ArtModule1ViewController.m in Sources */,
+				5CDDFDA31F4EA38800679475 /* ArtLayoutInfo.m in Sources */,
 				5CDDFD941F4DBA2C00679475 /* ArtModule4ViewController.m in Sources */,
 				5C2606FE1F4C4005001A25AA /* ArtUIStyleManager+UIStyleModule1.m in Sources */,
 				5C8ECB1C1F4ACE7A00985FB1 /* main.m in Sources */,

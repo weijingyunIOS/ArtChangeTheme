@@ -26,10 +26,18 @@
 
 @end
 
-@implementation UIFont (UIStyleCourseware)
+@implementation UIFont (UIStyleModule4)
 
-+ (void)artModule4ForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock {
-    [self artModule:@"Module4" fontForKey:aFontKey block:aBlock];
++ (void)artModule4ForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock {
+    [self artModule:@"Module4" fontForKey:aFontKey strongSelf:strongSelf block:aBlock];
+}
+
+@end
+
+@implementation ArtLayoutInfo (UIStyleModule4)
+
++ (void)artModule4ForKey:(NSString *)aLayoutKey strongSelf:(id)strongSelf block:(void(^)(ArtLayoutInfo *layoutInfo, id weakSelf))aBlock {
+    [self artModule:@"Module4" layoutForKey:aLayoutKey strongSelf:strongSelf block:aBlock];
 }
 
 @end

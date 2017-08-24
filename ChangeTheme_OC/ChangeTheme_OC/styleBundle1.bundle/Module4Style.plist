@@ -7,15 +7,15 @@
 		<key>Test</key>
 		<dict>
 			<key>color</key>
-			<string>d9d9d9</string>
+			<string>32be78</string>
 			<key>font</key>
 			<integer>15</integer>
 			<key>备注</key>
 			<string>描述哪里的</string>
 			<key>width</key>
-			<string>150</string>
+			<string>200</string>
 			<key>height</key>
-			<string>150</string>
+			<string>100</string>
 		</dict>
 	</dict>
 </dict>

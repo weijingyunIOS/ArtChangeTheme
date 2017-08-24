@@ -65,6 +65,14 @@
     return [UIColor art_colorWithHexString:hexStr alpha:alpha];
 }
 
+- (ArtLayoutInfo *)layoutInfo {
+    
+    NSAssert(self.style.count > 0, @"不存在该配置请检查");
+    ArtLayoutInfo *info = [ArtLayoutInfo new];
+    [info setValuesForKeysWithDictionary:self.style];
+    return info;
+}
+
 - (ArtUIStyle *)styleForKey:(NSString *)aKey
 {
     return [[ArtUIStyle alloc] initWithStyle:[self.style objectForKey:aKey]];
@@ -119,6 +127,36 @@
     if (key != nil) {
         [[ArtUIStyleManager shared] saveKey:key block:^{
             [self artModule:aModule fontForKey:aFontKey block:aBlock];
+        }];
+    }
+}
+
+@end
+
+
+@implementation ArtLayoutInfo (ArtUIStyleApp)
+
++ (void)artModule:(NSString *)aModule layoutForKey:(NSString *)aLayoutKey strongSelf:(id)strongSelf block:(void(^)(ArtLayoutInfo *layoutInfo, id weakSelf))aBlock {
+    
+    ArtLayoutInfo *layoutInfo = [[[ArtUIStyle styleForKey:aModule] styleForKey:aLayoutKey] layoutInfo];
+    aBlock(layoutInfo,strongSelf);
+    if (strongSelf) {
+        __weak id weakSelf = strongSelf;
+        [[ArtUIStyleManager shared] saveKey:strongSelf block:^{
+            __strong id strongSelf = weakSelf;
+            [self artModule:aModule layoutForKey:aLayoutKey strongSelf:strongSelf block:aBlock];
+        }];
+    }
+}
+
+// 该方法不建议使用
++ (void)artModule:(NSString *)aModule layoutForKey:(NSString *)aLayoutKey block:(id(^)(ArtLayoutInfo *layoutInfo))aBlock {
+    
+    ArtLayoutInfo *layoutInfo = [[[ArtUIStyle styleForKey:aModule] styleForKey:aLayoutKey] layoutInfo];
+    id key = aBlock(layoutInfo);
+    if (key != nil) {
+        [[ArtUIStyleManager shared] saveKey:key block:^{
+            [self artModule:aModule layoutForKey:aLayoutKey block:aBlock];
         }];
     }
 }

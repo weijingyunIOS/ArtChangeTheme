@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ArtLayoutInfo.h"
+
 @interface ArtUIStyle : NSObject
 
 + (ArtUIStyle *)styleForKey:(NSString *)aKey;
@@ -37,3 +39,14 @@
 + (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock;
 
 @end
+
+
+@interface ArtLayoutInfo (ArtUIStyleApp)
+
++ (void)artModule:(NSString *)aModule layoutForKey:(NSString *)aLayoutKey strongSelf:(id)strongSelf block:(void(^)(ArtLayoutInfo *layoutInfo, id weakSelf))aBlock;
+
+// 该方法不建议使用
++ (void)artModule:(NSString *)aModule layoutForKey:(NSString *)aLayoutKey block:(id(^)(ArtLayoutInfo *layoutInfo))aBlock;
+
+@end
+
