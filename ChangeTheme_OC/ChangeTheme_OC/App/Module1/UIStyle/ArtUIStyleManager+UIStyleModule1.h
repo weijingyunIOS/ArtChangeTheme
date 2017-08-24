@@ -26,6 +26,6 @@
 
 @interface UIFont (UIStyleModule1)
 
-+ (void)artModule1ForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock;
++ (void)artModule1ForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock;
 
 @end

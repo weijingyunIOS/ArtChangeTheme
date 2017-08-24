@@ -4,10 +4,10 @@
 <dict>
 	<key>Module1</key>
 	<dict>
-		<key>MainLabel</key>
+		<key>Test</key>
 		<dict>
 			<key>color</key>
-			<string>ffffff</string>
+			<string>32BE78</string>
 			<key>font</key>
 			<integer>15</integer>
 			<key>备注</key>

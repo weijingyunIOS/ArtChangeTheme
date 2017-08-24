@@ -27,7 +27,7 @@
 
 @implementation UIFont (UIStyleCourseware)
 
-+ (void)artAppForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *color, id weakSelf))aBlock {
++ (void)artAppForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock {
     [self artModule:@"App_Main" fontForKey:aFontKey strongSelf:strongSelf block:aBlock];
 }
 

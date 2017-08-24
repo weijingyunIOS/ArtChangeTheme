@@ -7,21 +7,21 @@
 		<key>vcBackground</key>
 		<dict>
 			<key>color</key>
-			<string>f2f2f2</string>
+			<string>2f2f2f</string>
 			<key>备注</key>
 			<string>控制器背景色</string>
 		</dict>
 		<key>MainLabel</key>
 		<dict>
 			<key>color</key>
-			<string>000000</string>
+			<string>32BE78</string>
 			<key>font</key>
 			<string>15</string>
 		</dict>
 		<key>ViceLabel</key>
 		<dict>
 			<key>color</key>
-			<string>333333</string>
+			<string>999999</string>
 			<key>font</key>
 			<string>13</string>
 		</dict>

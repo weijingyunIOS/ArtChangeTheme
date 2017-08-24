@@ -32,7 +32,11 @@
     }];
     
     [UIColor artAppForKey:kUIStyleAppMainLabel strongSelf:self block:^(UIColor *color, ArtModule1ViewController *weakSelf) {
-        weakSelf.testMainLabel.backgroundColor = color;
+        weakSelf.testMainLabel.textColor = color;
+    }];
+    
+    [UIFont artAppForKey:kUIStyleAppMainLabel strongSelf:self block:^(UIFont *font, ArtModule1ViewController *weakSelf) {
+        weakSelf.testMainLabel.font = font;
     }];
     
     [UIColor artModule1ForKey:kUIStyleModule1Test strongSelf:self block:^(UIColor *color, ArtModule1ViewController *weakSelf) {
@@ -48,8 +52,9 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    ArtModule1ViewController *vc = [ArtModule1ViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+    [[ArtUIStyleManager shared] reloadStyleBundleName:@"styleBundle1"];
+//    ArtModule1ViewController *vc = [ArtModule1ViewController new];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

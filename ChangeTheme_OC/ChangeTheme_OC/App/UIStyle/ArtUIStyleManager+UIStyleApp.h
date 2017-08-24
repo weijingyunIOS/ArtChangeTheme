@@ -28,6 +28,6 @@
 
 @interface UIFont (UIStyleApp)
 
-+ (void)artAppForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *color, id weakSelf))aBlock;
++ (void)artAppForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock;
 
 @end
