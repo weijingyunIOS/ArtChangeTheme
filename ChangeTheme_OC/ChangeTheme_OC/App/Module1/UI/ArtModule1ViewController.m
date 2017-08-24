@@ -43,6 +43,10 @@
         weakSelf.testview.backgroundColor = color;
     }];
     
+    [UIImage artImageString:@"Module1_test" strongSelf:self block:^(UIImage *image, ArtModule1ViewController *weakSelf) {
+        weakSelf.testImage.image = image;
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

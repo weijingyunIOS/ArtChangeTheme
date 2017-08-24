@@ -26,10 +26,19 @@
 
 @end
 
-@implementation UIFont (UIStyleCourseware)
+@implementation UIFont (UIStyleModule1)
 
 + (void)artModule1ForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock {
     [self artModule:@"Module1" fontForKey:aFontKey strongSelf:strongSelf block:aBlock];
+}
+
+@end
+
+
+@implementation UIImage (UIStyleModule1)
+
++ (void)artImageString:(NSString *)aImageString strongSelf:(id)strongSelf block:(void(^)(UIImage *image, id weakSelf))aBlock {
+    [self artModule:@"Module1" imageString:aImageString strongSelf:strongSelf block:aBlock];
 }
 
 @end

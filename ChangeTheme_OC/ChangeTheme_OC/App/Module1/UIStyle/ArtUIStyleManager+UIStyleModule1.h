@@ -29,3 +29,10 @@
 + (void)artModule1ForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock;
 
 @end
+
+
+@interface UIImage (UIStyleModule1)
+
++ (void)artImageString:(NSString *)aImageString strongSelf:(id)strongSelf block:(void(^)(UIImage *image, id weakSelf))aBlock;
+
+@end

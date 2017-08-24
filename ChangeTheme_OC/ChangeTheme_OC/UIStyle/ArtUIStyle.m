@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) UIFont *font;
 @property (nonatomic, strong) ArtLayoutInfo *layoutInfo;
+@property (nonatomic, strong) UIImage *image;
 
 @end
 
@@ -52,18 +53,6 @@
     }
     return style;
 }
-
-- (ArtUIStyle *)imageForKey:(NSString *)aKey
-{
-    NSString *key = [NSString stringWithFormat:@"Image_%@",aKey];
-    ArtUIStyle *style = [self.cache objectForKey:key];
-    if (style == nil) {
-        style = [[ArtUIStyle alloc] initWithStyle:self.style[@"Image"][aKey]];
-        [self.cache setObject:style forKey:key];
-    }
-    return style;
-}
-
 
 - (UIFont *)font
 {
@@ -102,6 +91,23 @@
         _layoutInfo = info;
     }
     return _layoutInfo;
+}
+
+
+- (UIImage *)imageForString:(NSString *)aImageString
+{
+    NSString *key = [NSString stringWithFormat:@"Image_%@",aImageString];
+    ArtUIStyle *style = [self.cache objectForKey:key];
+    if (style == nil) {
+        style = [[ArtUIStyle alloc] initWithStyle:self.style[@"Image"]];
+        [style saveImageString:aImageString];
+        [self.cache setObject:style forKey:key];
+    }
+    return [style.image copy];
+}
+
+- (void)saveImageString:(NSString *)aImageString {
+    self.image = [UIImage imageNamed:aImageString];
 }
 
 @end
@@ -194,11 +200,27 @@
 
 + (void)artModule:(NSString *)aModule imageString:(NSString *)aImageString strongSelf:(id)strongSelf block:(void(^)(UIImage *image, id weakSelf))aBlock {
     
+    UIImage *image = [[ArtUIStyle styleForKey:aModule] imageForString:aImageString];
+    aBlock(image,strongSelf);
+    if (strongSelf) {
+        __weak id weakSelf = strongSelf;
+        [[ArtUIStyleManager shared] saveKey:strongSelf block:^{
+            __strong id strongSelf = weakSelf;
+            [self artModule:aModule imageString:aImageString strongSelf:strongSelf block:aBlock];
+        }];
+    }
 }
 
 // 该方法不建议使用
 + (void)artModule:(NSString *)aModule imageString:(NSString *)aImageString block:(id(^)(UIImage *image))aBlock {
 
+    UIImage *image = [[ArtUIStyle styleForKey:aModule] imageForString:aImageString];
+    id key = aBlock(image);
+    if (key != nil) {
+        [[ArtUIStyleManager shared] saveKey:key block:^{
+            [self artModule:aModule imageString:aImageString block:aBlock];
+        }];
+    }
 }
 
 @end
