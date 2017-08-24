@@ -31,6 +31,8 @@
 		5CDDFD941F4DBA2C00679475 /* ArtModule4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFD8F1F4DBA2C00679475 /* ArtModule4ViewController.m */; };
 		5CDDFD951F4DBA2C00679475 /* ArtUIStyleManager+UIStyleModule4.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFD921F4DBA2C00679475 /* ArtUIStyleManager+UIStyleModule4.m */; };
 		5CDDFD961F4DBA2C00679475 /* Module4Style.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFD931F4DBA2C00679475 /* Module4Style.plist */; };
+		5CDDFD9B1F4E7DC900679475 /* AppStyle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFD9A1F4E7DC900679475 /* AppStyle.plist */; };
+		5CDDFD9E1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFD9D1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,9 @@
 		5CDDFD911F4DBA2C00679475 /* ArtUIStyleManager+UIStyleModule4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtUIStyleManager+UIStyleModule4.h"; sourceTree = "<group>"; };
 		5CDDFD921F4DBA2C00679475 /* ArtUIStyleManager+UIStyleModule4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArtUIStyleManager+UIStyleModule4.m"; sourceTree = "<group>"; };
 		5CDDFD931F4DBA2C00679475 /* Module4Style.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Module4Style.plist; sourceTree = "<group>"; };
+		5CDDFD9A1F4E7DC900679475 /* AppStyle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppStyle.plist; sourceTree = "<group>"; };
+		5CDDFD9C1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtUIStyleManager+UIStyleApp.h"; sourceTree = "<group>"; };
+		5CDDFD9D1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArtUIStyleManager+UIStyleApp.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +129,7 @@
 		5C05F80E1F4B13F400F672E8 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				5CDDFD971F4E7D9800679475 /* UIStyle */,
 				5C05F80F1F4B13F400F672E8 /* Module1 */,
 				5CDDFD601F4DB83600679475 /* Module2 */,
 				5CDDFD811F4DB95D00679475 /* Module3 */,
@@ -322,6 +328,16 @@
 			path = UIStyle;
 			sourceTree = "<group>";
 		};
+		5CDDFD971F4E7D9800679475 /* UIStyle */ = {
+			isa = PBXGroup;
+			children = (
+				5CDDFD9A1F4E7DC900679475 /* AppStyle.plist */,
+				5CDDFD9C1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.h */,
+				5CDDFD9D1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m */,
+			);
+			path = UIStyle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -433,6 +449,7 @@
 			files = (
 				5CDDFD7A1F4DB83600679475 /* Module2Style.plist in Resources */,
 				5C8ECB2A1F4ACE7A00985FB1 /* LaunchScreen.storyboard in Resources */,
+				5CDDFD9B1F4E7DC900679475 /* AppStyle.plist in Resources */,
 				5C05F8201F4B1CD300F672E8 /* Module1Style.plist in Resources */,
 				5C8ECB271F4ACE7A00985FB1 /* Assets.xcassets in Resources */,
 				5CDDFD961F4DBA2C00679475 /* Module4Style.plist in Resources */,
@@ -464,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C2607031F4C449A001A25AA /* NSObject+ArtPrefix.m in Sources */,
+				5CDDFD9E1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m in Sources */,
 				5CDDFD791F4DB83600679475 /* ArtUIStyleManager+UIStyleModule2.m in Sources */,
 				5C8ECB511F4AD25200985FB1 /* ArtUIStyle.m in Sources */,
 				5CDDFD8A1F4DB95D00679475 /* ArtUIStyleManager+UIStyleModule3.m in Sources */,
