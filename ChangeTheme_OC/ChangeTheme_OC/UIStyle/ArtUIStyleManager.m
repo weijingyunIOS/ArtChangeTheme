@@ -134,6 +134,11 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 }
 
 - (void)reloadStylePath:(NSString *)aStylePath {
+    
+    self.styleType = EArtUIStyleTypeStylePath;
+    self.stylePath = aStylePath;
+    [self saveConfig];
+    
     [self reloadStyle:^(ArtUIStyleManager *manager) {
         [manager buildAppStyle:^(NSString *styleName) {
             
@@ -145,9 +150,6 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
             [self addEntriesFromPath:path];
         }];
     }];
-    self.styleType = EArtUIStyleTypeStylePath;
-    self.stylePath = aStylePath;
-    [self saveConfig];
 }
 
 - (void)reloadStyleBundleName:(NSString *)aStyleBundleName {
@@ -158,6 +160,16 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 }
 
 - (void)reloadStyleBundle:(NSBundle *)aStyleBundle {
+    
+    if (aStyleBundle == nil || aStyleBundle == [NSBundle mainBundle]) {
+        self.styleType = EArtUIStyleTypeDefault;
+        self.stylePath = nil;
+    }else {
+        self.styleType = EArtUIStyleTypeBundle;
+        self.stylePath = aStyleBundle.bundlePath;
+    }
+    [self saveConfig];
+    
     [self reloadStyle:^(ArtUIStyleManager *manager) {
         [manager buildAppStyle:^(NSString *styleName) {
             
@@ -169,15 +181,6 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
             [self addEntriesFromPath:path];
         }];
     }];
-    
-    if (aStyleBundle == [NSBundle mainBundle]) {
-        self.styleType = EArtUIStyleTypeDefault;
-        self.stylePath = nil;
-    }else {
-        self.styleType = EArtUIStyleTypeBundle;
-        self.stylePath = aStyleBundle.bundlePath;
-    }
-    [self saveConfig];
 }
 
 - (void)reloadStyle:(void(^)(ArtUIStyleManager *manager))aBlock {

@@ -107,7 +107,29 @@
 }
 
 - (void)saveImageString:(NSString *)aImageString {
-    self.image = [UIImage imageNamed:aImageString];
+    ArtUIStyleManager *manager = [ArtUIStyleManager shared];
+    switch (manager.styleType) {
+        case EArtUIStyleTypeDefault:
+        {
+             self.image = [UIImage imageNamed:aImageString];
+        }
+            break;
+            
+        case EArtUIStyleTypeBundle:
+        {
+            
+        }
+            break;
+            
+        case EArtUIStyleTypeStylePath:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end
