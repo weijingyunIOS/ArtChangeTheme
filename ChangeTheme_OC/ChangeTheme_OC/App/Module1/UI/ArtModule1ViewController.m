@@ -37,10 +37,8 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    [[ArtUIStyleManager shared] reloadStyleBundleName:@"styleBundle1"];
-//    NSString * bundlePath = [[ NSBundle mainBundle] pathForResource:@"styleBundle1" ofType :@"bundle"];
-//    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
-//    [[ArtUIStyleManager shared] reloadStyleBundle:bundle];
+    ArtModule1ViewController *vc = [ArtModule1ViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*
