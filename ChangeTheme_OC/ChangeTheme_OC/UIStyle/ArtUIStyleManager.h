@@ -17,6 +17,13 @@
 extern NSString* const kArtUIStyleFontKey;
 extern NSString* const kArtUIStyleColorKey;
 
+
+typedef enum : NSUInteger {
+    EArtUIStyleTypeDefault,   // 应用默认的 stylePath = nil
+    EArtUIStyleTypeBundle,    // Bundle   stylePath = BundlePath
+    EArtUIStyleTypeStylePath, // 下载的文件夹 stylePath = 文件夹路径
+} EArtUIStyleType;
+
 @interface ArtUIStyleManager : NSObject
 
 @property (nonatomic, strong,readonly) NSMutableDictionary* styles;
@@ -24,6 +31,10 @@ extern NSString* const kArtUIStyleColorKey;
 - (ArtUIStyle *)styleForKey:(NSString *)aKey;
 
 #pragma mark - 外部使用
+// 以下两字段记录当前配置
+@property (nonatomic, assign) EArtUIStyleType styleType;
+@property (nonatomic, copy) NSString *stylePath;
+
 + (instancetype)shared;
 - (void)addEntriesFromPath:(NSString *)aPath;
 - (void)reloadStylePath:(NSString *)aStylePath;

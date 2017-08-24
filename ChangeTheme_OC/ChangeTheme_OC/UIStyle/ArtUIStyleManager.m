@@ -52,22 +52,52 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     return shared;
 }
 
-- (id)init
+- (instancetype)init
 {
-    self = [super init];
-    
-    self.styles = [NSMutableDictionary dictionary];
-    self.blocks = [NSMutableArray new];
-    self.styleCache = [NSCache new];
-    self.styleCache.countLimit = 10;
-    
-    [self buildAppStyle:^(NSString *styleName) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
-        NSAssert(path.length > 0, @"%@不存在请检查",styleName);
-        [self addEntriesFromPath:path];
-    }];
-    
+    if (self = [super init]) {
+        self.styles = [NSMutableDictionary dictionary];
+        self.blocks = [NSMutableArray new];
+        self.styleCache = [NSCache new];
+        self.styleCache.countLimit = 10;
+        [self getConfig];
+        switch (self.styleType) {
+            case EArtUIStyleTypeDefault:
+            {
+                [self reloadStyleBundle:[NSBundle mainBundle]];
+            }
+                break;
+                
+            case EArtUIStyleTypeBundle:
+            {
+                NSBundle *bundle = [NSBundle bundleWithPath:self.stylePath];
+                [self reloadStyleBundle:bundle];
+            }
+                break;
+                
+            case EArtUIStyleTypeStylePath:
+            {
+                [self reloadStylePath:self.stylePath];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
     return self;
+}
+
+- (void)saveConfig {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@(self.styleType) forKey:@"ArtUIStyleManager_styleType"];
+    [defaults setObject:self.stylePath forKey:@"ArtUIStyleManager_stylePath"];
+    [defaults synchronize];
+}
+
+- (void)getConfig {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.styleType = [[defaults objectForKey:@"ArtUIStyleManager_styleType"] integerValue];
+    self.stylePath = [defaults objectForKey:@"ArtUIStyleManager_stylePath"];
 }
 
 - (ArtUIStyle *)styleForKey:(NSString *)aKey {
@@ -115,6 +145,9 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
             [self addEntriesFromPath:path];
         }];
     }];
+    self.styleType = EArtUIStyleTypeStylePath;
+    self.stylePath = aStylePath;
+    [self saveConfig];
 }
 
 - (void)reloadStyleBundleName:(NSString *)aStyleBundleName {
@@ -136,6 +169,15 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
             [self addEntriesFromPath:path];
         }];
     }];
+    
+    if (aStyleBundle == [NSBundle mainBundle]) {
+        self.styleType = EArtUIStyleTypeDefault;
+        self.stylePath = nil;
+    }else {
+        self.styleType = EArtUIStyleTypeBundle;
+        self.stylePath = aStyleBundle.bundlePath;
+    }
+    [self saveConfig];
 }
 
 - (void)reloadStyle:(void(^)(ArtUIStyleManager *manager))aBlock {

@@ -4,6 +4,20 @@
 <dict>
 	<key>Module1</key>
 	<dict>
+		<key>Image</key>
+		<dict>
+			<key>toPath</key>
+			<string>Module1</string>
+			<key>imageConfigs</key>
+			<array>
+				<dict>
+					<key>imageName</key>
+					<string>Module1_test</string>
+					<key>备注</key>
+					<string>我是备注</string>
+				</dict>
+			</array>
+		</dict>
 		<key>Style</key>
 		<dict>
 			<key>Test</key>
