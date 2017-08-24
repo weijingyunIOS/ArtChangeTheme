@@ -121,7 +121,7 @@
         {
             self.image =
             [self findImageForImageString:aImageString block:^NSString *(NSString *path) {
-                return [[NSBundle bundleWithPath:manager.stylePath] pathForResource:aImageString ofType:@"png" inDirectory:toPath];
+                return [[NSBundle bundleWithPath:manager.stylePath] pathForResource:path ofType:@"png" inDirectory:toPath];
             }];
             
         }
