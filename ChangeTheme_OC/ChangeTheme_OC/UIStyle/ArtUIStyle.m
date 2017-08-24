@@ -21,7 +21,6 @@
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) UIFont *font;
 @property (nonatomic, strong) ArtLayoutInfo *layoutInfo;
-@property (nonatomic, strong) UIImage *image;
 
 @end
 
