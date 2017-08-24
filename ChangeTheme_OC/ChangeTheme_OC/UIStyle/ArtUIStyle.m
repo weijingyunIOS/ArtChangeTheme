@@ -107,7 +107,9 @@
 }
 
 - (void)saveImageString:(NSString *)aImageString {
+    
     ArtUIStyleManager *manager = [ArtUIStyleManager shared];
+    NSString *toPath = self.style[@"toPath"];
     switch (manager.styleType) {
         case EArtUIStyleTypeDefault:
         {
@@ -117,19 +119,56 @@
             
         case EArtUIStyleTypeBundle:
         {
+            self.image =
+            [self findImageForImageString:aImageString block:^NSString *(NSString *path) {
+                return [[NSBundle bundleWithPath:manager.stylePath] pathForResource:aImageString ofType:@"png" inDirectory:toPath];
+            }];
             
         }
             break;
             
         case EArtUIStyleTypeStylePath:
         {
-            
+            self.image =
+            [self findImageForImageString:aImageString block:^NSString *(NSString *path) {
+                NSString *filePath = [[manager.stylePath stringByAppendingPathComponent:toPath] stringByAppendingPathComponent:path];
+                return filePath;
+            }];
         }
             break;
             
         default:
             break;
     }
+}
+
+- (UIImage *)findImageForImageString:(NSString *)aImageString block:(NSString *(^)(NSString * path))aBlock {
+    NSMutableArray *arrayM = [NSMutableArray new];
+    for (int i = 1; i <= 3; i ++) {
+        [arrayM addObject:@(i)];
+    }
+    NSInteger scale = (NSInteger)[UIScreen mainScreen].scale;
+    [arrayM removeObject:@(scale)];
+    [arrayM insertObject:@(scale) atIndex:0];
+    
+    __block UIImage *image = nil;
+    [arrayM enumerateObjectsUsingBlock:^(NSNumber *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSInteger scale = obj.integerValue;
+        NSString *imageStr = aImageString;
+        if (scale != 1) {
+            imageStr = [NSString stringWithFormat:@"%@@%tux",aImageString,scale];
+        }
+        NSString *imagePath = aBlock(imageStr);
+        image = [UIImage imageWithContentsOfFile:imagePath];
+        if (image) {
+            *stop = YES;
+        }
+    }];
+    if (image == nil) {
+        NSAssert(NO, @"未在资源中找到可用的图");
+        image = [UIImage imageNamed:aImageString];
+    }
+    return image;
 }
 
 @end
