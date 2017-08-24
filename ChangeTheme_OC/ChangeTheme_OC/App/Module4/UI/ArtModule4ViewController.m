@@ -8,8 +8,14 @@
 
 #import "ArtModule4ViewController.h"
 #import "ArtUIStyleManager+UIStyleModule4.h"
-#import "ArtUIStyleManager.h"
+
 @interface ArtModule4ViewController ()
+
+@property (weak, nonatomic) IBOutlet UIView *testview;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *testviewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *testviewWidth;
+@property (weak, nonatomic) IBOutlet UIButton *defaultBtn;
+@property (weak, nonatomic) IBOutlet UIButton *bundlebtn;
 
 @end
 
@@ -35,21 +41,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-    ArtModule4ViewController *vc = [ArtModule4ViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+
+- (IBAction)defaultClick:(id)sender {
+    [[ArtUIStyleManager shared] reloadStyleBundle:[NSBundle mainBundle]];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)bundleClick:(id)sender {
+    [[ArtUIStyleManager shared] reloadStyleBundleName:@"styleBundle1"];
 }
-*/
 
 - (void)dealloc {
     NSLog(@"正常释放 %s",__func__);
