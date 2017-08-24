@@ -59,7 +59,7 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     self.styles = [NSMutableDictionary dictionary];
     self.blocks = [NSMutableArray new];
     self.styleCache = [NSCache new];
-    self.styleCache.countLimit = 100;
+    self.styleCache.countLimit = 10;
     
     [self buildAppStyle:^(NSString *styleName) {
         NSString *path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
@@ -74,8 +74,7 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     
     ArtUIStyle* style = [self.styleCache objectForKey:aKey];
     if (style == nil) {
-        style = [[ArtUIStyle alloc] init];
-        style.style = [self.styles objectForKey:aKey];
+        style = [[ArtUIStyle alloc] initWithStyle:[self.styles objectForKey:aKey]];
         [self.styleCache setObject:style forKey:aKey];
     }
     return style;

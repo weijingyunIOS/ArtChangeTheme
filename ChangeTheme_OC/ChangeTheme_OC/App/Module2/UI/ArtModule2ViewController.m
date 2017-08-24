@@ -8,6 +8,7 @@
 
 #import "ArtModule2ViewController.h"
 #import "ArtUIStyleManager+UIStyleModule2.h"
+#import "ArtUIStyleManager+UIStyleApp.h"
 
 @interface ArtModule2ViewController ()
 
@@ -17,17 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    __weak typeof(self) weakSelf = self;
-//    [UIColor artModule1ForKey:kUIStyleModule1MainLabel block:^id(UIColor *color) {
-//        weakSelf.view.backgroundColor = color;
-//        return weakSelf;
-//    }];
-    
-    [UIColor artModule2ForKey:kUIStyleModule1MainLabel strongSelf:self block:^(UIColor *color, ArtModule2ViewController *weakSelf) {
+    [self configUI];
+}
+
+- (void)configUI {
+    [UIColor artAppForKey:kUIStyleAppVCBackground strongSelf:self block:^(UIColor *color, ArtModule2ViewController *weakSelf) {
         weakSelf.view.backgroundColor = color;
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning {

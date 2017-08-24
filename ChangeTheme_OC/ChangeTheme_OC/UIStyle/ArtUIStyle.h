@@ -11,7 +11,7 @@
 
 @interface ArtUIStyle : NSObject
 
-@property (nonatomic, strong) NSDictionary* style;
+- (id)initWithStyle:(NSDictionary *)aStyle;
 
 @end
 
