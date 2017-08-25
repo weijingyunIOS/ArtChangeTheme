@@ -28,9 +28,8 @@
         weakSelf.view.backgroundColor = color;
     }];
     
-    self.testImageView.image = [UIImage imageNamed:@"Module2_test"];
     [UIColor artModule2ForKey:kUIStyleModule2DrawColor strongSelf:self block:^(UIColor *color, ArtModule2ViewController *weakSelf) {
-        weakSelf.testImageView.tintColor = color;
+        weakSelf.testImageView.image = [[UIImage imageNamed:@"Module2_test"]art_tintedImageWithColor:color];
     }];
 }
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ArtUIStyle.h"
+#import "UIImage+ArtDraw.h"
 
 /**
  *  样式配置
