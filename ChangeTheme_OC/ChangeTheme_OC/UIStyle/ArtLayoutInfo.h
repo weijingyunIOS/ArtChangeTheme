@@ -16,5 +16,7 @@
 @property (nonatomic, assign) CGFloat right;
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
+@property (nonatomic, assign) CGFloat centerXOffset;
+@property (nonatomic, assign) CGFloat centerYOffset;
 
 @end

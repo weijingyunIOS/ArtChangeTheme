@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPE-Y9-pga">
-                                <rect key="frame" x="76" y="210" width="240" height="128"/>
+                                <rect key="frame" x="76" y="230" width="240" height="128"/>
                                 <color key="backgroundColor" red="1" green="0.76138045369999996" blue="0.17250329210000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="dYh-Rf-lEX"/>
@@ -46,7 +46,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="oPE-Y9-pga" secondAttribute="trailing" constant="43" id="Jqd-9v-Qll"/>
                             <constraint firstItem="PSg-fS-gGk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="Kfz-hx-kJE"/>
                             <constraint firstItem="xba-aK-uh6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="loo-dp-dHB"/>
-                            <constraint firstItem="oPE-Y9-pga" firstAttribute="top" secondItem="xba-aK-uh6" secondAttribute="bottom" constant="115" id="nas-eM-L9W"/>
+                            <constraint firstItem="oPE-Y9-pga" firstAttribute="top" secondItem="xba-aK-uh6" secondAttribute="bottom" constant="135" id="nas-eM-L9W"/>
                             <constraint firstItem="PSg-fS-gGk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="oNf-Ep-sAU"/>
                         </constraints>
                     </view>
