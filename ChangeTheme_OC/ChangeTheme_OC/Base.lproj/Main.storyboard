@@ -142,9 +142,21 @@
                     <view key="view" contentMode="scaleToFill" id="v84-Gc-HiF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Module3_test" translatesAutoresizingMaskIntoConstraints="NO" id="Js7-0o-bfd">
+                                <rect key="frame" x="51.5" y="252.5" width="272" height="162"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Js7-0o-bfd" firstAttribute="centerY" secondItem="v84-Gc-HiF" secondAttribute="centerY" id="Foq-hR-vEi"/>
+                            <constraint firstItem="Js7-0o-bfd" firstAttribute="centerX" secondItem="v84-Gc-HiF" secondAttribute="centerX" id="k26-aH-KC4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pOk-6E-R8D"/>
+                    <connections>
+                        <outlet property="testImageView" destination="Js7-0o-bfd" id="9PX-Rs-zEf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bi0-aV-Ght" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -283,5 +295,6 @@
     <resources>
         <image name="Module1_test" width="299" height="152"/>
         <image name="Module2_test" width="320" height="74"/>
+        <image name="Module3_test" width="272" height="162"/>
     </resources>
 </document>

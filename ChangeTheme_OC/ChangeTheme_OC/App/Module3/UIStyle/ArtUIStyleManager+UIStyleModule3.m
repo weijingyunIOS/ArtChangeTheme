@@ -28,8 +28,8 @@
 
 @implementation UIFont (UIStyleCourseware)
 
-+ (void)artModule3ForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock {
-    [self artModule:@"Module3" fontForKey:aFontKey block:aBlock];
++ (void)artModule3ForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *color, id weakSelf))aBlock {
+    [self artModule:@"Module3" fontForKey:aFontKey strongSelf:strongSelf block:aBlock];
 }
 
 @end

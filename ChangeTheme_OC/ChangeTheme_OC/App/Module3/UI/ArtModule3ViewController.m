@@ -12,6 +12,8 @@
 
 @interface ArtModule3ViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *testImageView;
+
 @end
 
 @implementation ArtModule3ViewController
@@ -24,6 +26,11 @@
 - (void)configUI {
     [UIColor artAppForKey:kUIStyleAppVCBackground strongSelf:self block:^(UIColor *color, ArtModule3ViewController *weakSelf) {
         weakSelf.view.backgroundColor = color;
+    }];
+    
+    self.testImageView.image = [[UIImage imageNamed:@"Module3_test"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [UIColor artModule3ForKey:kUIStyleModule3TintColor strongSelf:self block:^(UIColor *color, ArtModule3ViewController *weakSelf) {
+        weakSelf.testImageView.tintColor = color;
     }];
 }
 

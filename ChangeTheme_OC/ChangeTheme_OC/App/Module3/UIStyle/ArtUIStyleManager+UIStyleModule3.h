@@ -15,7 +15,7 @@
 @end
 
 
-#define kUIStyleModule3MainLabel  @"MainLabel" // 备注
+#define kUIStyleModule3TintColor  @"TintColor" // 备注
 
 @interface UIColor (UIStyleModule3)
 
@@ -26,6 +26,6 @@
 
 @interface UIFont (UIStyleModule3)
 
-+ (void)artModule3ForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock;
++ (void)artModule3ForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *color, id weakSelf))aBlock;
 
 @end
