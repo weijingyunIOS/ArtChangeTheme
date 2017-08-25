@@ -98,7 +98,7 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
         default:
             break;
     }
-    self.clearInterval = 5.;
+    self.clearInterval = 60.;
 }
 
 - (void)setClearInterval:(CGFloat)clearInterval {
