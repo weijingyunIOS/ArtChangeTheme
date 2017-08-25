@@ -89,7 +89,7 @@
     NSError *error;
     [[NSFileManager defaultManager] copyItemAtPath:path toPath:toPath error:&error];
     
-    NSBundle *bundle = [NSBundle bundleWithPath:path];
+    NSBundle *bundle = [NSBundle bundleWithPath:toPath];
     
     [[ArtUIStyleManager shared] reloadStyleBundle:bundle];
 }
