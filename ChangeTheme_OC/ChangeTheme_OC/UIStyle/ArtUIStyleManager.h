@@ -19,6 +19,7 @@ extern NSString* const kArtUIStyleFontKey;
 extern NSString* const kArtUIStyleColorKey;
 
 
+// 内部存储对 document 做了相对路径处理，下载的配置请放在document 下
 typedef enum : NSUInteger {
     EArtUIStyleTypeDefault,   // 应用默认的 stylePath = nil
     EArtUIStyleTypeBundle,    // Bundle   stylePath = BundlePath

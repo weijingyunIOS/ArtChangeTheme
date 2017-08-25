@@ -131,7 +131,7 @@
         {
             self.image =
             [self findImageForImageString:aImageString block:^NSString *(NSString *path) {
-                NSString *filePath = [[manager.stylePath stringByAppendingPathComponent:toPath] stringByAppendingPathComponent:path];
+                NSString *filePath = [[manager.stylePath stringByAppendingPathComponent:toPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",path]];
                 return filePath;
             }];
         }

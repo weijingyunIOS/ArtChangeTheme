@@ -57,6 +57,44 @@
     [[ArtUIStyleManager shared] reloadStyleBundleName:@"styleBundle1"];
 }
 
+- (IBAction)downPathClick:(id)sender {
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    NSString *toPath = [documentDirectory stringByAppendingPathComponent:@"stylePath"];
+    
+    
+//    [[NSFileManager defaultManager] removeItemAtPath:toPath error:nil];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"styleBundle1" ofType:@"bundle"];
+    
+    NSError *error;
+    [[NSFileManager defaultManager] copyItemAtPath:path toPath:toPath error:&error];
+
+    [[ArtUIStyleManager shared] reloadStylePath:toPath];
+    
+}
+
+- (IBAction)downBundleClick:(id)sender {
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    NSString *toPath = [documentDirectory stringByAppendingPathComponent:@"styleBundle.bundle"];
+    
+    
+    [[NSFileManager defaultManager] removeItemAtPath:toPath error:nil];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"styleBundle1" ofType:@"bundle"];
+    
+    NSError *error;
+    [[NSFileManager defaultManager] copyItemAtPath:path toPath:toPath error:&error];
+    
+    NSBundle *bundle = [NSBundle bundleWithPath:path];
+    
+    [[ArtUIStyleManager shared] reloadStyleBundle:bundle];
+}
+
+
 - (void)dealloc {
     NSLog(@"正常释放 %s",__func__);
 }

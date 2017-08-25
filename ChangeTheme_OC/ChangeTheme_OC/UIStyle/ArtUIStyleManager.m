@@ -97,7 +97,14 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 - (void)getConfig {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.styleType = [[defaults objectForKey:@"ArtUIStyleManager_styleType"] integerValue];
-    self.stylePath = [defaults objectForKey:@"ArtUIStyleManager_stylePath"];
+    NSString *path = [defaults objectForKey:@"ArtUIStyleManager_stylePath"];
+    NSRange range = [path rangeOfString:@"Documents"];
+    if (range.length > 0) {
+        path = [path substringFromIndex:range.location + range.length];
+        NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+        path = [documentDirectory stringByAppendingPathComponent:path];
+    }
+    self.stylePath = path;
 }
 
 - (ArtUIStyle *)styleForKey:(NSString *)aKey {
