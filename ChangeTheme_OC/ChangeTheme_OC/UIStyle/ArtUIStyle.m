@@ -56,7 +56,7 @@
 
 - (UIFont *)font
 {
-    if (_font) {
+    if (!_font) {
         NSNumber *num = [self.style objectForKey:kArtUIStyleFontKey];
         NSAssert(num != nil, @"配置的字体大小不存在请检查");
         _font = [UIFont systemFontOfSize:[num doubleValue]];

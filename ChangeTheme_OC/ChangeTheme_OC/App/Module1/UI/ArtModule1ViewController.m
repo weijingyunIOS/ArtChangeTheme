@@ -27,6 +27,7 @@
 
 - (void)configUI {
     
+    self.testMainLabel.text = @"我只是一个测试文本";
     [UIColor artAppForKey:kUIStyleAppVCBackground strongSelf:self block:^(UIColor *color, ArtModule1ViewController *weakSelf) {
         weakSelf.view.backgroundColor = color;
     }];
