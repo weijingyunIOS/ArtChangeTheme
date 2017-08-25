@@ -56,8 +56,9 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 
-//    ArtModule1ViewController *vc = [ArtModule1ViewController new];
-//    [self.navigationController pushViewController:vc animated:YES];
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"ArtModule1ViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

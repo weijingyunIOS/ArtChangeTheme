@@ -13,7 +13,7 @@
         <!--Art Module1 View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ArtModule1ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArtModule1ViewController" id="BYZ-38-t0r" customClass="ArtModule1ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -103,7 +103,7 @@
         <!--Art Module2 View Controller-->
         <scene sceneID="9Le-dO-MQG">
             <objects>
-                <viewController id="pwq-3v-YzL" customClass="ArtModule2ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArtModule2ViewController" id="pwq-3v-YzL" customClass="ArtModule2ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pQN-oi-2TA"/>
                         <viewControllerLayoutGuide type="bottom" id="VMn-Dc-0RY"/>
@@ -134,7 +134,7 @@
         <!--Art Module3 View Controller-->
         <scene sceneID="bg0-ag-wIW">
             <objects>
-                <viewController id="aBD-iT-tWB" customClass="ArtModule3ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArtModule3ViewController" id="aBD-iT-tWB" customClass="ArtModule3ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2cA-iV-CgB"/>
                         <viewControllerLayoutGuide type="bottom" id="zoN-eb-Tiv"/>
@@ -165,7 +165,7 @@
         <!--Art Module4 View Controller-->
         <scene sceneID="EhF-IX-Xat">
             <objects>
-                <viewController id="dEM-W8-4tb" customClass="ArtModule4ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArtModule4ViewController" id="dEM-W8-4tb" customClass="ArtModule4ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UGf-b9-BfC"/>
                         <viewControllerLayoutGuide type="bottom" id="xzG-8r-ESs"/>
