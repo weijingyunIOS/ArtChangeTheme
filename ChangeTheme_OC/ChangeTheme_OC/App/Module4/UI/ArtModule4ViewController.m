@@ -64,13 +64,13 @@
     NSString *toPath = [documentDirectory stringByAppendingPathComponent:@"stylePath"];
     
     
-//    [[NSFileManager defaultManager] removeItemAtPath:toPath error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:toPath error:nil];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"styleBundle1" ofType:@"bundle"];
     
     NSError *error;
     [[NSFileManager defaultManager] copyItemAtPath:path toPath:toPath error:&error];
-
+    
     [[ArtUIStyleManager shared] reloadStylePath:toPath];
     
 }

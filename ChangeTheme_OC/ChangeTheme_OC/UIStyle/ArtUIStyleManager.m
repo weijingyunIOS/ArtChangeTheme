@@ -8,6 +8,8 @@
 
 #import "ArtUIStyleManager.h"
 #import "NSObject+ArtPrefix.h"
+#import "ArtThreadSafeArray.h"
+#import "ArtThreadSafeDictionary.h"
 
 NSString* const kArtUIStyleFontKey = @"font";
 NSString* const kArtUIStyleColorKey = @"color";
@@ -34,9 +36,11 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 
 @interface ArtUIStyleManager ()
 
-@property (nonatomic, strong) NSMutableDictionary* styles;
-@property (nonatomic, strong) NSMutableArray<NSDictionary *> *blocks;
+@property (nonatomic, strong) ArtThreadSafeDictionary* styles;
+@property (nonatomic, strong) ArtThreadSafeArray *blocks;
 @property (nonatomic, strong) NSCache *styleCache;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) dispatch_queue_t clearQueue;
 
 @end
 
@@ -55,36 +59,83 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.styles = [NSMutableDictionary dictionary];
-        self.blocks = [NSMutableArray new];
-        self.styleCache = [NSCache new];
-        self.styleCache.countLimit = 10;
-        [self getConfig];
-        switch (self.styleType) {
-            case EArtUIStyleTypeDefault:
-            {
-                [self reloadStyleBundle:[NSBundle mainBundle]];
-            }
-                break;
-                
-            case EArtUIStyleTypeBundle:
-            {
-                NSBundle *bundle = [NSBundle bundleWithPath:self.stylePath];
-                [self reloadStyleBundle:bundle];
-            }
-                break;
-                
-            case EArtUIStyleTypeStylePath:
-            {
-                [self reloadStylePath:self.stylePath];
-            }
-                break;
-                
-            default:
-                break;
-        }
+        [self config];
     }
     return self;
+}
+
+- (void)dealloc {
+    [self.timer invalidate];
+}
+
+- (void)config {
+    self.styles = [ArtThreadSafeDictionary new];
+    self.blocks = [ArtThreadSafeArray new];
+    self.styleCache = [NSCache new];
+    self.styleCache.countLimit = 10;
+    self.clearQueue = dispatch_queue_create("com.art.styleManager.clear", DISPATCH_QUEUE_SERIAL);
+    [self getConfig];
+    switch (self.styleType) {
+        case EArtUIStyleTypeDefault:
+        {
+            [self reloadStyleBundle:[NSBundle mainBundle]];
+        }
+            break;
+            
+        case EArtUIStyleTypeBundle:
+        {
+            NSBundle *bundle = [NSBundle bundleWithPath:self.stylePath];
+            [self reloadStyleBundle:bundle];
+        }
+            break;
+            
+        case EArtUIStyleTypeStylePath:
+        {
+            [self reloadStylePath:self.stylePath];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    self.clearInterval = 5.;
+}
+
+- (void)setClearInterval:(CGFloat)clearInterval {
+    _clearInterval = clearInterval;
+    [self.timer invalidate];
+    if (clearInterval < 1) {
+        return;
+    }
+    // 开启定时器清理已释放的--
+    __weak typeof(self)weakSelf = self;
+    self.timer =
+    [NSTimer timerWithTimeInterval:clearInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
+        dispatch_async(self.clearQueue, ^{
+            [weakSelf clearInvalidBlock];
+        });
+    }];
+    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+
+// 清理无效的，已被释放的block
+- (void)clearInvalidBlock {
+    NSArray<NSDictionary *> *allkey = [self.blocks copy];
+    [allkey enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        ArtWeakReference value = obj[kArtUIStyleClearKey];
+        id key = weakReferenceNonretainedObjectValue(value);
+        if (key == nil) {
+            [self.blocks removeObject:obj];
+        }
+    }];
+    
+#if DEBUG
+    // 线程不一致该计算不准确只是打印看一下
+    NSInteger count = allkey.count - self.blocks.count;
+    if (count > 0) {
+        NSLog(@"%tu 个无效的被清理",count);
+    }
+#endif
 }
 
 - (void)saveConfig {
@@ -125,19 +176,6 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     NSDictionary *dic = @{kArtUIStyleClearKey:artMakeWeakReference(aKey),
                           kArtUIStyleBlockKey:aBlock};
     [self.blocks addObject:dic];
-    [self clearInvalidBlock];
-}
-
-// 清理无效的，已被释放的block
-- (void)clearInvalidBlock {
-    NSArray<NSDictionary *> *allkey = [self.blocks copy];
-    [allkey enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        ArtWeakReference value = obj[kArtUIStyleClearKey];
-        id key = weakReferenceNonretainedObjectValue(value);
-        if (key == nil) {
-            [self.blocks removeObject:obj];
-        }
-    }];
 }
 
 - (void)reloadStylePath:(NSString *)aStylePath {
@@ -200,10 +238,12 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     }
     
     NSArray *blocks = [self.blocks copy];
-    self.blocks = [NSMutableArray new];
+    self.blocks = [ArtThreadSafeArray new];
     [blocks enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         ArtSaveBlock block = obj[kArtUIStyleBlockKey];
-        if (block) {
+        ArtWeakReference value = obj[kArtUIStyleClearKey];
+        id key = weakReferenceNonretainedObjectValue(value);
+        if (key && block) {
             block();
         }
     }];

@@ -28,14 +28,16 @@ typedef enum : NSUInteger {
 
 @interface ArtUIStyleManager : NSObject
 
+// 以下两字段记录当前配置
+@property (nonatomic, assign) EArtUIStyleType styleType;
+@property (nonatomic, copy) NSString *stylePath;
 @property (nonatomic, strong,readonly) NSMutableDictionary* styles;
 - (void)saveKey:(id)aKey block:(void(^)())aBlock;
 - (ArtUIStyle *)styleForKey:(NSString *)aKey;
 
 #pragma mark - 外部使用
-// 以下两字段记录当前配置
-@property (nonatomic, assign) EArtUIStyleType styleType;
-@property (nonatomic, copy) NSString *stylePath;
+// 清理间隔 默认 60s 设置 < 1s 不清理
+@property (nonatomic, assign) CGFloat clearInterval;
 
 + (instancetype)shared;
 - (void)addEntriesFromPath:(NSString *)aPath;

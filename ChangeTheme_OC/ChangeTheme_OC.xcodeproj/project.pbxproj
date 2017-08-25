@@ -38,6 +38,8 @@
 		5CDDFDA51F4F080700679475 /* Module2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFDA41F4F080700679475 /* Module2.xcassets */; };
 		5CDDFDA81F4FCCA600679475 /* UIImage+ArtDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFDA71F4FCCA600679475 /* UIImage+ArtDraw.m */; };
 		5CDDFDAA1F4FD53700679475 /* Module3.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFDA91F4FD53700679475 /* Module3.xcassets */; };
+		5CDDFDB01F5013DC00679475 /* ArtThreadSafeArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFDAD1F5013DC00679475 /* ArtThreadSafeArray.m */; };
+		5CDDFDB11F5013DC00679475 /* ArtThreadSafeDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFDAF1F5013DC00679475 /* ArtThreadSafeDictionary.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,10 @@
 		5CDDFDA61F4FCCA600679475 /* UIImage+ArtDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ArtDraw.h"; sourceTree = "<group>"; };
 		5CDDFDA71F4FCCA600679475 /* UIImage+ArtDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ArtDraw.m"; sourceTree = "<group>"; };
 		5CDDFDA91F4FD53700679475 /* Module3.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Module3.xcassets; sourceTree = "<group>"; };
+		5CDDFDAC1F5013DC00679475 /* ArtThreadSafeArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtThreadSafeArray.h; sourceTree = "<group>"; };
+		5CDDFDAD1F5013DC00679475 /* ArtThreadSafeArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtThreadSafeArray.m; sourceTree = "<group>"; };
+		5CDDFDAE1F5013DC00679475 /* ArtThreadSafeDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtThreadSafeDictionary.h; sourceTree = "<group>"; };
+		5CDDFDAF1F5013DC00679475 /* ArtThreadSafeDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtThreadSafeDictionary.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +208,7 @@
 		5C8ECB191F4ACE7A00985FB1 /* ChangeTheme_OC */ = {
 			isa = PBXGroup;
 			children = (
+				5CDDFDAB1F5013D300679475 /* ArtThread */,
 				5C8ECB4E1F4AD21700985FB1 /* UIStyle */,
 				5C05F80E1F4B13F400F672E8 /* App */,
 				5C8ECB1D1F4ACE7A00985FB1 /* AppDelegate.h */,
@@ -357,6 +364,17 @@
 			path = UIStyle;
 			sourceTree = "<group>";
 		};
+		5CDDFDAB1F5013D300679475 /* ArtThread */ = {
+			isa = PBXGroup;
+			children = (
+				5CDDFDAC1F5013DC00679475 /* ArtThreadSafeArray.h */,
+				5CDDFDAD1F5013DC00679475 /* ArtThreadSafeArray.m */,
+				5CDDFDAE1F5013DC00679475 /* ArtThreadSafeDictionary.h */,
+				5CDDFDAF1F5013DC00679475 /* ArtThreadSafeDictionary.m */,
+			);
+			path = ArtThread;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -510,8 +528,10 @@
 				5C8ECB541F4AD30300985FB1 /* UIColor+HexColor.m in Sources */,
 				5CDDFDA81F4FCCA600679475 /* UIImage+ArtDraw.m in Sources */,
 				5CDDFD951F4DBA2C00679475 /* ArtUIStyleManager+UIStyleModule4.m in Sources */,
+				5CDDFDB11F5013DC00679475 /* ArtThreadSafeDictionary.m in Sources */,
 				5C8ECB1F1F4ACE7A00985FB1 /* AppDelegate.m in Sources */,
 				5CDDFD781F4DB83600679475 /* ArtModule2ViewController.m in Sources */,
+				5CDDFDB01F5013DC00679475 /* ArtThreadSafeArray.m in Sources */,
 				5CDDFD891F4DB95D00679475 /* ArtModule3ViewController.m in Sources */,
 				5C05F81E1F4B16D500F672E8 /* ArtModule1ViewController.m in Sources */,
 				5CDDFDA31F4EA38800679475 /* ArtLayoutInfo.m in Sources */,
