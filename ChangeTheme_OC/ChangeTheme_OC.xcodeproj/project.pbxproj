@@ -691,6 +691,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XWNPFKK4U5;
 				INFOPLIST_FILE = ChangeTheme_OC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yiqi.test.ChangeTheme-OC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -703,6 +704,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XWNPFKK4U5;
 				INFOPLIST_FILE = ChangeTheme_OC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yiqi.test.ChangeTheme-OC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
