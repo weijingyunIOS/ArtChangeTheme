@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Module1_test" translatesAutoresizingMaskIntoConstraints="NO" id="PSg-fS-gGk">
-                                <rect key="frame" x="26" y="74" width="20" height="16"/>
+                                <rect key="frame" x="26" y="74" width="299" height="152"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xba-aK-uh6">
                                 <rect key="frame" x="307" y="74" width="42" height="21"/>
@@ -111,9 +111,21 @@
                     <view key="view" contentMode="scaleToFill" id="5Gp-HD-7ea">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Module2_test" translatesAutoresizingMaskIntoConstraints="NO" id="d8P-34-vhr">
+                                <rect key="frame" x="27.5" y="296.5" width="320" height="74"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d8P-34-vhr" firstAttribute="centerX" secondItem="5Gp-HD-7ea" secondAttribute="centerX" id="WEW-d2-aYj"/>
+                            <constraint firstItem="d8P-34-vhr" firstAttribute="centerY" secondItem="5Gp-HD-7ea" secondAttribute="centerY" id="axG-YC-8zP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GCj-uQ-vWW"/>
+                    <connections>
+                        <outlet property="testImageView" destination="d8P-34-vhr" id="SfN-rp-Q8e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0O-KH-iH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -269,6 +281,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Module1_test" width="20" height="16"/>
+        <image name="Module1_test" width="299" height="152"/>
+        <image name="Module2_test" width="320" height="74"/>
     </resources>
 </document>

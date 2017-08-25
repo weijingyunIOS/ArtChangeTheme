@@ -13,10 +13,10 @@
 		</dict>
 		<key>Style</key>
 		<dict>
-			<key>MainLabel</key>
+			<key>DrawColor</key>
 			<dict>
 				<key>color</key>
-				<string>020e08</string>
+				<string>32be78</string>
 				<key>font</key>
 				<integer>15</integer>
 				<key>备注</key>

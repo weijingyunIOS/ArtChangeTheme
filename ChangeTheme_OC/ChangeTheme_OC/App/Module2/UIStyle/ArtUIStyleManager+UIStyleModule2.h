@@ -15,7 +15,7 @@
 @end
 
 
-#define kUIStyleModule1MainLabel  @"MainLabel" // 备注
+#define kUIStyleModule2DrawColor  @"DrawColor" // 备注
 
 @interface UIColor (UIStyleModule2)
 
@@ -26,6 +26,6 @@
 
 @interface UIFont (UIStyleModule2)
 
-+ (void)artModule2ForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock;
++ (void)artModule2ForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *color, id weakSelf))aBlock;
 
 @end

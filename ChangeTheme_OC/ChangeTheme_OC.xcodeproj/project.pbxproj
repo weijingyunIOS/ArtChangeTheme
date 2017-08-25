@@ -36,6 +36,7 @@
 		5CDDFDA01F4E82CD00679475 /* Module1.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFD9F1F4E82CD00679475 /* Module1.xcassets */; };
 		5CDDFDA31F4EA38800679475 /* ArtLayoutInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFDA21F4EA38800679475 /* ArtLayoutInfo.m */; };
 		5CDDFDA51F4F080700679475 /* Module2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFDA41F4F080700679475 /* Module2.xcassets */; };
+		5CDDFDA81F4FCCA600679475 /* UIImage+ArtDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFDA71F4FCCA600679475 /* UIImage+ArtDraw.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,8 @@
 		5CDDFDA11F4EA38800679475 /* ArtLayoutInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtLayoutInfo.h; sourceTree = "<group>"; };
 		5CDDFDA21F4EA38800679475 /* ArtLayoutInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtLayoutInfo.m; sourceTree = "<group>"; };
 		5CDDFDA41F4F080700679475 /* Module2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Module2.xcassets; sourceTree = "<group>"; };
+		5CDDFDA61F4FCCA600679475 /* UIImage+ArtDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ArtDraw.h"; sourceTree = "<group>"; };
+		5CDDFDA71F4FCCA600679475 /* UIImage+ArtDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ArtDraw.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +245,8 @@
 			children = (
 				5C2607011F4C449A001A25AA /* NSObject+ArtPrefix.h */,
 				5C2607021F4C449A001A25AA /* NSObject+ArtPrefix.m */,
+				5CDDFDA61F4FCCA600679475 /* UIImage+ArtDraw.h */,
+				5CDDFDA71F4FCCA600679475 /* UIImage+ArtDraw.m */,
 				5C8ECB521F4AD30300985FB1 /* UIColor+HexColor.h */,
 				5C8ECB531F4AD30300985FB1 /* UIColor+HexColor.m */,
 				5CDDFDA11F4EA38800679475 /* ArtLayoutInfo.h */,
@@ -499,6 +504,7 @@
 				5C8ECB511F4AD25200985FB1 /* ArtUIStyle.m in Sources */,
 				5CDDFD8A1F4DB95D00679475 /* ArtUIStyleManager+UIStyleModule3.m in Sources */,
 				5C8ECB541F4AD30300985FB1 /* UIColor+HexColor.m in Sources */,
+				5CDDFDA81F4FCCA600679475 /* UIImage+ArtDraw.m in Sources */,
 				5CDDFD951F4DBA2C00679475 /* ArtUIStyleManager+UIStyleModule4.m in Sources */,
 				5C8ECB1F1F4ACE7A00985FB1 /* AppDelegate.m in Sources */,
 				5CDDFD781F4DB83600679475 /* ArtModule2ViewController.m in Sources */,
