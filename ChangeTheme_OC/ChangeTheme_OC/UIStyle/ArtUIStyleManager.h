@@ -41,7 +41,6 @@ typedef enum : NSUInteger {
 - (void)saveStrongSelf:(id)strongSelf block:(void(^)(id weakSelf))aBlock;
 
 + (instancetype)shared;
-- (void)addEntriesFromPath:(NSString *)aPath;
 - (void)reloadStylePath:(NSString *)aStylePath;
 - (void)reloadStyleBundleName:(NSString *)aStyleBundleName;
 - (void)reloadStyleBundle:(NSBundle *)aStyleBundle;
