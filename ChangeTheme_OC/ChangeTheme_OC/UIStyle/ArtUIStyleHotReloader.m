@@ -52,7 +52,7 @@
 }
 
 - (void)hotMainReloaderByProjectPath:(NSString *)path {
-    
+#if TARGET_IPHONE_SIMULATOR
     NSArray <NSString *> *selArray = [[ArtUIStyleManager shared] art_getMethodByListPrefix:@"getHotReloaderStylePath_"];
     [selArray enumerateObjectsUsingBlock:^(NSString * _Nonnull selString, NSUInteger idx, BOOL * _Nonnull stop) {
 #pragma clang diagnostic push
@@ -62,6 +62,7 @@
         NSString *filePath = [path stringByAppendingPathComponent:stylePath];
         [self watchFilepath:filePath];
     }];
+#endif
 }
 
 - (void)watchFilepath:(NSString *)filepath {
