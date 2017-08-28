@@ -18,6 +18,7 @@
 
 @interface UIColor (ArtUIStyleApp)
 
++ (UIColor *)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey;
 + (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock;
 
 
@@ -25,6 +26,7 @@
 
 @interface UIFont (ArtUIStyleApp)
 
++ (UIFont *)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey;
 + (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock;
 
 
@@ -33,6 +35,7 @@
 
 @interface ArtLayoutInfo (ArtUIStyleApp)
 
++ (ArtLayoutInfo *)artModule:(NSString *)aModule layoutForKey:(NSString *)aLayoutKey;
 + (void)artModule:(NSString *)aModule layoutForKey:(NSString *)aLayoutKey strongSelf:(id)strongSelf block:(void(^)(ArtLayoutInfo *layoutInfo, id weakSelf))aBlock;
 
 @end
@@ -40,6 +43,7 @@
 
 @interface UIImage (ArtUIStyleApp)
 
++ (UIImage *)artModule:(NSString *)aModule imageString:(NSString *)aImageString;
 + (void)artModule:(NSString *)aModule imageString:(NSString *)aImageString strongSelf:(id)strongSelf block:(void(^)(UIImage *image, id weakSelf))aBlock;
 
 @end
