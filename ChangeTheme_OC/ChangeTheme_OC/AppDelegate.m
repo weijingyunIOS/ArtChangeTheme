@@ -20,8 +20,11 @@
     // Override point for customization after application launch.
     NSString *rootPath = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"projectPath"];
     
-    NSString *bundlePath = [NSString stringWithFormat:@"%@%@", rootPath, @"/styleBundle1.bundle"];
-    [[ArtUIStyleHotReloader shared] hotReloaderBundlePath:bundlePath];
+//    NSString *bundlePath = [NSString stringWithFormat:@"%@%@", rootPath, @"/styleBundle1.bundle"];
+//    [[ArtUIStyleHotReloader shared] hotReloaderBundlePath:bundlePath];
+    
+    [[ArtUIStyleHotReloader shared] hotMainReloaderByProjectPath:rootPath];
+    
     [[ArtUIStyleHotReloader shared] startHotReloader];
     
     return YES;

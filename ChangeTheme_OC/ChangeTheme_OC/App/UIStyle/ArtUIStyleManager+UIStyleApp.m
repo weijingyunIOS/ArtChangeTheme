@@ -14,6 +14,10 @@
     return @"AppStyle.plist";
 }
 
+- (NSString *)getHotReloaderStylePath_App {
+    return @"/App/UIStyle/AppStyle.plist";
+}
+
 @end
 
 

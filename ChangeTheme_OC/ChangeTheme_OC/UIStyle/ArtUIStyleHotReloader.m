@@ -9,6 +9,7 @@
 #import "ArtUIStyleHotReloader.h"
 #import "SGDirWatchdog.h"
 #import "ArtUIStyleManager.h"
+#import "NSObject+ArtPrefix.h"
 
 @interface ArtUIStyleHotReloader ()
 
@@ -40,11 +41,37 @@
 
 - (void)hotReloaderBundlePath:(NSString *)path {
 #if TARGET_IPHONE_SIMULATOR
-    NSString *bundlePath = [path stringByDeletingLastPathComponent];
     SGDirWatchdog *watchDog =
     [[SGDirWatchdog alloc] initWithPath:path update:^{
         NSBundle *bundle = [NSBundle bundleWithPath:path];
         [[ArtUIStyleManager shared] reloadStyleBundle:bundle];
+        NSLog(@"change======");
+    }];
+    [self.watchDogs addObject:watchDog];
+#endif
+}
+
+- (void)hotMainReloaderByProjectPath:(NSString *)path {
+    
+    NSArray <NSString *> *selArray = [[ArtUIStyleManager shared] art_getMethodByListPrefix:@"getHotReloaderStylePath_"];
+    [selArray enumerateObjectsUsingBlock:^(NSString * _Nonnull selString, NSUInteger idx, BOOL * _Nonnull stop) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        NSString *stylePath = [[ArtUIStyleManager shared] performSelector:NSSelectorFromString(selString)];
+#pragma clang diagnostic pop
+        NSString *filePath = [path stringByAppendingPathComponent:stylePath];
+        [self watchFilepath:filePath];
+    }];
+}
+
+- (void)watchFilepath:(NSString *)filepath {
+#if TARGET_IPHONE_SIMULATOR
+    NSString *watchPath = [filepath stringByDeletingLastPathComponent];
+    SGDirWatchdog *watchDog =
+    [[SGDirWatchdog alloc] initWithPath:watchPath update:^{
+        NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:filepath];
+        [[ArtUIStyleManager shared].styles addEntriesFromDictionary:dic];
+        [[ArtUIStyleManager shared] reload];
         NSLog(@"change======");
     }];
     [self.watchDogs addObject:watchDog];
@@ -77,16 +104,4 @@
 #endif
 }
 
-- (void)watchFolder:(NSString *)path {
-#if TARGET_IPHONE_SIMULATOR
-    __block isHave = NO;
-    [self.watchDogs enumerateObjectsUsingBlock:^(SGDirWatchdog * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([path isEqualToString:obj.path]) {
-            isHave = YES;
-            *stop = YES;
-        }
-    }];
-    
-#endif
-}
 @end

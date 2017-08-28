@@ -45,4 +45,13 @@ typedef enum : NSUInteger {
 - (void)reloadStyleBundleName:(NSString *)aStyleBundleName;
 - (void)reloadStyleBundle:(NSBundle *)aStyleBundle;
 
+// 对已有界面重新刷一遍
+- (void)reload;
+
+#pragma mark - 分类方法命名
+//- (NSString *)getStyleName_模块名;  需要返回动态加载的plist名称
+
+// 下面方法可不写，不写就无法享受到 模拟器下不编译而时时改变的好处
+//- (NSString *)getHotReloaderStylePath_模块名; 需要返回动态加载的plist文件相对工程的绝对路径
+
 @end

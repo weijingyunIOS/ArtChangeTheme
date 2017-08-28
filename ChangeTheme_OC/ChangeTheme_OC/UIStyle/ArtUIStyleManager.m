@@ -233,12 +233,15 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 - (void)reloadStyle:(void(^)(ArtUIStyleManager *manager))aBlock {
     NSAssert([NSThread isMainThread], @"界面相关操作请放主线程");
     [self.styles removeAllObjects];
-    [self.styleCache removeAllObjects];
-    
     if (aBlock) {
         aBlock(self);
     }
-    
+    [self reload];
+}
+
+// 对已有界面重新刷一遍
+- (void)reload {
+    [self.styleCache removeAllObjects];
     NSArray *blocks = [self.blocks copy];
     self.blocks = [ArtThreadSafeArray new];
     [blocks enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

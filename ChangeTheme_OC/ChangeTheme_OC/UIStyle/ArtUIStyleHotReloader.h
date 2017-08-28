@@ -11,11 +11,14 @@
 @interface ArtUIStyleHotReloader : NSObject
 
 + (instancetype)shared;
-
-// HotReloader 用于动态测试使用
-- (void)hotReloaderBundlePath:(NSString *)path;
-
 - (void)startHotReloader;
 - (void)endHotReloader;
+
+#pragma mark - 下面是互斥的请只使用一种
+// HotReloader 用于动态测试使用 styleBundle1.bundle
+- (void)hotReloaderBundlePath:(NSString *)path;
+
+// 传入工程路径，依赖各个模块分类 实现 - (NSString *)getHotReloaderStylePath_模块名
+- (void)hotMainReloaderByProjectPath:(NSString *)path;
 
 @end
