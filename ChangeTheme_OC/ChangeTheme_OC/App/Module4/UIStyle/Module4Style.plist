@@ -20,9 +20,9 @@
 				<key>font</key>
 				<integer>15</integer>
 				<key>width</key>
-				<string>150</string>
+				<string>200</string>
 				<key>height</key>
-				<string>150</string>
+				<string>200</string>
 				<key>备注</key>
 				<string>描述哪里的</string>
 			</dict>

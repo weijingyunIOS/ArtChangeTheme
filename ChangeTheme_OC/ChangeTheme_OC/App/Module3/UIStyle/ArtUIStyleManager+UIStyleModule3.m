@@ -15,6 +15,10 @@
     return @"Module3Style.plist";
 }
 
+- (NSString *)getHotReloaderStylePath_Module3 {
+    return @"/App/Module3/UIStyle/Module3Style.plist";
+}
+
 @end
 
 
