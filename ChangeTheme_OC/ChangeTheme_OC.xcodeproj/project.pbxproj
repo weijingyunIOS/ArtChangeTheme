@@ -22,6 +22,9 @@
 		5C8ECB401F4ACE7A00985FB1 /* ChangeTheme_OCUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ECB3F1F4ACE7A00985FB1 /* ChangeTheme_OCUITests.m */; };
 		5C8ECB511F4AD25200985FB1 /* ArtUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ECB501F4AD25200985FB1 /* ArtUIStyle.m */; };
 		5C8ECB541F4AD30300985FB1 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ECB531F4AD30300985FB1 /* UIColor+HexColor.m */; };
+		5CB3ADA31F54088400E938B1 /* SGDirWatchdog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3ADA21F54088400E938B1 /* SGDirWatchdog.m */; };
+		5CB3ADA61F54096800E938B1 /* ArtUIStyleHotReloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3ADA51F54096800E938B1 /* ArtUIStyleHotReloader.m */; };
+		5CB3ADA71F54106F00E938B1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C8ECB2B1F4ACE7A00985FB1 /* Info.plist */; };
 		5CDDFD781F4DB83600679475 /* ArtModule2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFD631F4DB83600679475 /* ArtModule2ViewController.m */; };
 		5CDDFD791F4DB83600679475 /* ArtUIStyleManager+UIStyleModule2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDDFD661F4DB83600679475 /* ArtUIStyleManager+UIStyleModule2.m */; };
 		5CDDFD7A1F4DB83600679475 /* Module2Style.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CDDFD671F4DB83600679475 /* Module2Style.plist */; };
@@ -88,6 +91,10 @@
 		5C8ECB501F4AD25200985FB1 /* ArtUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtUIStyle.m; sourceTree = "<group>"; };
 		5C8ECB521F4AD30300985FB1 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
 		5C8ECB531F4AD30300985FB1 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
+		5CB3ADA11F54088400E938B1 /* SGDirWatchdog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGDirWatchdog.h; sourceTree = "<group>"; };
+		5CB3ADA21F54088400E938B1 /* SGDirWatchdog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGDirWatchdog.m; sourceTree = "<group>"; };
+		5CB3ADA41F54096800E938B1 /* ArtUIStyleHotReloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtUIStyleHotReloader.h; sourceTree = "<group>"; };
+		5CB3ADA51F54096800E938B1 /* ArtUIStyleHotReloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtUIStyleHotReloader.m; sourceTree = "<group>"; };
 		5CDDFD621F4DB83600679475 /* ArtModule2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtModule2ViewController.h; sourceTree = "<group>"; };
 		5CDDFD631F4DB83600679475 /* ArtModule2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtModule2ViewController.m; sourceTree = "<group>"; };
 		5CDDFD651F4DB83600679475 /* ArtUIStyleManager+UIStyleModule2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtUIStyleManager+UIStyleModule2.h"; sourceTree = "<group>"; };
@@ -209,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				5CDDFDAB1F5013D300679475 /* ArtThread */,
+				5CB3ADA01F54087700E938B1 /* HotReloader */,
 				5C8ECB4E1F4AD21700985FB1 /* UIStyle */,
 				5C05F80E1F4B13F400F672E8 /* App */,
 				5C8ECB1D1F4ACE7A00985FB1 /* AppDelegate.h */,
@@ -252,6 +260,8 @@
 		5C8ECB4E1F4AD21700985FB1 /* UIStyle */ = {
 			isa = PBXGroup;
 			children = (
+				5CB3ADA41F54096800E938B1 /* ArtUIStyleHotReloader.h */,
+				5CB3ADA51F54096800E938B1 /* ArtUIStyleHotReloader.m */,
 				5C2607011F4C449A001A25AA /* NSObject+ArtPrefix.h */,
 				5C2607021F4C449A001A25AA /* NSObject+ArtPrefix.m */,
 				5CDDFDA61F4FCCA600679475 /* UIImage+ArtDraw.h */,
@@ -266,6 +276,15 @@
 				5C2606FA1F4C2EA1001A25AA /* ArtUIStyleManager.m */,
 			);
 			path = UIStyle;
+			sourceTree = "<group>";
+		};
+		5CB3ADA01F54087700E938B1 /* HotReloader */ = {
+			isa = PBXGroup;
+			children = (
+				5CB3ADA11F54088400E938B1 /* SGDirWatchdog.h */,
+				5CB3ADA21F54088400E938B1 /* SGDirWatchdog.m */,
+			);
+			path = HotReloader;
 			sourceTree = "<group>";
 		};
 		5CDDFD601F4DB83600679475 /* Module2 */ = {
@@ -496,6 +515,7 @@
 				5C8ECB251F4ACE7A00985FB1 /* Main.storyboard in Resources */,
 				5C2607001F4C42B4001A25AA /* styleBundle1.bundle in Resources */,
 				5CDDFDA51F4F080700679475 /* Module2.xcassets in Resources */,
+				5CB3ADA71F54106F00E938B1 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +544,7 @@
 				5CDDFD9E1F4E7E1F00679475 /* ArtUIStyleManager+UIStyleApp.m in Sources */,
 				5CDDFD791F4DB83600679475 /* ArtUIStyleManager+UIStyleModule2.m in Sources */,
 				5C8ECB511F4AD25200985FB1 /* ArtUIStyle.m in Sources */,
+				5CB3ADA31F54088400E938B1 /* SGDirWatchdog.m in Sources */,
 				5CDDFD8A1F4DB95D00679475 /* ArtUIStyleManager+UIStyleModule3.m in Sources */,
 				5C8ECB541F4AD30300985FB1 /* UIColor+HexColor.m in Sources */,
 				5CDDFDA81F4FCCA600679475 /* UIImage+ArtDraw.m in Sources */,
@@ -535,6 +556,7 @@
 				5CDDFD891F4DB95D00679475 /* ArtModule3ViewController.m in Sources */,
 				5C05F81E1F4B16D500F672E8 /* ArtModule1ViewController.m in Sources */,
 				5CDDFDA31F4EA38800679475 /* ArtLayoutInfo.m in Sources */,
+				5CB3ADA61F54096800E938B1 /* ArtUIStyleHotReloader.m in Sources */,
 				5CDDFD941F4DBA2C00679475 /* ArtModule4ViewController.m in Sources */,
 				5C2606FE1F4C4005001A25AA /* ArtUIStyleManager+UIStyleModule1.m in Sources */,
 				5C8ECB1C1F4ACE7A00985FB1 /* main.m in Sources */,

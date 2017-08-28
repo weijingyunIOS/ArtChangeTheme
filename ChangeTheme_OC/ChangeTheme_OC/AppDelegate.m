@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ArtUIStyleHotReloader.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSString *rootPath = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"projectPath"];
+    
+    NSString *bundlePath = [NSString stringWithFormat:@"%@%@", rootPath, @"/styleBundle1.bundle"];
+    [[ArtUIStyleHotReloader shared] hotReloaderBundlePath:bundlePath];
+    [[ArtUIStyleHotReloader shared] startHotReloader];
+    
     return YES;
 }
 
