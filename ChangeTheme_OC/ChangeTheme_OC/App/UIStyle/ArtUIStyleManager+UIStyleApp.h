@@ -21,6 +21,7 @@
 
 @interface UIColor (UIStyleApp)
 
++ (UIColor *)artAppForKey:(NSString *)aColorKey;
 + (void)artAppForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock;
 
 @end
@@ -28,6 +29,7 @@
 
 @interface UIFont (UIStyleApp)
 
++ (UIFont *)artAppForKey:(NSString *)aFontKey;
 + (void)artAppForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock;
 
 @end

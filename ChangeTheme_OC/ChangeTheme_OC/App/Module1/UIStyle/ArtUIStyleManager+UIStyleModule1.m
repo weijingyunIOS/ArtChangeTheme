@@ -20,6 +20,10 @@
 
 @implementation UIColor (UIStyleModule1)
 
++ (UIColor *)artModule1ForKey:(NSString *)aColorKey {
+    return [self artModule:@"Module1" colorForKey:aColorKey];
+}
+
 + (void)artModule1ForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock {
     [self artModule:@"Module1" colorForKey:aColorKey strongSelf:strongSelf block:aBlock];
 }
@@ -27,6 +31,10 @@
 @end
 
 @implementation UIFont (UIStyleModule1)
+
++ (UIFont *)artModule1ForKey:(NSString *)aFontKey {
+    return [self artModule:@"Module1" fontForKey:aFontKey];
+}
 
 + (void)artModule1ForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock {
     [self artModule:@"Module1" fontForKey:aFontKey strongSelf:strongSelf block:aBlock];
@@ -36,6 +44,10 @@
 
 
 @implementation UIImage (UIStyleModule1)
+
++ (UIImage *)artImageString:(NSString *)aImageString {
+    return [self artModule:@"Module1" imageString:aImageString];
+}
 
 + (void)artImageString:(NSString *)aImageString strongSelf:(id)strongSelf block:(void(^)(UIImage *image, id weakSelf))aBlock {
     [self artModule:@"Module1" imageString:aImageString strongSelf:strongSelf block:aBlock];

@@ -23,6 +23,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configUI];
+//    [self configUI2];
+    
+}
+
+- (void)configUI2 {
+    
+    self.testMainLabel.text = @"我只是一个测试文本";
+    [[ArtUIStyleManager shared] saveStrongSelf:self block:^(ArtModule1ViewController *weakSelf) {
+        weakSelf.view.backgroundColor = [UIColor artAppForKey:kUIStyleAppVCBackground];
+        weakSelf.testMainLabel.textColor = [UIColor artAppForKey:kUIStyleAppMainLabel];
+        weakSelf.testMainLabel.font = [UIFont artAppForKey:kUIStyleAppMainLabel];
+        weakSelf.testview.backgroundColor = [UIColor artModule1ForKey:kUIStyleModule1Test];
+        weakSelf.testImage.image = [UIImage artImageString:@"Module1_test"];
+    }];
 }
 
 - (void)configUI {

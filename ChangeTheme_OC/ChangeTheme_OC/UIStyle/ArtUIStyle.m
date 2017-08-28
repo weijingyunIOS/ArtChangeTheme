@@ -182,7 +182,7 @@
 + (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock {
     if (strongSelf) {
         [[ArtUIStyleManager shared] saveStrongSelf:strongSelf block:^(id weakSelf) {
-            UIColor *color = [self artModule:aColorKey colorForKey:aColorKey];
+            UIColor *color = [self artModule:aModule colorForKey:aColorKey];
             aBlock(color,weakSelf);
         }];
     }
