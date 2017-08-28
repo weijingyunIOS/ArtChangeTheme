@@ -171,11 +171,13 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 - (void)saveStrongSelf:(id)strongSelf block:(void(^)(id weakSelf))aBlock {
     
     NSAssert([NSThread isMainThread], @"界面相关操作请放主线程");
-    
     // 使用弱引用
     NSDictionary *dic = @{kArtUIStyleClearKey:artMakeWeakReference(strongSelf),
                           kArtUIStyleBlockKey:aBlock};
     [self.blocks addObject:dic];
+    if (aBlock) {
+        aBlock(strongSelf);
+    }
 }
 
 - (void)reloadStylePath:(NSString *)aStylePath {
@@ -242,9 +244,9 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     [blocks enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         ArtSaveBlock block = obj[kArtUIStyleBlockKey];
         ArtWeakReference value = obj[kArtUIStyleClearKey];
-        id weakSelf = weakReferenceNonretainedObjectValue(value);
-        if (weakSelf && block) {
-            block(weakSelf);
+        id key = weakReferenceNonretainedObjectValue(value);
+        if (key && block) {
+            [self saveStrongSelf:key block:block];
         }
     }];
 }

@@ -176,11 +176,10 @@
 @implementation UIColor (ArtUIStyleApp)
 
 + (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock {
-    UIColor *color = [[[ArtUIStyle styleForKey:aModule] styleForKey:aColorKey] color];
-    aBlock(color,strongSelf);
     if (strongSelf) {
         [[ArtUIStyleManager shared] saveStrongSelf:strongSelf block:^(id weakSelf) {
-            [self artModule:aModule colorForKey:aColorKey strongSelf:weakSelf block:aBlock];
+            UIColor *color = [[[ArtUIStyle styleForKey:aModule] styleForKey:aColorKey] color];
+            aBlock(color,weakSelf);
         }];
     }
 }
@@ -190,12 +189,11 @@
 @implementation UIFont (ArtUIStyleApp)
 
 + (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock {
-   
-    UIFont *font = [[[ArtUIStyle styleForKey:aModule] styleForKey:aFontKey] font];
-    aBlock(font,strongSelf);
+
     if (strongSelf) {
         [[ArtUIStyleManager shared] saveStrongSelf:strongSelf block:^(id weakSelf) {
-            [self artModule:aModule fontForKey:aFontKey strongSelf:weakSelf block:aBlock];
+            UIFont *font = [[[ArtUIStyle styleForKey:aModule] styleForKey:aFontKey] font];
+            aBlock(font,weakSelf);
         }];
     }
 }
@@ -207,11 +205,10 @@
 
 + (void)artModule:(NSString *)aModule layoutForKey:(NSString *)aLayoutKey strongSelf:(id)strongSelf block:(void(^)(ArtLayoutInfo *layoutInfo, id weakSelf))aBlock {
     
-    ArtLayoutInfo *layoutInfo = [[[ArtUIStyle styleForKey:aModule] styleForKey:aLayoutKey] layoutInfo];
-    aBlock(layoutInfo,strongSelf);
     if (strongSelf) {
         [[ArtUIStyleManager shared] saveStrongSelf:strongSelf block:^(id weakSelf) {
-            [self artModule:aModule layoutForKey:aLayoutKey strongSelf:weakSelf block:aBlock];
+            ArtLayoutInfo *layoutInfo = [[[ArtUIStyle styleForKey:aModule] styleForKey:aLayoutKey] layoutInfo];
+            aBlock(layoutInfo,weakSelf);
         }];
     }
 }
@@ -223,11 +220,10 @@
 
 + (void)artModule:(NSString *)aModule imageString:(NSString *)aImageString strongSelf:(id)strongSelf block:(void(^)(UIImage *image, id weakSelf))aBlock {
     
-    UIImage *image = [[ArtUIStyle styleForKey:aModule] imageForString:aImageString];
-    aBlock(image,strongSelf);
     if (strongSelf) {
         [[ArtUIStyleManager shared] saveStrongSelf:strongSelf block:^(id weakSelf) {
-            [self artModule:aModule imageString:aImageString strongSelf:weakSelf block:aBlock];
+            UIImage *image = [[ArtUIStyle styleForKey:aModule] imageForString:aImageString];
+            aBlock(image,weakSelf);
         }];
     }
 }
