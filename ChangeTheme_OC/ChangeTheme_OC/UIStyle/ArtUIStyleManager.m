@@ -17,7 +17,7 @@ NSString* const kArtUIStyleColorKey = @"color";
 NSString* const kArtUIStyleClearKey = @"kArtUIStyleClearKey";
 NSString* const kArtUIStyleBlockKey = @"kArtUIStyleBlockKey";
 
-typedef void (^ArtSaveBlock)(void);
+typedef void (^ArtSaveBlock)(id weakSelf);
 
 typedef id (^ArtWeakReference)(void);
 
@@ -168,12 +168,12 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     return style;
 }
 
-- (void)saveKey:(id)aKey block:(void(^)())aBlock {
+- (void)saveStrongSelf:(id)strongSelf block:(void(^)(id weakSelf))aBlock {
     
     NSAssert([NSThread isMainThread], @"界面相关操作请放主线程");
     
     // 使用弱引用
-    NSDictionary *dic = @{kArtUIStyleClearKey:artMakeWeakReference(aKey),
+    NSDictionary *dic = @{kArtUIStyleClearKey:artMakeWeakReference(strongSelf),
                           kArtUIStyleBlockKey:aBlock};
     [self.blocks addObject:dic];
 }
@@ -242,9 +242,9 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     [blocks enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         ArtSaveBlock block = obj[kArtUIStyleBlockKey];
         ArtWeakReference value = obj[kArtUIStyleClearKey];
-        id key = weakReferenceNonretainedObjectValue(value);
-        if (key && block) {
-            block();
+        id weakSelf = weakReferenceNonretainedObjectValue(value);
+        if (weakSelf && block) {
+            block(weakSelf);
         }
     }];
 }

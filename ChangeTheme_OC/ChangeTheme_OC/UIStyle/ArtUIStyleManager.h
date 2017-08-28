@@ -32,12 +32,13 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) EArtUIStyleType styleType;
 @property (nonatomic, copy) NSString *stylePath;
 @property (nonatomic, strong,readonly) NSMutableDictionary* styles;
-- (void)saveKey:(id)aKey block:(void(^)())aBlock;
 - (ArtUIStyle *)styleForKey:(NSString *)aKey;
 
 #pragma mark - 外部使用
 // 清理间隔 默认 60s 设置 < 1s 不清理
 @property (nonatomic, assign) CGFloat clearInterval;
+
+- (void)saveStrongSelf:(id)strongSelf block:(void(^)(id weakSelf))aBlock;
 
 + (instancetype)shared;
 - (void)addEntriesFromPath:(NSString *)aPath;

@@ -179,20 +179,8 @@
     UIColor *color = [[[ArtUIStyle styleForKey:aModule] styleForKey:aColorKey] color];
     aBlock(color,strongSelf);
     if (strongSelf) {
-        __weak id weakSelf = strongSelf;
-        [[ArtUIStyleManager shared] saveKey:strongSelf block:^{
-            __strong id strongSelf = weakSelf;
-            [self artModule:aModule colorForKey:aColorKey strongSelf:strongSelf block:aBlock];
-        }];
-    }
-}
-
-+ (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey block:(id(^)(UIColor *))aBlock {
-    UIColor *color = [[[ArtUIStyle styleForKey:aModule] styleForKey:aColorKey] color];
-    id key = aBlock(color);
-    if (key != nil) {
-        [[ArtUIStyleManager shared] saveKey:key block:^{
-            [self artModule:aModule colorForKey:aColorKey block:aBlock];
+        [[ArtUIStyleManager shared] saveStrongSelf:strongSelf block:^(id weakSelf) {
+            [self artModule:aModule colorForKey:aColorKey strongSelf:weakSelf block:aBlock];
         }];
     }
 }
@@ -206,20 +194,8 @@
     UIFont *font = [[[ArtUIStyle styleForKey:aModule] styleForKey:aFontKey] font];
     aBlock(font,strongSelf);
     if (strongSelf) {
-        __weak id weakSelf = strongSelf;
-        [[ArtUIStyleManager shared] saveKey:strongSelf block:^{
-            __strong id strongSelf = weakSelf;
-            [self artModule:aModule fontForKey:aFontKey strongSelf:strongSelf block:aBlock];
-        }];
-    }
-}
-
-+ (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey block:(id(^)(UIFont *))aBlock {
-    UIFont *font = [[[ArtUIStyle styleForKey:aModule] styleForKey:aFontKey] font];
-    id key = aBlock(font);
-    if (key != nil) {
-        [[ArtUIStyleManager shared] saveKey:key block:^{
-            [self artModule:aModule fontForKey:aFontKey block:aBlock];
+        [[ArtUIStyleManager shared] saveStrongSelf:strongSelf block:^(id weakSelf) {
+            [self artModule:aModule fontForKey:aFontKey strongSelf:weakSelf block:aBlock];
         }];
     }
 }
@@ -234,22 +210,8 @@
     ArtLayoutInfo *layoutInfo = [[[ArtUIStyle styleForKey:aModule] styleForKey:aLayoutKey] layoutInfo];
     aBlock(layoutInfo,strongSelf);
     if (strongSelf) {
-        __weak id weakSelf = strongSelf;
-        [[ArtUIStyleManager shared] saveKey:strongSelf block:^{
-            __strong id strongSelf = weakSelf;
-            [self artModule:aModule layoutForKey:aLayoutKey strongSelf:strongSelf block:aBlock];
-        }];
-    }
-}
-
-// 该方法不建议使用
-+ (void)artModule:(NSString *)aModule layoutForKey:(NSString *)aLayoutKey block:(id(^)(ArtLayoutInfo *layoutInfo))aBlock {
-    
-    ArtLayoutInfo *layoutInfo = [[[ArtUIStyle styleForKey:aModule] styleForKey:aLayoutKey] layoutInfo];
-    id key = aBlock(layoutInfo);
-    if (key != nil) {
-        [[ArtUIStyleManager shared] saveKey:key block:^{
-            [self artModule:aModule layoutForKey:aLayoutKey block:aBlock];
+        [[ArtUIStyleManager shared] saveStrongSelf:strongSelf block:^(id weakSelf) {
+            [self artModule:aModule layoutForKey:aLayoutKey strongSelf:weakSelf block:aBlock];
         }];
     }
 }
@@ -264,22 +226,8 @@
     UIImage *image = [[ArtUIStyle styleForKey:aModule] imageForString:aImageString];
     aBlock(image,strongSelf);
     if (strongSelf) {
-        __weak id weakSelf = strongSelf;
-        [[ArtUIStyleManager shared] saveKey:strongSelf block:^{
-            __strong id strongSelf = weakSelf;
-            [self artModule:aModule imageString:aImageString strongSelf:strongSelf block:aBlock];
-        }];
-    }
-}
-
-// 该方法不建议使用
-+ (void)artModule:(NSString *)aModule imageString:(NSString *)aImageString block:(id(^)(UIImage *image))aBlock {
-
-    UIImage *image = [[ArtUIStyle styleForKey:aModule] imageForString:aImageString];
-    id key = aBlock(image);
-    if (key != nil) {
-        [[ArtUIStyleManager shared] saveKey:key block:^{
-            [self artModule:aModule imageString:aImageString block:aBlock];
+        [[ArtUIStyleManager shared] saveStrongSelf:strongSelf block:^(id weakSelf) {
+            [self artModule:aModule imageString:aImageString strongSelf:weakSelf block:aBlock];
         }];
     }
 }
