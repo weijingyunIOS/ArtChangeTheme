@@ -24,9 +24,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configUI];
+//    [self configUI];
+    [self configUI2];
 }
 
+- (void)configUI2 {
+    [[ArtUIStyleManager shared] saveStrongSelf:self block:^(ArtModule4ViewController *weakSelf) {
+        weakSelf.view.backgroundColor = [UIColor artAppForKey:kUIStyleAppVCBackground];
+        weakSelf.testview.backgroundColor = [UIColor artModule4ForKey:kUIStyleModule4Test];
+        
+        ArtLayoutInfo *layoutInfo = [ArtLayoutInfo artModule4ForKey:kUIStyleModule4Test];
+        weakSelf.testviewWidth.constant = layoutInfo.width;
+        weakSelf.testviewHeight.constant = layoutInfo.height;
+        
+    }];
+}
 
 - (void)configUI {
     [UIColor artAppForKey:kUIStyleAppVCBackground strongSelf:self block:^(UIColor *color, ArtModule4ViewController *weakSelf) {

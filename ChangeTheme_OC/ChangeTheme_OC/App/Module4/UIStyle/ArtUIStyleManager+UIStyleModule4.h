@@ -19,6 +19,7 @@
 
 @interface UIColor (UIStyleModule4)
 
++ (UIColor *)artModule4ForKey:(NSString *)aColorKey;
 + (void)artModule4ForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock;
 
 @end
@@ -26,12 +27,14 @@
 
 @interface UIFont (UIStyleModule4)
 
++ (UIFont *)artModule4ForKey:(NSString *)aFontKey;
 + (void)artModule4ForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock;
 
 @end
 
 @interface ArtLayoutInfo (UIStyleModule4)
 
++ (ArtLayoutInfo *)artModule4ForKey:(NSString *)aLayoutKey;
 + (void)artModule4ForKey:(NSString *)aLayoutKey strongSelf:(id)strongSelf block:(void(^)(ArtLayoutInfo *layoutInfo, id weakSelf))aBlock;
 
 @end

@@ -20,7 +20,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configUI];
+//    [self configUI];
+    [self configUI2];
+}
+
+- (void)configUI2 {
+    [[ArtUIStyleManager shared] saveStrongSelf:self block:^(ArtModule2ViewController *weakSelf) {
+        weakSelf.view.backgroundColor = [UIColor artAppForKey:kUIStyleAppVCBackground];
+        weakSelf.testImageView.image = [[UIImage imageNamed:@"Module2_test"]art_tintedImageWithColor:[UIColor artModule2ForKey:kUIStyleModule2DrawColor ]];
+    }];
 }
 
 - (void)configUI {

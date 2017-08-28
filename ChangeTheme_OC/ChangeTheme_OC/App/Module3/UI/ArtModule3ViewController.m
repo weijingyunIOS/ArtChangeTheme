@@ -20,7 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configUI];
+//    [self configUI];
+    [self configUI2];
+}
+
+- (void)configUI2 {
+    
+    self.testImageView.image = [[UIImage imageNamed:@"Module3_test"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [[ArtUIStyleManager shared] saveStrongSelf:self block:^(ArtModule3ViewController *weakSelf) {
+        weakSelf.view.backgroundColor = [UIColor artAppForKey:kUIStyleAppVCBackground];
+        weakSelf.testImageView.tintColor = [UIColor artModule3ForKey:kUIStyleModule3TintColor];
+    }];
 }
 
 - (void)configUI {

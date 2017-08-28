@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configUI];
-//    [self configUI2];
+//    [self configUI];
+    [self configUI2];
     
 }
 
