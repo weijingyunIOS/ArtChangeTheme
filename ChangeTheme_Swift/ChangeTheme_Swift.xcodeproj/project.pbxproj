@@ -47,9 +47,9 @@
 		5C0153481F5D5B8500E70997 /* Module1.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Module1.xcassets; sourceTree = "<group>"; };
 		5C0153491F5D5B8500E70997 /* Module1Style.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Module1Style.plist; sourceTree = "<group>"; };
 		5C0153521F5D5C3700E70997 /* ArtUIStyleManager+UIStyleModule1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArtUIStyleManager+UIStyleModule1.swift"; sourceTree = "<group>"; };
-		5C0153561F5D61E400E70997 /* ChangeTheme_Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChangeTheme_Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C0153571F5D61E500E70997 /* NSObject+ArtPrefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ArtPrefix.h"; sourceTree = "<group>"; };
 		5C0153581F5D61E500E70997 /* NSObject+ArtPrefix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ArtPrefix.m"; sourceTree = "<group>"; };
+		5C01535B1F5D67CE00E70997 /* ChangeTheme_Swift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChangeTheme_Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtUIStyleManager.swift; sourceTree = "<group>"; };
 		5CB3AD6F1F54007C00E938B1 /* ChangeTheme_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeTheme_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB3AD721F54007C00E938B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,7 +150,6 @@
 				5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */,
 				5C0153571F5D61E500E70997 /* NSObject+ArtPrefix.h */,
 				5C0153581F5D61E500E70997 /* NSObject+ArtPrefix.m */,
-				5C0153561F5D61E400E70997 /* ChangeTheme_Swift-Bridging-Header.h */,
 			);
 			path = UIStyle;
 			sourceTree = "<group>";
@@ -180,6 +179,7 @@
 		5CB3AD711F54007C00E938B1 /* ChangeTheme_Swift */ = {
 			isa = PBXGroup;
 			children = (
+				5C01535B1F5D67CE00E70997 /* ChangeTheme_Swift-Bridging-Header.h */,
 				5C01533D1F5D510900E70997 /* Other */,
 				5C8A88C51F5D3B9B0026950B /* UIStyle */,
 				5C0153421F5D5B2300E70997 /* App */,
@@ -579,7 +579,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yiqi.test.ChangeTheme-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ChangeTheme_Swift/UIStyle/ChangeTheme_Swift-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChangeTheme_Swift/ChangeTheme_Swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -597,7 +597,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yiqi.test.ChangeTheme-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ChangeTheme_Swift/UIStyle/ChangeTheme_Swift-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ChangeTheme_Swift/ChangeTheme_Swift-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
