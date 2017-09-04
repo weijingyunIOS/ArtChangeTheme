@@ -7,7 +7,9 @@
 //
 
 import UIKit
-//import SwiftString
+
+fileprivate let kUIStyleTypeSavekey = "ArtUIStyleManager_styleType"
+fileprivate let kUIStylePathSavekey = "ArtUIStyleManager_stylePath"
 
 enum EArtUIStyleType : NSInteger {
     case Default    // 应用默认的 stylePath = nil
@@ -26,38 +28,24 @@ class ArtUIStyleManager: NSObject {
     static let share = ArtUIStyleManager()
     override init() {
         super.init()
-        
-        let time: TimeInterval = 1.0
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
-            
-//            NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-//            path = [documentDirectory stringByAppendingPathComponent:path];
-            let documentDirectory = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first
-            
-            
-            self.stylePath = documentDirectory?.appending("/aaaaa")
-            self.styleType = EArtUIStyleType.Bundle
-            self.saveConfig()
-        }
         readConfig()
+        print("styleType:",styleType,"\n","stylePath:",stylePath ?? "不存在")
         switch styleType {
             case .Default:
-                print(styleType)
             break
             case .Bundle:
-               print(styleType)
+               
             break
             case .StylePath:
-                print(styleType)
             break
         }
     }
     
     private func readConfig() {
         let defaults = UserDefaults.standard
-        styleType = EArtUIStyleType(rawValue: defaults.integer(forKey: "ArtUIStyleManager_styleType"))!
+        styleType = EArtUIStyleType(rawValue: defaults.integer(forKey: kUIStyleTypeSavekey))!
         do {
-            let path = try defaults.string(forKey: "ArtUIStyleManager_stylePath").unwrap()
+            let path = try defaults.string(forKey: kUIStylePathSavekey).unwrap()
             let range = try path.range(of: "Documents").unwrap()
             let relativePath = path .substring(from: range.upperBound)
             let documentDirectory = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first
@@ -70,8 +58,8 @@ class ArtUIStyleManager: NSObject {
     
     private func saveConfig() {
         let defaults = UserDefaults.standard
-        defaults.set(styleType.rawValue, forKey: "ArtUIStyleManager_styleType")
-        defaults.set(stylePath, forKey: "ArtUIStyleManager_stylePath")
+        defaults.set(styleType.rawValue, forKey: kUIStyleTypeSavekey)
+        defaults.set(stylePath, forKey: kUIStylePathSavekey)
         defaults.synchronize()
     }
     
