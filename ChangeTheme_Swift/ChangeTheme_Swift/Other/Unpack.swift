@@ -10,16 +10,16 @@ import Foundation
 
 public struct NilError: Error, CustomStringConvertible {
     public var description: String { return _description }
-    public init(file: String, line: Int) {
-        _description = "Nil returned at "
+    public init(tip : String,file: String, line: Int) {
+        _description = "Nil returned at " + tip + " "
             + (file as NSString).lastPathComponent + ":\(line)"
     }
     private let _description: String
 }
 
 extension Optional {
-    public func unwrap(file: String = #file, line: Int = #line) throws -> Wrapped {
-        guard let unwrapped = self else { throw NilError(file: file, line: line) }
+    public func unwrap(tip : String = "", file: String = #file, line: Int = #line) throws -> Wrapped {
+        guard let unwrapped = self else { throw NilError(tip:tip, file: file, line: line) }
         return unwrapped
     }
 }

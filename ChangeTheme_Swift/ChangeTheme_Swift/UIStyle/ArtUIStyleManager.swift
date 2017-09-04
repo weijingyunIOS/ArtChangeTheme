@@ -81,14 +81,14 @@ class ArtUIStyleManager: NSObject {
     func buildAppStyle(aBlock: (_ : String)->Void) {
         
         do {
-            let funs = try art_getMethod(byListPrefix: "getStyleName_").unwrap()
+            let funs = try art_getMethod(byListPrefix: "getStyleName_").unwrap(tip:"没有重写 getStyleName_")
             for (_, value) in funs.enumerated() {
                 let selReturn = self.perform(NSSelectorFromString(value))
-                let styleName = try selReturn.unwrap().takeUnretainedValue() as!String
+                let styleName = try selReturn.unwrap(tip:"返回值为nil").takeUnretainedValue() as!String
                 aBlock(styleName)
             }
         } catch {
-            print("没有重写 getStyleName_")
+            print(error)
         }
         
     }
