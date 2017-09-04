@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0153411F5D514400E70997 /* Unpack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0153401F5D514400E70997 /* Unpack.swift */; };
+		5C8A88C91F5D3BE20026950B /* ArtUIStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */; };
 		5CB3AD731F54007C00E938B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3AD721F54007C00E938B1 /* AppDelegate.swift */; };
 		5CB3AD751F54007C00E938B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3AD741F54007C00E938B1 /* ViewController.swift */; };
 		5CB3AD781F54007C00E938B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3AD761F54007C00E938B1 /* Main.storyboard */; };
@@ -14,6 +16,7 @@
 		5CB3AD7D1F54007C00E938B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3AD7B1F54007C00E938B1 /* LaunchScreen.storyboard */; };
 		5CB3AD881F54007C00E938B1 /* ChangeTheme_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3AD871F54007C00E938B1 /* ChangeTheme_SwiftTests.swift */; };
 		5CB3AD931F54007C00E938B1 /* ChangeTheme_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3AD921F54007C00E938B1 /* ChangeTheme_SwiftUITests.swift */; };
+		6CB2EAFF006FEA6F7DE96908 /* Pods_ChangeTheme_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3F3FE8E8D0A733B50CDA28 /* Pods_ChangeTheme_Swift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		083B211FF498659CF647F916 /* Pods-ChangeTheme_Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChangeTheme_Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChangeTheme_Swift/Pods-ChangeTheme_Swift.release.xcconfig"; sourceTree = "<group>"; };
+		3D2A299E6C3E97E3AA7B1083 /* Pods-ChangeTheme_Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChangeTheme_Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChangeTheme_Swift/Pods-ChangeTheme_Swift.debug.xcconfig"; sourceTree = "<group>"; };
+		5C0153401F5D514400E70997 /* Unpack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unpack.swift; sourceTree = "<group>"; };
+		5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtUIStyleManager.swift; sourceTree = "<group>"; };
 		5CB3AD6F1F54007C00E938B1 /* ChangeTheme_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeTheme_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB3AD721F54007C00E938B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CB3AD741F54007C00E938B1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +54,7 @@
 		5CB3AD8E1F54007C00E938B1 /* ChangeTheme_SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChangeTheme_SwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB3AD921F54007C00E938B1 /* ChangeTheme_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTheme_SwiftUITests.swift; sourceTree = "<group>"; };
 		5CB3AD941F54007C00E938B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB3F3FE8E8D0A733B50CDA28 /* Pods_ChangeTheme_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChangeTheme_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CB2EAFF006FEA6F7DE96908 /* Pods_ChangeTheme_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +83,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0831916B87687B78D35EF260 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D2A299E6C3E97E3AA7B1083 /* Pods-ChangeTheme_Swift.debug.xcconfig */,
+				083B211FF498659CF647F916 /* Pods-ChangeTheme_Swift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5C01533D1F5D510900E70997 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				5C0153401F5D514400E70997 /* Unpack.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		5C8A88C51F5D3B9B0026950B /* UIStyle */ = {
+			isa = PBXGroup;
+			children = (
+				5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */,
+			);
+			path = UIStyle;
+			sourceTree = "<group>";
+		};
 		5CB3AD661F54007C00E938B1 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +115,8 @@
 				5CB3AD861F54007C00E938B1 /* ChangeTheme_SwiftTests */,
 				5CB3AD911F54007C00E938B1 /* ChangeTheme_SwiftUITests */,
 				5CB3AD701F54007C00E938B1 /* Products */,
+				0831916B87687B78D35EF260 /* Pods */,
+				B1A52DA911F540D8C15C42F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +133,8 @@
 		5CB3AD711F54007C00E938B1 /* ChangeTheme_Swift */ = {
 			isa = PBXGroup;
 			children = (
+				5C01533D1F5D510900E70997 /* Other */,
+				5C8A88C51F5D3B9B0026950B /* UIStyle */,
 				5CB3AD721F54007C00E938B1 /* AppDelegate.swift */,
 				5CB3AD741F54007C00E938B1 /* ViewController.swift */,
 				5CB3AD761F54007C00E938B1 /* Main.storyboard */,
@@ -125,6 +163,14 @@
 			path = ChangeTheme_SwiftUITests;
 			sourceTree = "<group>";
 		};
+		B1A52DA911F540D8C15C42F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB3F3FE8E8D0A733B50CDA28 /* Pods_ChangeTheme_Swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +178,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5CB3AD971F54007C00E938B1 /* Build configuration list for PBXNativeTarget "ChangeTheme_Swift" */;
 			buildPhases = (
+				BE019045C638179336F074A7 /* [CP] Check Pods Manifest.lock */,
 				5CB3AD6B1F54007C00E938B1 /* Sources */,
 				5CB3AD6C1F54007C00E938B1 /* Frameworks */,
 				5CB3AD6D1F54007C00E938B1 /* Resources */,
+				CCEFA7109F507BA211158BF1 /* [CP] Embed Pods Frameworks */,
+				816CB60C34CDCAB12964BEF4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,11 +306,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		816CB60C34CDCAB12964BEF4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChangeTheme_Swift/Pods-ChangeTheme_Swift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE019045C638179336F074A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CCEFA7109F507BA211158BF1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChangeTheme_Swift/Pods-ChangeTheme_Swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5CB3AD6B1F54007C00E938B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8A88C91F5D3BE20026950B /* ArtUIStyleManager.swift in Sources */,
+				5C0153411F5D514400E70997 /* Unpack.swift in Sources */,
 				5CB3AD751F54007C00E938B1 /* ViewController.swift in Sources */,
 				5CB3AD731F54007C00E938B1 /* AppDelegate.swift in Sources */,
 			);
@@ -365,6 +464,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -408,6 +508,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -415,6 +516,7 @@
 		};
 		5CB3AD981F54007C00E938B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D2A299E6C3E97E3AA7B1083 /* Pods-ChangeTheme_Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XWNPFKK4U5;
@@ -429,6 +531,7 @@
 		};
 		5CB3AD991F54007C00E938B1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 083B211FF498659CF647F916 /* Pods-ChangeTheme_Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XWNPFKK4U5;
@@ -518,6 +621,7 @@
 				5CB3AD991F54007C00E938B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5CB3AD9A1F54007C00E938B1 /* Build configuration list for PBXNativeTarget "ChangeTheme_SwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +630,7 @@
 				5CB3AD9C1F54007C00E938B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5CB3AD9D1F54007C00E938B1 /* Build configuration list for PBXNativeTarget "ChangeTheme_SwiftUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +639,7 @@
 				5CB3AD9F1F54007C00E938B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

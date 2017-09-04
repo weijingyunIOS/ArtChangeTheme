@@ -30,7 +30,7 @@
 			<key>MainLabel</key>
 			<dict>
 				<key>color</key>
-				<string>000000</string>
+				<string>000080</string>
 				<key>font</key>
 				<string>25</string>
 			</dict>
