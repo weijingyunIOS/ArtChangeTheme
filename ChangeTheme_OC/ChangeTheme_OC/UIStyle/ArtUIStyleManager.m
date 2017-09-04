@@ -194,7 +194,7 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
                 NSLog(@"waring--该bundle无 %@",styleName);
                 path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
             }
-            [self addEntriesFromPath:path];
+            [manager addEntriesFromPath:path];
         }];
     }];
 }
@@ -225,7 +225,7 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
                 NSLog(@"waring--该bundle无 %@",styleName);
                 path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
             }
-            [self addEntriesFromPath:path];
+            [manager addEntriesFromPath:path];
         }];
     }];
 }
