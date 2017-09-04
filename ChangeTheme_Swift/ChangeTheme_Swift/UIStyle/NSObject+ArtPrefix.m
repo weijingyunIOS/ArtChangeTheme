@@ -11,11 +11,11 @@
 
 @implementation NSObject (ArtPrefix)
 
-- (NSArray <NSString *> *)art_getMethodByListPrefix:(NSString *)prefix {
+- (nullable NSArray <NSString *> *)art_getMethodByListPrefix:(NSString *_Nonnull)prefix {
     return [[self class] art_getMethodByListPrefix:prefix];
 }
 
-+ (NSArray <NSString *> *)art_getMethodByListPrefix:(NSString *)prefix {
++ (nullable NSArray <NSString *> *)art_getMethodByListPrefix:(NSString *_Nonnull)prefix {
     
     Class currentClass = [self class];
     NSMutableArray <NSString *> *selArrayM = [[NSMutableArray alloc] init];

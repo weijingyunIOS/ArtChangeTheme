@@ -11,7 +11,7 @@
 @interface NSObject (ArtPrefix)
 
 // 获取固定前缀的所有方法名
-- (NSArray <NSString *> *)art_getMethodByListPrefix:(NSString *)prefix;
-+ (NSArray <NSString *> *)art_getMethodByListPrefix:(NSString *)prefix;
+- (nullable NSArray <NSString *> *)art_getMethodByListPrefix:(NSString *_Nonnull)prefix;
++ (nullable NSArray <NSString *> *)art_getMethodByListPrefix:(NSString *_Nonnull)prefix;
 
 @end

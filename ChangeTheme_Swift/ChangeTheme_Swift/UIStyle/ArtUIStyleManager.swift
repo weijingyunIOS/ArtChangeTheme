@@ -80,15 +80,16 @@ class ArtUIStyleManager: NSObject {
     
     func buildAppStyle(aBlock: (_ : String)->Void) {
         
-        let allFun = art_getMethod(byListPrefix: "getStyleName_")
-        guard allFun != nil else {
+        do {
+            let funs = try art_getMethod(byListPrefix: "getStyleName_").unwrap()
+            for (_, value) in funs.enumerated() {
+                let selReturn = self.perform(NSSelectorFromString(value))
+                let styleName = try selReturn.unwrap().takeUnretainedValue() as!String
+                aBlock(styleName)
+            }
+        } catch {
             print("没有重写 getStyleName_")
-            return;
         }
-        for (_, value) in allFun!.enumerated() {
-            let sel = NSSelectorFromString(value)
-            let styleName = self.perform(sel)!.takeRetainedValue() as! String
-            aBlock(styleName)
-        }
+        
     }
 }
