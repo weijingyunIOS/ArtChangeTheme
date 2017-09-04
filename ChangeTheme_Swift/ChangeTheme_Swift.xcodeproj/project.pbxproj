@@ -147,9 +147,9 @@
 		5C8A88C51F5D3B9B0026950B /* UIStyle */ = {
 			isa = PBXGroup;
 			children = (
-				5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */,
 				5C0153571F5D61E500E70997 /* NSObject+ArtPrefix.h */,
 				5C0153581F5D61E500E70997 /* NSObject+ArtPrefix.m */,
+				5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */,
 			);
 			path = UIStyle;
 			sourceTree = "<group>";

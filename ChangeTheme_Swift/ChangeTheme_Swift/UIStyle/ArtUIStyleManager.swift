@@ -30,8 +30,12 @@ class ArtUIStyleManager: NSObject {
         super.init()
         readConfig()
         print("styleType:",styleType,"\n","stylePath:",stylePath ?? "不存在")
+        buildAppStyle(aBlock: { (styleName) in
+            print(styleName)
+        })
         switch styleType {
             case .Default:
+                
             break
             case .Bundle:
                
@@ -39,20 +43,6 @@ class ArtUIStyleManager: NSObject {
             case .StylePath:
             break
         }
-        
-        let allFun = art_getMethod(byListPrefix: "getStyleName_")
-        guard allFun != nil else {
-            print("没有重写 getStyleName_")
-            return;
-        }
-        
-        for (_, value) in allFun!.enumerated() {
-            let sel = NSSelectorFromString(value)
-            let bb =  self.perform(sel)!
-            let dd = bb.takeRetainedValue() as! String
-            print(dd)
-        }
-
     }
     
     private func readConfig() {
@@ -77,4 +67,17 @@ class ArtUIStyleManager: NSObject {
         defaults.synchronize()
     }
     
+    func buildAppStyle(aBlock: (_ : String)->Void) {
+        
+        let allFun = art_getMethod(byListPrefix: "getStyleName_")
+        guard allFun != nil else {
+            print("没有重写 getStyleName_")
+            return;
+        }
+        for (_, value) in allFun!.enumerated() {
+            let sel = NSSelectorFromString(value)
+            let styleName = self.perform(sel)!.takeRetainedValue() as! String
+            aBlock(styleName)
+        }
+    }
 }
