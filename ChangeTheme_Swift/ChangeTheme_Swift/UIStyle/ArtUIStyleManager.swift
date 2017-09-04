@@ -45,6 +45,10 @@ class ArtUIStyleManager: NSObject {
         }
     }
     
+    func reload() {
+        print("待实现")
+    }
+    
     private func readConfig() {
         let defaults = UserDefaults.standard
         styleType = EArtUIStyleType(rawValue: defaults.integer(forKey: kUIStyleTypeSavekey))!
@@ -65,6 +69,13 @@ class ArtUIStyleManager: NSObject {
         defaults.set(styleType.rawValue, forKey: kUIStyleTypeSavekey)
         defaults.set(stylePath, forKey: kUIStylePathSavekey)
         defaults.synchronize()
+    }
+    
+    
+    private func reloadStyle(aBlock: (_ : String)->Void) {
+        styles.removeAllObjects()
+        buildAppStyle(aBlock: aBlock)
+        reload()
     }
     
     func buildAppStyle(aBlock: (_ : String)->Void) {
