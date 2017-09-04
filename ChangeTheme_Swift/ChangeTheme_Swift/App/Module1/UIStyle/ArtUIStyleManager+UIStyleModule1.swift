@@ -11,7 +11,7 @@ import UIKit
 extension ArtUIStyleManager {
     
     func getStyleName_Module1() -> String! {
-        return nil;//"Module1Style.plist"
+        return "Module1Style.plist"
     }
     
     func getHotReloaderStylePath_Module1() -> String! {
