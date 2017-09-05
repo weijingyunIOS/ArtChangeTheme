@@ -64,7 +64,6 @@ class ArtUIStyleManager: NSObject {
 
         } catch {
             reloadNewStyle(bundle: nil)
-            print(error)
         }
         
     }
@@ -121,7 +120,6 @@ class ArtUIStyleManager: NSObject {
                 filePath = try bundle.unwrap().path(forResource: styleName, ofType: nil).unwrap()
             } catch {
                 filePath = Bundle.main.path(forResource: styleName, ofType: nil)!
-                print(error)
             }
             addEntriesFromPath(path: filePath)
         }
@@ -177,7 +175,6 @@ class ArtUIStyleManager: NSObject {
             stylePath = documentDirectory.appending(relativePath)
         } catch {
             stylePath = nil
-            print(error)
         }
     }
     
