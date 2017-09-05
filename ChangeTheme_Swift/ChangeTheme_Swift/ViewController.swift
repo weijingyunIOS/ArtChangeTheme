@@ -40,6 +40,16 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ViewController")
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    deinit {
+        print(#file + "正常释放")
+    }
 
     @IBAction func downPath(_ sender: Any) {
         
