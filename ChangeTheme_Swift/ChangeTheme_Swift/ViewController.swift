@@ -42,6 +42,7 @@ class ViewController: UIViewController {
         do {
             let documentDirectory = try NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first.unwrap()
             let toPath = documentDirectory + "/stylePath"
+          
             do {
                 try FileManager.default.removeItem(atPath: toPath)
             } catch {
@@ -50,10 +51,10 @@ class ViewController: UIViewController {
             let path = try Bundle.main.path(forResource: "styleBundle1", ofType: "bundle").unwrap()
             do {
                 try FileManager.default.copyItem(atPath: path, toPath: toPath)
+                ArtUIStyleManager.share .reloadNewStyle(path: toPath)
             } catch {
                 
             }
-            ArtUIStyleManager.share .reloadNewStyle(path: toPath)
         } catch {
             
         }
@@ -62,6 +63,25 @@ class ViewController: UIViewController {
 
     @IBAction func downBundle(_ sender: Any) {
         
+        do {
+            let documentDirectory = try NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first.unwrap()
+            let toPath = documentDirectory + "/stylePath.bundle"
+            
+            do {
+                try FileManager.default.removeItem(atPath: toPath)
+            } catch {
+                
+            }
+            let path = try Bundle.main.path(forResource: "styleBundle1", ofType: "bundle").unwrap()
+            do {
+                try FileManager.default.copyItem(atPath: path, toPath: toPath)
+                ArtUIStyleManager.share .reloadNewStyle(path: toPath)
+            } catch {
+                
+            }
+        } catch {
+            
+        }
     }
     
     

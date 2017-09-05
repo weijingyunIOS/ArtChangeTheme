@@ -132,6 +132,10 @@ class ArtUIStyleManager: NSObject {
         styleType = EArtUIStyleType.Path
         stylePath = path
         saveConfig()
+        if !FileManager.default.fileExists(atPath: path) {
+            reloadNewStyle(bundle: nil)
+            return
+        }
         reloadStyle { (styleName) in
             var filePath = path.appending("/"+styleName)
             if !FileManager.default.fileExists(atPath: filePath) {
