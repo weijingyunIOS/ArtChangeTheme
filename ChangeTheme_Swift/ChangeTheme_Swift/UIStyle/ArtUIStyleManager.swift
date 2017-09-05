@@ -124,8 +124,18 @@ class ArtUIStyleManager: NSObject {
         block()
     }
 
+    // 对已有界面刷一遍
     func reload() {
-        print("待实现")
+        let newBlocks = blocks
+        blocks.removeAll()
+        for (_,value) in newBlocks.enumerated() {
+            let weakRef = value[kArtUIStyleClearKey] as!ArtWeakReference
+            let key = weakReferenceNonretainedObjectValue(ref: weakRef)
+            let block = value[kArtUIStyleBlockKey] as!()->()
+            if key != nil {
+                saveStyle(strongSelf: key!, block: block)
+            }
+        }
     }
     
     //MARK: private 私有方法
