@@ -52,43 +52,6 @@ class ArtUIStyleManager: NSObject {
         
     }
     
-    func reload() {
-        print("待实现")
-    }
-    
-    private func readConfig() {
-        let defaults = UserDefaults.standard
-        styleType = EArtUIStyleType(rawValue: defaults.integer(forKey: kUIStyleTypeSavekey))!
-        do {
-            let path = try defaults.string(forKey: kUIStylePathSavekey).unwrap()
-            let range = try path.range(of: "Documents").unwrap()
-            let relativePath = path .substring(from: range.upperBound)
-            let documentDirectory = try NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first.unwrap()
-            stylePath = documentDirectory.appending(relativePath)
-        } catch {
-            stylePath = nil
-            print(error)
-        }
-    }
-    
-    private func saveConfig() {
-        let defaults = UserDefaults.standard
-        defaults.set(styleType.rawValue, forKey: kUIStyleTypeSavekey)
-        defaults.set(stylePath, forKey: kUIStylePathSavekey)
-        defaults.synchronize()
-    }
-    
-    func addEntriesFromPath(path : String) {
-        do {
-            let dic = try NSDictionary.init(contentsOfFile: path).unwrap() as! [String: [String : Dictionary<String, Any>]]
-            for (_, Value) in dic.enumerated() {
-                styles.updateValue(Value.value, forKey: Value.key)
-            }
-        } catch  {
-            print(error)
-        }
-    }
-    
     func reloadNewStyle(bundleName : String) {
         
         do {
@@ -138,14 +101,52 @@ class ArtUIStyleManager: NSObject {
             addEntriesFromPath(path: filePath)
         }
     }
+
+    func reload() {
+        print("待实现")
+    }
     
-    func reloadStyle(aBlock: (_ : String)->Void) {
+    //MARK: private 私有方法
+    private func readConfig() {
+        let defaults = UserDefaults.standard
+        styleType = EArtUIStyleType(rawValue: defaults.integer(forKey: kUIStyleTypeSavekey))!
+        do {
+            let path = try defaults.string(forKey: kUIStylePathSavekey).unwrap()
+            let range = try path.range(of: "Documents").unwrap()
+            let relativePath = path .substring(from: range.upperBound)
+            let documentDirectory = try NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first.unwrap()
+            stylePath = documentDirectory.appending(relativePath)
+        } catch {
+            stylePath = nil
+            print(error)
+        }
+    }
+    
+    private func saveConfig() {
+        let defaults = UserDefaults.standard
+        defaults.set(styleType.rawValue, forKey: kUIStyleTypeSavekey)
+        defaults.set(stylePath, forKey: kUIStylePathSavekey)
+        defaults.synchronize()
+    }
+    
+    private func addEntriesFromPath(path : String) {
+        do {
+            let dic = try NSDictionary.init(contentsOfFile: path).unwrap() as! [String: [String : Dictionary<String, Any>]]
+            for (_, Value) in dic.enumerated() {
+                styles.updateValue(Value.value, forKey: Value.key)
+            }
+        } catch  {
+            print(error)
+        }
+    }
+    
+    private func reloadStyle(aBlock: (_ : String)->Void) {
         styles.removeAll()
         buildAppStyle(aBlock: aBlock)
         reload()
     }
     
-    func buildAppStyle(aBlock: (_ : String)->Void) {
+    private func buildAppStyle(aBlock: (_ : String)->Void) {
         
         do {
             let funs = try art_getMethod(byListPrefix: "getStyleName_").unwrap(tip:"没有重写 getStyleName_")
