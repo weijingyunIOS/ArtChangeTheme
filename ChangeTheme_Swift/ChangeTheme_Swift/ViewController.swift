@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     }
     
     deinit {
-        print(#file + "正常释放")
+        print((#file as NSString).lastPathComponent + "正常释放")
     }
 
     @IBAction func downPath(_ sender: Any) {
