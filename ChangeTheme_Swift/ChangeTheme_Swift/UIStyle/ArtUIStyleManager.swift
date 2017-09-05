@@ -8,8 +8,11 @@
 
 import UIKit
 
-fileprivate let kUIStyleTypeSavekey = "ArtUIStyleManager_styleType"
-fileprivate let kUIStylePathSavekey = "ArtUIStyleManager_stylePath"
+fileprivate let kArtUIStyleTypeSavekey = "ArtUIStyleManager_styleType"
+fileprivate let kArtUIStylePathSavekey = "ArtUIStyleManager_stylePath"
+
+fileprivate let kArtUIStyleClearKey = "kArtUIStyleClearKey";
+fileprivate let kArtUIStyleBlockKey = "kArtUIStyleBlockKey";
 
 enum EArtUIStyleType : NSInteger {
     case Default    // 应用默认的 stylePath = nil
@@ -17,10 +20,24 @@ enum EArtUIStyleType : NSInteger {
     case Path       // 下载的文件夹 stylePath = 文件夹路径
 }
 
+//MARK: 使用闭包做弱引用解包
+typealias ArtWeakReference = ()->(AnyObject?)
+
+func artMakeWeakReference(object : AnyObject) -> ArtWeakReference {
+    return { [weak object] in
+        return object
+    };
+}
+
+func weakReferenceNonretainedObjectValue(ref : ArtWeakReference?) -> AnyObject? {
+    return ref != nil ? ref!() : nil
+}
+
+//MARK: ArtUIStyleManager
 class ArtUIStyleManager: NSObject {
     
-    private var styles = [String: [String : Dictionary<String, Any>]]()
-    private let blocks = NSMutableArray()
+    private var styles = [String : [String : Dictionary<String, Any>]]()
+    private var blocks = [[String : AnyObject]]()
     private var styleType = EArtUIStyleType.Default
     private var stylePath : String?
     
@@ -92,7 +109,6 @@ class ArtUIStyleManager: NSObject {
         styleType = EArtUIStyleType.Path
         stylePath = path
         saveConfig()
-        
         reloadStyle { (styleName) in
             var filePath = path.appending("/"+styleName)
             if !FileManager.default.fileExists(atPath: filePath) {
@@ -100,6 +116,12 @@ class ArtUIStyleManager: NSObject {
             }
             addEntriesFromPath(path: filePath)
         }
+    }
+    
+    func saveStyle(strongSelf : AnyObject, block : @escaping ()->()) {
+        let dic = [kArtUIStyleClearKey:artMakeWeakReference(object: strongSelf),kArtUIStyleBlockKey:block] as [String : AnyObject]
+        blocks.append(dic)
+        block()
     }
 
     func reload() {
@@ -109,9 +131,9 @@ class ArtUIStyleManager: NSObject {
     //MARK: private 私有方法
     private func readConfig() {
         let defaults = UserDefaults.standard
-        styleType = EArtUIStyleType(rawValue: defaults.integer(forKey: kUIStyleTypeSavekey))!
+        styleType = EArtUIStyleType(rawValue: defaults.integer(forKey: kArtUIStyleTypeSavekey))!
         do {
-            let path = try defaults.string(forKey: kUIStylePathSavekey).unwrap()
+            let path = try defaults.string(forKey: kArtUIStylePathSavekey).unwrap()
             let range = try path.range(of: "Documents").unwrap()
             let relativePath = path .substring(from: range.upperBound)
             let documentDirectory = try NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first.unwrap()
@@ -124,8 +146,8 @@ class ArtUIStyleManager: NSObject {
     
     private func saveConfig() {
         let defaults = UserDefaults.standard
-        defaults.set(styleType.rawValue, forKey: kUIStyleTypeSavekey)
-        defaults.set(stylePath, forKey: kUIStylePathSavekey)
+        defaults.set(styleType.rawValue, forKey: kArtUIStyleTypeSavekey)
+        defaults.set(stylePath, forKey: kArtUIStylePathSavekey)
         defaults.synchronize()
     }
     

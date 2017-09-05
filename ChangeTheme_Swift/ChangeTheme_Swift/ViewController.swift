@@ -13,7 +13,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        ArtUIStyleManager.share;
+        let view1 = UIView()
+        let view2 = UIView()
+        
+        ArtUIStyleManager.share.saveStyle(strongSelf: self) {[weak view1,weak view2,weak self] in
+            view1?.backgroundColor = UIColor.yellow
+            view2?.backgroundColor = UIColor.blue
+            self?.view.backgroundColor = UIColor.red
+        };
     }
 
     override func didReceiveMemoryWarning() {
