@@ -32,6 +32,7 @@
     //绘制图片
     CGImageRef imageRef = CGBitmapContextCreateImage(context);
     UIImage *darkImage = [UIImage imageWithCGImage:imageRef scale:self.scale orientation:UIImageOrientationUp];
+    CGImageRelease(imageRef);
     
     //完成绘制
     UIGraphicsEndImageContext();
