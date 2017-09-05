@@ -39,6 +39,25 @@ class ViewController: UIViewController {
 
     @IBAction func downPath(_ sender: Any) {
         
+        do {
+            let documentDirectory = try NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first.unwrap()
+            let toPath = documentDirectory + "/stylePath"
+            do {
+                try FileManager.default.removeItem(atPath: toPath)
+            } catch {
+                
+            }
+            let path = try Bundle.main.path(forResource: "styleBundle1", ofType: "bundle").unwrap()
+            do {
+                try FileManager.default.copyItem(atPath: path, toPath: toPath)
+            } catch {
+                
+            }
+            ArtUIStyleManager.share .reloadNewStyle(path: toPath)
+        } catch {
+            
+        }
+        
     }
 
     @IBAction func downBundle(_ sender: Any) {

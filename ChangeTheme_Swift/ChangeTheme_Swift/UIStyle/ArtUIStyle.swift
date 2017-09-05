@@ -91,7 +91,7 @@ class ArtUIStyle: NSObject {
         }
         
         var image : UIImage?
-        arrayM.forEach { (scaleStr) in
+        for scaleStr in arrayM {
             var imageStr = imageString
             if NSInteger(scaleStr) != 1 {
                 imageStr = imageStr + "@" + scaleStr + "x"
@@ -99,9 +99,9 @@ class ArtUIStyle: NSObject {
             let imagePath = block(imageStr)
             if imagePath != nil {
                 image = UIImage.init(contentsOfFile: imagePath!)
-                if image != nil {
-                    return;
-                }
+            }
+            if image != nil {
+                break;
             }
         }
    
