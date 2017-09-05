@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Module1</key>
+	<dict>
+		<key>Image</key>
+		<dict>
+			<key>toPath</key>
+			<string>Module1</string>
+			<key>imageConfigs</key>
+			<array>
+				<dict>
+					<key>imageName</key>
+					<string>Module1_test</string>
+					<key>备注</key>
+					<string>我是备注</string>
+				</dict>
+			</array>
+		</dict>
+		<key>Style</key>
+		<dict>
+			<key>Test</key>
+			<dict>
+				<key>color</key>
+				<string>fcf2f2</string>
+				<key>font</key>
+				<integer>15</integer>
+				<key>备注</key>
+				<string>描述哪里的</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

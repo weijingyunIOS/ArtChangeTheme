@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>App_Main</key>
+	<dict>
+		<key>Style</key>
+		<dict>
+			<key>ViceLabel</key>
+			<dict>
+				<key>color</key>
+				<string>999999</string>
+				<key>font</key>
+				<string>13</string>
+			</dict>
+			<key>MainLabel</key>
+			<dict>
+				<key>color</key>
+				<string>32BE78</string>
+				<key>font</key>
+				<string>15</string>
+			</dict>
+			<key>vcBackground</key>
+			<dict>
+				<key>color</key>
+				<string>2f2f2f</string>
+				<key>备注</key>
+				<string>控制器背景色</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

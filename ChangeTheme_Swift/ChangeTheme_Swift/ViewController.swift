@@ -10,15 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var testView: UIView!
+    @IBOutlet weak var testImage: UIImageView!
+    @IBOutlet weak var testWidth: NSLayoutConstraint!
+    @IBOutlet weak var testHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        let view1 = UIView()
-        let view2 = UIView()
-        
-        ArtUIStyleManager.share.saveStyle(strongSelf: self) {[weak view1,weak view2,weak self] in
-            view1?.backgroundColor = UIColor.yellow
-            view2?.backgroundColor = UIColor.blue
+        ArtUIStyleManager.share.saveStyle(strongSelf: self) {[weak self] in
             self?.view.backgroundColor = UIColor.red
         };
     }
@@ -28,6 +28,21 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func downPath(_ sender: Any) {
+        
+    }
 
+    @IBAction func downBundle(_ sender: Any) {
+        
+    }
+    
+    
+    @IBAction func mainDefault(_ sender: Any) {
+        ArtUIStyleManager.share.reloadNewStyle(bundle: nil)
+    }
+    
+    @IBAction func bundle(_ sender: Any) {
+        ArtUIStyleManager.share.reloadNewStyle(bundleName: "styleBundle1")
+    }
 }
 

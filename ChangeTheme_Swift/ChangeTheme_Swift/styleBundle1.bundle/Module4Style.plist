@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Module4</key>
+	<dict>
+		<key>Style</key>
+		<dict>
+			<key>Test</key>
+			<dict>
+				<key>color</key>
+				<string>32be78</string>
+				<key>font</key>
+				<integer>15</integer>
+				<key>备注</key>
+				<string>描述哪里的</string>
+				<key>width</key>
+				<string>250</string>
+				<key>height</key>
+				<string>250</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>
