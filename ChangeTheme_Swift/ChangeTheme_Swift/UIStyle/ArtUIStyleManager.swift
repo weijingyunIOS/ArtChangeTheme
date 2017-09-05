@@ -29,22 +29,27 @@ class ArtUIStyleManager: NSObject {
     override init() {
         super.init()
         readConfig()
-        print("styleType:",styleType,"\n","stylePath:",stylePath ?? "不存在")
-        buildAppStyle(aBlock: { (styleName) in
-            print(styleName)
-        })
-        
-        reloadNewStyle(path: "aaa")
-        switch styleType {
-            case .Default:
+        do {
+            switch styleType {
                 
-            break
+            case .Default:
+                reloadNewStyle(bundle: Bundle.main)
+                break
+                
             case .Bundle:
-               
-            break
+                let bundle = try Bundle.init(path: try stylePath.unwrap()).unwrap()
+                reloadNewStyle(bundle: bundle)
+                break
             case .Path:
-            break
+                reloadNewStyle(path: try stylePath.unwrap())
+                break
+            }
+
+        } catch {
+            reloadNewStyle(bundle: nil)
+            print(error)
         }
+        
     }
     
     func reload() {
