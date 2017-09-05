@@ -28,6 +28,7 @@ class ViewController: UIViewController {
             self!.testLabel.textColor = testStyle.color()
             self!.testLabel.font = testStyle.font()
             self!.view.backgroundColor = UIColor.artAppStyle(styleKey: "vcBackground")
+            self!.testImage.image = UIImage.artModule1Image(imageString: "Module1_test")
         };
     }
 

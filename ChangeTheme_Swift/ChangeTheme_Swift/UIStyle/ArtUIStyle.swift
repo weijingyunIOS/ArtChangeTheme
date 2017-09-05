@@ -37,19 +37,79 @@ class ArtUIStyle: NSObject {
             }
             saveColor = UIColor.art_color(hexString: colorArray.first!, alpha: CGFloat(alpha))
         } catch {
-            print(error)
+//            print(error)
         }
         
         do {
             let font = try styleDic[kArtUIStyleFontKey].unwrap(tip: kArtUIStyleFontKey + "不存在") as! NSNumber
             saveFont = UIFont.systemFont(ofSize: CGFloat(font.doubleValue))
         } catch {
-            print(error)
+//            print(error)
         }
     }
     
     init(imageDic : [String : AnyObject], imageString : String) {
+        super.init()
+        let manager = ArtUIStyleManager.share
+        let toPath = imageDic["toPath"] as! String
+        do {
+            
+            switch manager.styleType {
+            case .Default:
+                saveImage = UIImage.init(named: imageString)
+                break
+                
+            case .Bundle:
+                let bundle = try Bundle.init(path: try manager.stylePath.unwrap()).unwrap()
+                saveImage = findImage(imageString: imageString, block: { (path) -> (String?) in
+                   return bundle.path(forResource: path, ofType: "png", inDirectory: toPath)
+                })
+                break
+                
+            case .Path:
+                let stylePath = try manager.stylePath.unwrap()
+                saveImage = findImage(imageString: imageString, block: { (path) -> (String?) in
+                    return stylePath + "/" + toPath + "/" + path + ".png"
+                })
+                break
+                
+            }
+            
+        } catch {
+            saveImage = UIImage.init(named: imageString)
+        }
+    }
+    
+    func findImage(imageString : String, block : (_: String) -> (String?)) -> UIImage {
+        var arrayM = [String]()
+        let scale = NSInteger(UIScreen.main.scale)
+        arrayM.append(String.init(stringInterpolationSegment:scale))
+        for index in 1...3 {
+            if scale != index {
+                arrayM.append(String.init(stringInterpolationSegment: index))
+            }
+        }
         
+        var image : UIImage?
+        arrayM.forEach { (scaleStr) in
+            var imageStr = imageString
+            if NSInteger(scaleStr) != 1 {
+                imageStr = imageStr + "@" + scaleStr + "x"
+            }
+            let imagePath = block(imageStr)
+            if imagePath != nil {
+                image = UIImage.init(contentsOfFile: imagePath!)
+                if image != nil {
+                    return;
+                }
+            }
+        }
+   
+        if image == nil {
+            assert(false,"未在资源中找到可用的图")
+            image = UIImage.init(named: imageString)
+        }
+        return image!
     }
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {

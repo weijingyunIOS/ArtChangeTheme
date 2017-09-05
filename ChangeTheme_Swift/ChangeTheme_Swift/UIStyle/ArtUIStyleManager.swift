@@ -38,8 +38,8 @@ class ArtUIStyleManager: NSObject {
     
     private var styles = [String : [String : Dictionary<String, Any>]]()
     private var blocks = [[String : AnyObject]]()
-    private var styleType = EArtUIStyleType.Default
-    private var stylePath : String?
+    var styleType = EArtUIStyleType.Default
+    var stylePath : String?
     
     
     static let share = ArtUIStyleManager()
