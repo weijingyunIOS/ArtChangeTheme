@@ -25,7 +25,7 @@
 				<key>color</key>
 				<string>fcf2f2</string>
 				<key>font</key>
-				<integer>15</integer>
+				<integer>30</integer>
 				<key>备注</key>
 				<string>描述哪里的</string>
 			</dict>

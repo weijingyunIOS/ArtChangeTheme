@@ -31,7 +31,11 @@ class ArtUIStyle: NSObject {
             var colorStr = try styleDic[kArtUIStyleColorKey].unwrap(tip: kArtUIStyleColorKey + "不存在") as! String
             colorStr = colorStr.replacingOccurrences(of: " ", with: "")
             let colorArray = colorStr.components(separatedBy: ",")
-            saveColor = UIColor.red
+            var alpha = 1.0
+            if colorArray.count == 2 {
+                alpha = Double(colorArray.last!)!
+            }
+            saveColor = UIColor.art_color(hexString: colorArray.first!, alpha: CGFloat(alpha))
         } catch {
             print(error)
         }
