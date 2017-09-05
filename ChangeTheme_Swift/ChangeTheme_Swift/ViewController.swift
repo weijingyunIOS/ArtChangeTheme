@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.testLabel.text = "我是一个测试文本"
         ArtUIStyleManager.share.saveStyle(strongSelf: self) {[weak self] in
             guard self != nil else {
                 return
@@ -26,6 +27,7 @@ class ViewController: UIViewController {
             let testStyle = ArtUIStyle.artModule1Style(styleKey: "Test")
             self!.testLabel.textColor = testStyle.color()
             self!.testLabel.font = testStyle.font()
+            self!.view.backgroundColor = UIColor.artAppStyle(styleKey: "vcBackground")
         };
     }
 

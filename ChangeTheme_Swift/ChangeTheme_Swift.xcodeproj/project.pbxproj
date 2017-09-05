@@ -14,6 +14,8 @@
 		5C0153591F5D61E500E70997 /* NSObject+ArtPrefix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0153581F5D61E500E70997 /* NSObject+ArtPrefix.m */; };
 		5C01535D1F5E71C900E70997 /* styleBundle1.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C01535C1F5E71C900E70997 /* styleBundle1.bundle */; };
 		5C01535F1F5E726500E70997 /* ArtUIStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01535E1F5E726500E70997 /* ArtUIStyle.swift */; };
+		5C0153641F5E7D4800E70997 /* AppStyle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C0153611F5E7D4800E70997 /* AppStyle.plist */; };
+		5C0153671F5E7D6400E70997 /* ArtUIStyleManager+UIStyleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0153661F5E7D6400E70997 /* ArtUIStyleManager+UIStyleApp.swift */; };
 		5C8A88C91F5D3BE20026950B /* ArtUIStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */; };
 		5CB3AD731F54007C00E938B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3AD721F54007C00E938B1 /* AppDelegate.swift */; };
 		5CB3AD751F54007C00E938B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3AD741F54007C00E938B1 /* ViewController.swift */; };
@@ -54,6 +56,8 @@
 		5C01535B1F5D67CE00E70997 /* ChangeTheme_Swift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChangeTheme_Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C01535C1F5E71C900E70997 /* styleBundle1.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = styleBundle1.bundle; sourceTree = "<group>"; };
 		5C01535E1F5E726500E70997 /* ArtUIStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtUIStyle.swift; sourceTree = "<group>"; };
+		5C0153611F5E7D4800E70997 /* AppStyle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppStyle.plist; sourceTree = "<group>"; };
+		5C0153661F5E7D6400E70997 /* ArtUIStyleManager+UIStyleApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArtUIStyleManager+UIStyleApp.swift"; sourceTree = "<group>"; };
 		5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtUIStyleManager.swift; sourceTree = "<group>"; };
 		5CB3AD6F1F54007C00E938B1 /* ChangeTheme_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeTheme_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB3AD721F54007C00E938B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 		5C0153421F5D5B2300E70997 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				5C0153601F5E7D4800E70997 /* UIStyle */,
 				5C0153431F5D5B3D00E70997 /* Module1 */,
 			);
 			path = App;
@@ -146,6 +151,15 @@
 			children = (
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		5C0153601F5E7D4800E70997 /* UIStyle */ = {
+			isa = PBXGroup;
+			children = (
+				5C0153611F5E7D4800E70997 /* AppStyle.plist */,
+				5C0153661F5E7D6400E70997 /* ArtUIStyleManager+UIStyleApp.swift */,
+			);
+			path = UIStyle;
 			sourceTree = "<group>";
 		};
 		5C8A88C51F5D3B9B0026950B /* UIStyle */ = {
@@ -345,6 +359,7 @@
 				5C01534A1F5D5B8500E70997 /* Module1.xcassets in Resources */,
 				5C01534B1F5D5B8500E70997 /* Module1Style.plist in Resources */,
 				5C01535D1F5E71C900E70997 /* styleBundle1.bundle in Resources */,
+				5C0153641F5E7D4800E70997 /* AppStyle.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +437,7 @@
 				5C0153411F5D514400E70997 /* Unpack.swift in Sources */,
 				5C0153531F5D5C3700E70997 /* ArtUIStyleManager+UIStyleModule1.swift in Sources */,
 				5CB3AD751F54007C00E938B1 /* ViewController.swift in Sources */,
+				5C0153671F5E7D6400E70997 /* ArtUIStyleManager+UIStyleApp.swift in Sources */,
 				5CB3AD731F54007C00E938B1 /* AppDelegate.swift in Sources */,
 				5C01535F1F5E726500E70997 /* ArtUIStyle.swift in Sources */,
 			);

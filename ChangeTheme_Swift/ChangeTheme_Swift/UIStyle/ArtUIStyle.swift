@@ -8,6 +8,9 @@
 
 import UIKit
 
+fileprivate let kArtUIStyleFontKey = "font"
+fileprivate let kArtUIStyleColorKey = "color"
+
 class ArtUIStyle: NSObject {
     
     fileprivate var saveImage : UIImage?
@@ -22,10 +25,30 @@ class ArtUIStyle: NSObject {
     let centerYOffset   = 0.0
     
     init(styleDic : [String : AnyObject]) {
+        super.init()
+        setValuesForKeys(styleDic)
+        do {
+            var colorStr = try styleDic[kArtUIStyleColorKey].unwrap(tip: kArtUIStyleColorKey + "不存在") as! String
+            colorStr = colorStr.replacingOccurrences(of: " ", with: "")
+            let colorArray = colorStr.components(separatedBy: ",")
+            saveColor = UIColor.red
+        } catch {
+            print(error)
+        }
         
+        do {
+            let font = try styleDic[kArtUIStyleFontKey].unwrap(tip: kArtUIStyleFontKey + "不存在") as! NSNumber
+            saveFont = UIFont.systemFont(ofSize: CGFloat(font.doubleValue))
+        } catch {
+            print(error)
+        }
     }
     
     init(imageDic : [String : AnyObject], imageString : String) {
+        
+    }
+    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
         
     }
     

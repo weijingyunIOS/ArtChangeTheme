@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>App_Main</key>
+	<dict>
+		<key>Image</key>
+		<dict>
+			<key>toPath</key>
+			<string>App_Main</string>
+			<key>imageConfigs</key>
+			<array/>
+		</dict>
+		<key>Style</key>
+		<dict>
+			<key>vcBackground</key>
+			<dict>
+				<key>color</key>
+				<string>f2f2f2</string>
+				<key>备注</key>
+				<string>控制器背景色</string>
+			</dict>
+			<key>ViceLabel</key>
+			<dict>
+				<key>color</key>
+				<string>333333</string>
+				<key>font</key>
+				<string>13</string>
+			</dict>
+			<key>MainLabel</key>
+			<dict>
+				<key>color</key>
+				<string>000080</string>
+				<key>font</key>
+				<string>25</string>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>
