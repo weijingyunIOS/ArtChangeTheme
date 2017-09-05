@@ -16,13 +16,14 @@ class ArtUIStyle: NSObject {
     fileprivate var saveImage : UIImage?
     fileprivate var saveColor : UIColor?
     fileprivate var saveFont  : UIFont?
-    let top             = 0.0
-    let left            = 0.0
-    let bottom          = 0.0
-    let right           = 0.0
-    let height          = 0.0
-    let centerXOffset   = 0.0
-    let centerYOffset   = 0.0
+    var top            : CGFloat = 0.0
+    var left           : CGFloat = 0.0
+    var bottom         : CGFloat = 0.0
+    var right          : CGFloat = 0.0
+    var width          : CGFloat = 0.0
+    var height         : CGFloat = 0.0
+    var centerXOffset  : CGFloat = 0.0
+    var centerYOffset  : CGFloat = 0.0
     
     init(styleDic : [String : AnyObject]) {
         super.init()

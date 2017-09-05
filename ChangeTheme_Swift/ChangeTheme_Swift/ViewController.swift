@@ -29,6 +29,10 @@ class ViewController: UIViewController {
             self!.testLabel.font = testStyle.font()
             self!.view.backgroundColor = UIColor.artAppStyle(styleKey: "vcBackground")
             self!.testImage.image = UIImage.artModule1Image(imageString: "Module1_test")
+            let testViewStyle = ArtUIStyle.artModule1Style(styleKey: "TestView")
+            self!.testView.backgroundColor = testViewStyle.color()
+            self!.testWidth.constant = testViewStyle.width
+            self!.testWidth.constant = testViewStyle.height
         };
     }
 

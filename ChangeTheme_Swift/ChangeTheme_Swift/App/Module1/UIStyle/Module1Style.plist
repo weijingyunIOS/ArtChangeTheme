@@ -29,6 +29,17 @@
 				<key>备注</key>
 				<string>描述哪里的</string>
 			</dict>
+			<key>TestView</key>
+			<dict>
+				<key>color</key>
+				<string>32be78</string>
+				<key>width</key>
+				<string>250</string>
+				<key>height</key>
+				<string>250</string>
+				<key>备注</key>
+				<string>描述哪里的</string>
+			</dict>
 		</dict>
 	</dict>
 </dict>
