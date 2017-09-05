@@ -37,7 +37,9 @@ func weakReferenceNonretainedObjectValue(ref : ArtWeakReference?) -> AnyObject? 
 class ArtUIStyleManager: NSObject {
     
     private var styles = [String : [String : Dictionary<String, Any>]]()
-    private var blocks = [[String : AnyObject]]()
+    private let blocks = NSMutableArray()//[[String : AnyObject]]()
+    private let blockQueue = DispatchQueue.init(label: "com.art.styleManager.clear", qos: DispatchQoS.background)
+    private let lock = NSLock()
     var styleType = EArtUIStyleType.Default
     var stylePath : String?
     
@@ -65,7 +67,6 @@ class ArtUIStyleManager: NSObject {
         } catch {
             reloadNewStyle(bundle: nil)
         }
-        
     }
     
     class func artStyle(module : String, styleKey : String) -> ArtUIStyle {
@@ -145,25 +146,54 @@ class ArtUIStyleManager: NSObject {
     
     func saveStyle(strongSelf : AnyObject, block : @escaping ()->()) {
         let dic = [kArtUIStyleClearKey:artMakeWeakReference(object: strongSelf),kArtUIStyleBlockKey:block] as [String : AnyObject]
-        blocks.append(dic)
+        lock {
+            blocks.add(dic)
+        }
         block()
     }
 
     // 对已有界面刷一遍
     func reload() {
-        let newBlocks = blocks
-        blocks.removeAll()
-        for (_,value) in newBlocks.enumerated() {
+        var newBlocks = NSArray()
+        lock {
+            newBlocks = blocks.copy() as! NSArray
+        }
+        newBlocks.enumerateObjects({ (object, index, stop) in
+            let value = object as![String : AnyObject]
             let weakRef = value[kArtUIStyleClearKey] as!ArtWeakReference
             let key = weakReferenceNonretainedObjectValue(ref: weakRef)
             let block = value[kArtUIStyleBlockKey] as!()->()
             if key != nil {
-                saveStyle(strongSelf: key!, block: block)
+                block()
             }
+        })
+    }
+    
+    func clearInvalidBlock() {
+        
+        var newBlocks = NSArray()
+        lock {
+            newBlocks = blocks.copy() as! NSArray
         }
+        newBlocks.enumerateObjects({ (object, index, stop) in
+            let value = object as![String : AnyObject]
+            let weakRef = value[kArtUIStyleClearKey] as!ArtWeakReference
+            let key = weakReferenceNonretainedObjectValue(ref: weakRef)
+            if key == nil {
+                lock {
+                    blocks.remove(object)
+                }
+            }
+        })
     }
     
     //MARK: private 私有方法
+    private func lock(block : ()->()) {
+        lock.lock()
+        block()
+        lock.unlock()
+    }
+    
     private func readConfig() {
         let defaults = UserDefaults.standard
         styleType = EArtUIStyleType(rawValue: defaults.integer(forKey: kArtUIStyleTypeSavekey))!
