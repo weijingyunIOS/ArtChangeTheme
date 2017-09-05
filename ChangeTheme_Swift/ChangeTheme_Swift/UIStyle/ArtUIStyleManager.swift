@@ -69,6 +69,29 @@ class ArtUIStyleManager: NSObject {
         
     }
     
+    class func artStyle(module : String, styleKey : String) -> ArtUIStyle {
+        do {
+            let exStyleDic = try share.styles[module].unwrap(tip:"模块不存在")["Style"].unwrap(tip:"Style不存在")
+            let styleDic = try exStyleDic[styleKey].unwrap(tip:"不存在该key") as! [String : AnyObject]
+            return ArtUIStyle.init(styleDic: styleDic)
+            
+        } catch {
+            print(error)
+            assert(false, error.localizedDescription)
+        }
+    }
+
+    class func artImage(module : String, imageString : String) -> ArtUIStyle {
+        do {
+            let imageDic = try share.styles[module].unwrap(tip:"模块不存在")["Image"].unwrap(tip:"Image不存在") as [String : AnyObject]
+            return ArtUIStyle.init(imageDic: imageDic, imageString: imageString)
+            
+        } catch {
+            print(error)
+            assert(false, error.localizedDescription)
+        }
+    }
+    
     func reloadNewStyle(bundleName : String) {
         
         do {

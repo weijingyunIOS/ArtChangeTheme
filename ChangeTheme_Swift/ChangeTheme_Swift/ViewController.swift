@@ -18,8 +18,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         ArtUIStyleManager.share.saveStyle(strongSelf: self) {[weak self] in
-            self?.view.backgroundColor = UIColor.red
+            guard self != nil else {
+                return
+            }
+            let testStyle = ArtUIStyle.artModule1Style(styleKey: "Test")
+            self!.testLabel.textColor = testStyle.color()
+            self!.testLabel.font = testStyle.font()
         };
     }
 

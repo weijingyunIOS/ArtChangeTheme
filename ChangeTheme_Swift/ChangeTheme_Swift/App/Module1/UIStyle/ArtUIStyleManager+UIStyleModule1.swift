@@ -19,3 +19,27 @@ extension ArtUIStyleManager {
     }
     
 }
+
+extension ArtUIStyle {
+    class func artModule1Style(styleKey : String) -> ArtUIStyle {
+        return ArtUIStyleManager.artStyle(module: "Module1", styleKey:styleKey)
+    }
+}
+
+extension UIColor {
+    class func artModule1Style(styleKey : String) -> UIColor {
+        return ArtUIStyleManager.artStyle(module: "Module1", styleKey:styleKey).color()
+    }
+}
+
+extension UIFont {
+    class func artModule1Style(styleKey : String) -> UIFont {
+        return ArtUIStyleManager.artStyle(module: "Module1", styleKey:styleKey).font()
+    }
+}
+
+extension UIImage {
+    class func artModule1Image(imageString : String) -> UIImage {
+        return ArtUIStyleManager.artImage(module: "Module1", imageString: imageString).image()
+    }
+}

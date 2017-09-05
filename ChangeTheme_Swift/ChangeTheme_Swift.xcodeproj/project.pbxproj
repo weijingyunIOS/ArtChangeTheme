@@ -13,6 +13,7 @@
 		5C0153531F5D5C3700E70997 /* ArtUIStyleManager+UIStyleModule1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0153521F5D5C3700E70997 /* ArtUIStyleManager+UIStyleModule1.swift */; };
 		5C0153591F5D61E500E70997 /* NSObject+ArtPrefix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0153581F5D61E500E70997 /* NSObject+ArtPrefix.m */; };
 		5C01535D1F5E71C900E70997 /* styleBundle1.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C01535C1F5E71C900E70997 /* styleBundle1.bundle */; };
+		5C01535F1F5E726500E70997 /* ArtUIStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01535E1F5E726500E70997 /* ArtUIStyle.swift */; };
 		5C8A88C91F5D3BE20026950B /* ArtUIStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */; };
 		5CB3AD731F54007C00E938B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3AD721F54007C00E938B1 /* AppDelegate.swift */; };
 		5CB3AD751F54007C00E938B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3AD741F54007C00E938B1 /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 		5C0153581F5D61E500E70997 /* NSObject+ArtPrefix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ArtPrefix.m"; sourceTree = "<group>"; };
 		5C01535B1F5D67CE00E70997 /* ChangeTheme_Swift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChangeTheme_Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C01535C1F5E71C900E70997 /* styleBundle1.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = styleBundle1.bundle; sourceTree = "<group>"; };
+		5C01535E1F5E726500E70997 /* ArtUIStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtUIStyle.swift; sourceTree = "<group>"; };
 		5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtUIStyleManager.swift; sourceTree = "<group>"; };
 		5CB3AD6F1F54007C00E938B1 /* ChangeTheme_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeTheme_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB3AD721F54007C00E938B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				5C0153571F5D61E500E70997 /* NSObject+ArtPrefix.h */,
 				5C0153581F5D61E500E70997 /* NSObject+ArtPrefix.m */,
 				5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */,
+				5C01535E1F5E726500E70997 /* ArtUIStyle.swift */,
 			);
 			path = UIStyle;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				5C0153531F5D5C3700E70997 /* ArtUIStyleManager+UIStyleModule1.swift in Sources */,
 				5CB3AD751F54007C00E938B1 /* ViewController.swift in Sources */,
 				5CB3AD731F54007C00E938B1 /* AppDelegate.swift in Sources */,
+				5C01535F1F5E726500E70997 /* ArtUIStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
