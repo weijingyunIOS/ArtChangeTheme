@@ -108,14 +108,19 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
         return;
     }
     // 开启定时器清理已释放的--
-    __weak typeof(self)weakSelf = self;
-    self.timer =
-    [NSTimer timerWithTimeInterval:clearInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
-        dispatch_async(self.clearQueue, ^{
-            [weakSelf clearInvalidBlock];
-        });
-    }];
-    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:clearInterval target:self selector:@selector(scheduledTime) userInfo:nil repeats:YES];
+//    [NSTimer timerWithTimeInterval:clearInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
+//        dispatch_async(self.clearQueue, ^{
+//            [weakSelf clearInvalidBlock];
+//        });
+//    }];
+//    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+
+- (void)scheduledTime {
+    dispatch_async(self.clearQueue, ^{
+        [self clearInvalidBlock];
+    });
 }
 
 // 清理无效的，已被释放的block
