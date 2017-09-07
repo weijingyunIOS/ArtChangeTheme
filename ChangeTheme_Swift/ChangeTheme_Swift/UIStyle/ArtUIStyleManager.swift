@@ -40,13 +40,23 @@ class ArtUIStyleManager: NSObject {
     private let blocks = NSMutableArray()//[[String : AnyObject]]()
     private let blockQueue = DispatchQueue.init(label: "com.art.styleManager.clear", qos: DispatchQoS.background)
     private let lock = NSLock()
+    
+    var timer : Timer?
+    
+    var clearInterval  : TimeInterval = 60 {
+        
+        didSet {
+            addTimer()
+        }
+    }
+    
     var styleType = EArtUIStyleType.Default
     var stylePath : String?
-    
     
     static let share = ArtUIStyleManager()
     override init() {
         super.init()
+        addTimer()
         readConfig()
         do {
             switch styleType {
@@ -185,9 +195,30 @@ class ArtUIStyleManager: NSObject {
                 }
             }
         })
+        
+        #if DEBUG
+            lock {
+                let count = newBlocks.count - blocks.count
+                if count > 0{
+                   print("异步不一定准确只是看一下 已清理" + String(count))
+                }
+            }
+        #endif
     }
     
     //MARK: private 私有方法
+    private func addTimer() {
+        print("定时清理间隔为" + String(clearInterval))
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(timeInterval: clearInterval, target: self, selector: #selector(ArtUIStyleManager.scheduledTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func scheduledTime() {
+        blockQueue.async {
+            self.clearInvalidBlock()
+        }
+    }
+    
     private func lock(block : ()->()) {
         lock.lock()
         block()
