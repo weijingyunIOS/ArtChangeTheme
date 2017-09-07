@@ -17,6 +17,8 @@
 		5C0153641F5E7D4800E70997 /* AppStyle.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C0153611F5E7D4800E70997 /* AppStyle.plist */; };
 		5C0153671F5E7D6400E70997 /* ArtUIStyleManager+UIStyleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0153661F5E7D6400E70997 /* ArtUIStyleManager+UIStyleApp.swift */; };
 		5C0153691F5E83DC00E70997 /* UIColor+HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0153681F5E83DC00E70997 /* UIColor+HexColor.swift */; };
+		5C67414C1F615CAB008BB009 /* SGDirWatchdog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C67414B1F615CAB008BB009 /* SGDirWatchdog.m */; };
+		5C67414E1F6175EE008BB009 /* ArtUIStyleHotReloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C67414D1F6175EE008BB009 /* ArtUIStyleHotReloader.swift */; };
 		5C8A88C91F5D3BE20026950B /* ArtUIStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */; };
 		5CB3AD731F54007C00E938B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3AD721F54007C00E938B1 /* AppDelegate.swift */; };
 		5CB3AD751F54007C00E938B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3AD741F54007C00E938B1 /* ViewController.swift */; };
@@ -60,6 +62,9 @@
 		5C0153611F5E7D4800E70997 /* AppStyle.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppStyle.plist; sourceTree = "<group>"; };
 		5C0153661F5E7D6400E70997 /* ArtUIStyleManager+UIStyleApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArtUIStyleManager+UIStyleApp.swift"; sourceTree = "<group>"; };
 		5C0153681F5E83DC00E70997 /* UIColor+HexColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexColor.swift"; sourceTree = "<group>"; };
+		5C67414A1F615CAB008BB009 /* SGDirWatchdog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGDirWatchdog.h; sourceTree = "<group>"; };
+		5C67414B1F615CAB008BB009 /* SGDirWatchdog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGDirWatchdog.m; sourceTree = "<group>"; };
+		5C67414D1F6175EE008BB009 /* ArtUIStyleHotReloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtUIStyleHotReloader.swift; sourceTree = "<group>"; };
 		5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtUIStyleManager.swift; sourceTree = "<group>"; };
 		5CB3AD6F1F54007C00E938B1 /* ChangeTheme_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeTheme_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB3AD721F54007C00E938B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,12 +169,22 @@
 			path = UIStyle;
 			sourceTree = "<group>";
 		};
+		5C6741491F615CAB008BB009 /* HotReloader */ = {
+			isa = PBXGroup;
+			children = (
+				5C67414A1F615CAB008BB009 /* SGDirWatchdog.h */,
+				5C67414B1F615CAB008BB009 /* SGDirWatchdog.m */,
+			);
+			path = HotReloader;
+			sourceTree = "<group>";
+		};
 		5C8A88C51F5D3B9B0026950B /* UIStyle */ = {
 			isa = PBXGroup;
 			children = (
 				5C0153571F5D61E500E70997 /* NSObject+ArtPrefix.h */,
 				5C0153581F5D61E500E70997 /* NSObject+ArtPrefix.m */,
 				5C0153681F5E83DC00E70997 /* UIColor+HexColor.swift */,
+				5C67414D1F6175EE008BB009 /* ArtUIStyleHotReloader.swift */,
 				5C8A88C81F5D3BE20026950B /* ArtUIStyleManager.swift */,
 				5C01535E1F5E726500E70997 /* ArtUIStyle.swift */,
 			);
@@ -202,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				5C01535B1F5D67CE00E70997 /* ChangeTheme_Swift-Bridging-Header.h */,
+				5C6741491F615CAB008BB009 /* HotReloader */,
 				5C01533D1F5D510900E70997 /* Other */,
 				5C8A88C51F5D3B9B0026950B /* UIStyle */,
 				5C0153421F5D5B2300E70997 /* App */,
@@ -439,10 +455,12 @@
 				5C0153691F5E83DC00E70997 /* UIColor+HexColor.swift in Sources */,
 				5C0153591F5D61E500E70997 /* NSObject+ArtPrefix.m in Sources */,
 				5C0153411F5D514400E70997 /* Unpack.swift in Sources */,
+				5C67414C1F615CAB008BB009 /* SGDirWatchdog.m in Sources */,
 				5C0153531F5D5C3700E70997 /* ArtUIStyleManager+UIStyleModule1.swift in Sources */,
 				5CB3AD751F54007C00E938B1 /* ViewController.swift in Sources */,
 				5C0153671F5E7D6400E70997 /* ArtUIStyleManager+UIStyleApp.swift in Sources */,
 				5CB3AD731F54007C00E938B1 /* AppDelegate.swift in Sources */,
+				5C67414E1F6175EE008BB009 /* ArtUIStyleHotReloader.swift in Sources */,
 				5C01535F1F5E726500E70997 /* ArtUIStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

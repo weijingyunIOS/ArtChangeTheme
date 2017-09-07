@@ -16,6 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        do {
+            let rootPath = try Bundle.main.object(forInfoDictionaryKey: "projectPath").unwrap() as! String
+            let bundlePath = rootPath + "/styleBundle1.bundle"
+            ArtUIStyleHotReloader.shared.hotReloaderBundlePath(path: bundlePath)
+            ArtUIStyleHotReloader.shared.startHotReloader()
+        } catch {
+            
+        }
+        
+        
+        
         return true
     }
 

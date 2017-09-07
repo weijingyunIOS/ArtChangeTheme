@@ -36,6 +36,8 @@ func weakReferenceNonretainedObjectValue(ref : ArtWeakReference?) -> AnyObject? 
 //MARK: ArtUIStyleManager
 class ArtUIStyleManager: NSObject {
     
+    static let share = ArtUIStyleManager()
+    
     private var styles = [String : [String : Dictionary<String, Any>]]()
     private let blocks = NSMutableArray()//[[String : AnyObject]]()
     private let blockQueue = DispatchQueue.init(label: "com.art.styleManager.clear", qos: DispatchQoS.background)
@@ -53,7 +55,6 @@ class ArtUIStyleManager: NSObject {
     var styleType = EArtUIStyleType.Default
     var stylePath : String?
     
-    static let share = ArtUIStyleManager()
     override init() {
         super.init()
         addTimer()
