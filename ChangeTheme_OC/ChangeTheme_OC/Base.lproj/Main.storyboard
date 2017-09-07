@@ -80,12 +80,13 @@
             </objects>
             <point key="canvasLocation" x="934" y="-372"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Art Tab Bar Controller-->
         <scene sceneID="nGG-vx-qZx">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Via-gD-tTU" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Via-gD-tTU" customClass="ArtTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="uC7-J8-uLt">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CF95C46C115CFD251ABC695 /* libPods-ChangeTheme_OC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F76BC259242A422CDF8CE8CD /* libPods-ChangeTheme_OC.a */; };
 		5C05F81E1F4B16D500F672E8 /* ArtModule1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C05F81D1F4B16D500F672E8 /* ArtModule1ViewController.m */; };
 		5C05F8201F4B1CD300F672E8 /* Module1Style.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5C05F81F1F4B1CD300F672E8 /* Module1Style.plist */; };
 		5C2606FB1F4C2EA1001A25AA /* ArtUIStyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2606FA1F4C2EA1001A25AA /* ArtUIStyleManager.m */; };
 		5C2606FE1F4C4005001A25AA /* ArtUIStyleManager+UIStyleModule1.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2606FD1F4C4005001A25AA /* ArtUIStyleManager+UIStyleModule1.m */; };
 		5C2607001F4C42B4001A25AA /* styleBundle1.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C2606FF1F4C42B4001A25AA /* styleBundle1.bundle */; };
 		5C2607031F4C449A001A25AA /* NSObject+ArtPrefix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2607021F4C449A001A25AA /* NSObject+ArtPrefix.m */; };
+		5C6741541F618A47008BB009 /* ArtTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6741531F618A47008BB009 /* ArtTabBarController.m */; };
 		5C8ECB1C1F4ACE7A00985FB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ECB1B1F4ACE7A00985FB1 /* main.m */; };
 		5C8ECB1F1F4ACE7A00985FB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ECB1E1F4ACE7A00985FB1 /* AppDelegate.m */; };
 		5C8ECB251F4ACE7A00985FB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8ECB231F4ACE7A00985FB1 /* Main.storyboard */; };
@@ -63,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33F93BAB564CDE922428E3D9 /* Pods-ChangeTheme_OC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChangeTheme_OC.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChangeTheme_OC/Pods-ChangeTheme_OC.release.xcconfig"; sourceTree = "<group>"; };
 		5C05F81C1F4B16D500F672E8 /* ArtModule1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtModule1ViewController.h; sourceTree = "<group>"; };
 		5C05F81D1F4B16D500F672E8 /* ArtModule1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtModule1ViewController.m; sourceTree = "<group>"; };
 		5C05F81F1F4B1CD300F672E8 /* Module1Style.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Module1Style.plist; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 		5C2606FF1F4C42B4001A25AA /* styleBundle1.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = styleBundle1.bundle; sourceTree = "<group>"; };
 		5C2607011F4C449A001A25AA /* NSObject+ArtPrefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ArtPrefix.h"; sourceTree = "<group>"; };
 		5C2607021F4C449A001A25AA /* NSObject+ArtPrefix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ArtPrefix.m"; sourceTree = "<group>"; };
+		5C6741521F618A47008BB009 /* ArtTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtTabBarController.h; sourceTree = "<group>"; };
+		5C6741531F618A47008BB009 /* ArtTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtTabBarController.m; sourceTree = "<group>"; };
 		5C8ECB171F4ACE7A00985FB1 /* ChangeTheme_OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChangeTheme_OC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C8ECB1B1F4ACE7A00985FB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C8ECB1D1F4ACE7A00985FB1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,6 +129,8 @@
 		5CDDFDAD1F5013DC00679475 /* ArtThreadSafeArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtThreadSafeArray.m; sourceTree = "<group>"; };
 		5CDDFDAE1F5013DC00679475 /* ArtThreadSafeDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtThreadSafeDictionary.h; sourceTree = "<group>"; };
 		5CDDFDAF1F5013DC00679475 /* ArtThreadSafeDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtThreadSafeDictionary.m; sourceTree = "<group>"; };
+		8BC1B2DDA3F4AE804E280CAB /* Pods-ChangeTheme_OC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChangeTheme_OC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChangeTheme_OC/Pods-ChangeTheme_OC.debug.xcconfig"; sourceTree = "<group>"; };
+		F76BC259242A422CDF8CE8CD /* libPods-ChangeTheme_OC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ChangeTheme_OC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CF95C46C115CFD251ABC695 /* libPods-ChangeTheme_OC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +159,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F0F38CCB660E22BF13057D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F76BC259242A422CDF8CE8CD /* libPods-ChangeTheme_OC.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5C05F80E1F4B13F400F672E8 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +215,8 @@
 				5C8ECB331F4ACE7A00985FB1 /* ChangeTheme_OCTests */,
 				5C8ECB3E1F4ACE7A00985FB1 /* ChangeTheme_OCUITests */,
 				5C8ECB181F4ACE7A00985FB1 /* Products */,
+				9DBA13B2C0F48BEB4BCCF9AD /* Pods */,
+				1F0F38CCB660E22BF13057D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,6 +239,8 @@
 				5C05F80E1F4B13F400F672E8 /* App */,
 				5C8ECB1D1F4ACE7A00985FB1 /* AppDelegate.h */,
 				5C8ECB1E1F4ACE7A00985FB1 /* AppDelegate.m */,
+				5C6741521F618A47008BB009 /* ArtTabBarController.h */,
+				5C6741531F618A47008BB009 /* ArtTabBarController.m */,
 				5C8ECB231F4ACE7A00985FB1 /* Main.storyboard */,
 				5C8ECB261F4ACE7A00985FB1 /* Assets.xcassets */,
 				5C8ECB281F4ACE7A00985FB1 /* LaunchScreen.storyboard */,
@@ -394,6 +414,15 @@
 			path = ArtThread;
 			sourceTree = "<group>";
 		};
+		9DBA13B2C0F48BEB4BCCF9AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8BC1B2DDA3F4AE804E280CAB /* Pods-ChangeTheme_OC.debug.xcconfig */,
+				33F93BAB564CDE922428E3D9 /* Pods-ChangeTheme_OC.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -401,9 +430,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C8ECB441F4ACE7A00985FB1 /* Build configuration list for PBXNativeTarget "ChangeTheme_OC" */;
 			buildPhases = (
+				553261F60D1B280AC68AA0B4 /* [CP] Check Pods Manifest.lock */,
 				5C8ECB131F4ACE7A00985FB1 /* Sources */,
 				5C8ECB141F4ACE7A00985FB1 /* Frameworks */,
 				5C8ECB151F4ACE7A00985FB1 /* Resources */,
+				C2512C10F4401A519604ECCF /* [CP] Embed Pods Frameworks */,
+				0CAF5AD28963AAEC7A1CBF5E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -535,6 +567,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0CAF5AD28963AAEC7A1CBF5E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChangeTheme_OC/Pods-ChangeTheme_OC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		553261F60D1B280AC68AA0B4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C2512C10F4401A519604ECCF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ChangeTheme_OC/Pods-ChangeTheme_OC-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5C8ECB131F4ACE7A00985FB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -547,6 +627,7 @@
 				5CB3ADA31F54088400E938B1 /* SGDirWatchdog.m in Sources */,
 				5CDDFD8A1F4DB95D00679475 /* ArtUIStyleManager+UIStyleModule3.m in Sources */,
 				5C8ECB541F4AD30300985FB1 /* UIColor+HexColor.m in Sources */,
+				5C6741541F618A47008BB009 /* ArtTabBarController.m in Sources */,
 				5CDDFDA81F4FCCA600679475 /* UIImage+ArtDraw.m in Sources */,
 				5CDDFD951F4DBA2C00679475 /* ArtUIStyleManager+UIStyleModule4.m in Sources */,
 				5CDDFDB11F5013DC00679475 /* ArtThreadSafeDictionary.m in Sources */,
@@ -709,6 +790,7 @@
 		};
 		5C8ECB451F4ACE7A00985FB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BC1B2DDA3F4AE804E280CAB /* Pods-ChangeTheme_OC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XWNPFKK4U5;
@@ -723,6 +805,7 @@
 		};
 		5C8ECB461F4ACE7A00985FB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33F93BAB564CDE922428E3D9 /* Pods-ChangeTheme_OC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XWNPFKK4U5;
