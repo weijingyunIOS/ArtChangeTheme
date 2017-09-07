@@ -18,8 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         do {
             let rootPath = try Bundle.main.object(forInfoDictionaryKey: "projectPath").unwrap() as! String
-            let bundlePath = rootPath + "/styleBundle1.bundle"
-            ArtUIStyleHotReloader.shared.hotReloaderBundlePath(path: bundlePath)
+            ArtUIStyleHotReloader.shared.hotReloader(mainProjectPath: rootPath)
+//            let bundlePath = rootPath + "/styleBundle1.bundle"
+//            ArtUIStyleHotReloader.shared.hotReloader(bundlePath: bundlePath)
             ArtUIStyleHotReloader.shared.startHotReloader()
         } catch {
             

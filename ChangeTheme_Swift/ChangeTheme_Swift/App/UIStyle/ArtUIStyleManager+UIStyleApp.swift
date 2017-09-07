@@ -15,7 +15,7 @@ extension ArtUIStyleManager {
     }
     
     func getHotReloaderStylePath_App() -> String! {
-        return "/App/UIStyle/Module1Style.plist";
+        return "/App/UIStyle/AppStyle.plist";
     }
     
 }

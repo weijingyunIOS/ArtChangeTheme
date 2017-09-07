@@ -207,6 +207,17 @@ class ArtUIStyleManager: NSObject {
         #endif
     }
     
+    func addEntriesFromPath(path : String) {
+        do {
+            let dic = try NSDictionary.init(contentsOfFile: path).unwrap(tip: path + "不是一个plist字典文件") as! [String: [String : Dictionary<String, Any>]]
+            for (_, Value) in dic.enumerated() {
+                styles.updateValue(Value.value, forKey: Value.key)
+            }
+        } catch  {
+            print(error)
+        }
+    }
+    
     //MARK: private 私有方法
     private func addTimer() {
         print("定时清理间隔为" + String(clearInterval))
@@ -245,17 +256,6 @@ class ArtUIStyleManager: NSObject {
         defaults.set(styleType.rawValue, forKey: kArtUIStyleTypeSavekey)
         defaults.set(stylePath, forKey: kArtUIStylePathSavekey)
         defaults.synchronize()
-    }
-    
-    private func addEntriesFromPath(path : String) {
-        do {
-            let dic = try NSDictionary.init(contentsOfFile: path).unwrap() as! [String: [String : Dictionary<String, Any>]]
-            for (_, Value) in dic.enumerated() {
-                styles.updateValue(Value.value, forKey: Value.key)
-            }
-        } catch  {
-            print(error)
-        }
     }
     
     private func reloadStyle(aBlock: (_ : String)->Void) {
