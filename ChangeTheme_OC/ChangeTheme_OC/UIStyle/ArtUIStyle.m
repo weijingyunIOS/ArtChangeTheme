@@ -15,58 +15,61 @@
 
 @interface ArtUIStyle ()
 
-@property (nonatomic, strong) NSCache *cache;
-@property (nonatomic, strong) NSDictionary* style;
+@property (nonatomic, assign) CGFloat top;
+@property (nonatomic, assign) CGFloat left;
+@property (nonatomic, assign) CGFloat bottom;
+@property (nonatomic, assign) CGFloat right;
+@property (nonatomic, assign) CGFloat width;
+@property (nonatomic, assign) CGFloat height;
+@property (nonatomic, assign) CGFloat centerXOffset;
+@property (nonatomic, assign) CGFloat centerYOffset;
 
-@property (nonatomic, strong) UIColor *color;
-@property (nonatomic, strong) UIFont *font;
-@property (nonatomic, strong) ArtLayoutInfo *layoutInfo;
-@property (nonatomic, strong) UIImage *image;
+
+@property (nonatomic, strong) UIColor *styleColor;
+@property (nonatomic, strong) UIFont *styleFont;
+@property (nonatomic, strong) UIImage *styleImage;
+
+@property (nonatomic, strong) NSDictionary* style;
 
 @end
 
 @implementation ArtUIStyle
 
-+ (ArtUIStyle *)styleForKey:(NSString *)aKey
-{
-    return [[ArtUIStyleManager shared] styleForKey:aKey];
-}
-
-
 - (id)initWithStyle:(NSDictionary *)aStyle
 {
     if (self = [super init]) {
         _style = aStyle;
-        _cache = [NSCache new];
-        _cache.countLimit = 50;
+        [self setValuesForKeysWithDictionary:aStyle];
     }
     return self;
 }
 
-- (ArtUIStyle *)styleForKey:(NSString *)aKey
-{
-    NSString *key = [NSString stringWithFormat:@"Style_%@",aKey];
-    ArtUIStyle *style = [self.cache objectForKey:key];
-    if (style == nil) {
-        style = [[ArtUIStyle alloc] initWithStyle:self.style[@"Style"][aKey]];
-        [self.cache setObject:style forKey:key];
+- (instancetype)initWithStyle:(NSDictionary *)aStyle imageString:(NSString *)aImageString{
+    if (self = [super init]) {
+        _style = aStyle;
+        self.styleImage = [self imageString:aImageString];
     }
-    return style;
+    return self;
 }
 
-- (UIFont *)font
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+
+}
+
+
+- (UIFont *)styleFont
 {
-    if (!_font) {
+    if (!_styleFont) {
         NSNumber *num = [self.style objectForKey:kArtUIStyleFontKey];
         NSAssert(num != nil, @"配置的字体大小不存在请检查");
-        _font = [UIFont systemFontOfSize:[num doubleValue]];
+        _styleFont = [UIFont systemFontOfSize:[num doubleValue]];
     }
-    return _font;
+    return _styleFont;
 }
 
-- (UIColor *)color
+- (UIColor *)styleColor
 {
-    if (!_color) {
+    if (!_styleColor) {
         NSString *colorStr = [self.style objectForKey:kArtUIStyleColorKey];
         colorStr = [colorStr stringByReplacingOccurrencesOfString:@" " withString:@""];
         NSAssert(colorStr.length > 0, @"配置的颜色值不存在请检查");
@@ -76,50 +79,31 @@
         if (colorArray.count == 2) {
             alpha = [colorArray.lastObject doubleValue];
         }
-        _color = [UIColor art_colorWithHexString:hexStr alpha:alpha];
+        _styleColor = [UIColor art_colorWithHexString:hexStr alpha:alpha];
         
     }
-    return [_color copy];
+    return [_styleColor copy];
 }
 
-- (ArtLayoutInfo *)layoutInfo {
-    
-    if (!_layoutInfo) {
-        NSAssert(self.style.count > 0, @"不存在该配置请检查");
-        ArtLayoutInfo *info = [ArtLayoutInfo new];
-        [info setValuesForKeysWithDictionary:self.style];
-        _layoutInfo = info;
-    }
-    return _layoutInfo;
+- (UIImage *)styleImage {
+    return [_styleImage copy];
 }
 
-
-- (UIImage *)imageForString:(NSString *)aImageString
-{
-    NSString *key = [NSString stringWithFormat:@"Image_%@",aImageString];
-    ArtUIStyle *style = [self.cache objectForKey:key];
-    if (style == nil) {
-        style = [[ArtUIStyle alloc] initWithStyle:self.style[@"Image"]];
-        [style saveImageString:aImageString];
-        [self.cache setObject:style forKey:key];
-    }
-    return [style.image copy];
-}
-
-- (void)saveImageString:(NSString *)aImageString {
+- (UIImage *)imageString:(NSString *)aImageString {
     
     ArtUIStyleManager *manager = [ArtUIStyleManager shared];
     NSString *toPath = self.style[@"toPath"];
+    UIImage *image = nil;
     switch (manager.styleType) {
         case EArtUIStyleTypeDefault:
         {
-             self.image = [UIImage imageNamed:aImageString];
+             image = [UIImage imageNamed:aImageString];
         }
             break;
             
         case EArtUIStyleTypeBundle:
         {
-            self.image =
+            image =
             [self findImageForImageString:aImageString block:^NSString *(NSString *path) {
                 return [[NSBundle bundleWithPath:manager.stylePath] pathForResource:path ofType:@"png" inDirectory:toPath];
             }];
@@ -129,7 +113,7 @@
             
         case EArtUIStyleTypeStylePath:
         {
-            self.image =
+            image =
             [self findImageForImageString:aImageString block:^NSString *(NSString *path) {
                 NSString *filePath = [[manager.stylePath stringByAppendingPathComponent:toPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",path]];
                 return filePath;
@@ -140,6 +124,7 @@
         default:
             break;
     }
+    return image;
 }
 
 - (UIImage *)findImageForImageString:(NSString *)aImageString block:(NSString *(^)(NSString * path))aBlock {
@@ -173,10 +158,28 @@
 
 @end
 
+
+@implementation ArtUIStyle (ArtUIStyleApp)
+
++ (instancetype)artModule:(NSString *)aModule styleForKey:(NSString *)aStyleKey {
+    return [[ArtUIStyleManager shared] artStyleModule:aModule styleKey:aStyleKey];
+}
+
++ (void)artModule:(NSString *)aModule styleForKey:(NSString *)aStyleKey strongSelf:(id)strongSelf block:(void(^)(ArtUIStyle *style, id weakSelf))aBlock {
+    if (strongSelf) {
+        [[ArtUIStyleManager shared] saveStrongSelf:strongSelf block:^(id weakSelf) {
+            ArtUIStyle *style = [self artModule:aModule styleForKey:aStyleKey];
+            aBlock(style,weakSelf);
+        }];
+    }
+}
+
+@end
+
 @implementation UIColor (ArtUIStyleApp)
 
 + (UIColor *)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey {
-    return [[[ArtUIStyle styleForKey:aModule] styleForKey:aColorKey] color];
+    return [ArtUIStyle artModule:aModule styleForKey:aColorKey].styleColor;
 }
 
 + (void)artModule:(NSString *)aModule colorForKey:(NSString *)aColorKey strongSelf:(id)strongSelf block:(void(^)(UIColor *color, id weakSelf))aBlock {
@@ -193,7 +196,7 @@
 @implementation UIFont (ArtUIStyleApp)
 
 + (UIFont *)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey {
-    return [[[ArtUIStyle styleForKey:aModule] styleForKey:aFontKey] font];
+    return [ArtUIStyle artModule:aModule styleForKey:aFontKey].styleFont;
 }
 
 + (void)artModule:(NSString *)aModule fontForKey:(NSString *)aFontKey strongSelf:(id)strongSelf block:(void(^)(UIFont *font, id weakSelf))aBlock {
@@ -209,29 +212,10 @@
 @end
 
 
-@implementation ArtLayoutInfo (ArtUIStyleApp)
-
-+ (ArtLayoutInfo *)artModule:(NSString *)aModule layoutForKey:(NSString *)aLayoutKey {
-    return [[[ArtUIStyle styleForKey:aModule] styleForKey:aLayoutKey] layoutInfo];
-}
-
-+ (void)artModule:(NSString *)aModule layoutForKey:(NSString *)aLayoutKey strongSelf:(id)strongSelf block:(void(^)(ArtLayoutInfo *layoutInfo, id weakSelf))aBlock {
-    
-    if (strongSelf) {
-        [[ArtUIStyleManager shared] saveStrongSelf:strongSelf block:^(id weakSelf) {
-            ArtLayoutInfo *layoutInfo = [self artModule:aModule layoutForKey:aLayoutKey];
-            aBlock(layoutInfo,weakSelf);
-        }];
-    }
-}
-
-@end
-
-
 @implementation UIImage (ArtUIStyleApp)
 
 + (UIImage *)artModule:(NSString *)aModule imageString:(NSString *)aImageString {
-    return [[ArtUIStyle styleForKey:aModule] imageForString:aImageString];
+    return [[ArtUIStyleManager shared] artImageModule:aModule imageString:aImageString].styleImage;
 }
 
 + (void)artModule:(NSString *)aModule imageString:(NSString *)aImageString strongSelf:(id)strongSelf block:(void(^)(UIImage *image, id weakSelf))aBlock {

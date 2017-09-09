@@ -31,12 +31,10 @@
 - (void)configUI2 {
     [[ArtUIStyleManager shared] saveStrongSelf:self block:^(ArtModule4ViewController *weakSelf) {
         weakSelf.view.backgroundColor = [UIColor artAppForKey:kUIStyleAppVCBackground];
-        weakSelf.testview.backgroundColor = [UIColor artModule4ForKey:kUIStyleModule4Test];
-        
-        ArtLayoutInfo *layoutInfo = [ArtLayoutInfo artModule4ForKey:kUIStyleModule4Test];
-        weakSelf.testviewWidth.constant = layoutInfo.width;
-        weakSelf.testviewHeight.constant = layoutInfo.height;
-        
+        ArtUIStyle *style = [ArtUIStyle artModule4ForKey:kUIStyleModule4Test];
+        weakSelf.testview.backgroundColor = style.styleColor;
+        weakSelf.testviewWidth.constant = style.width;
+        weakSelf.testviewHeight.constant = style.height;
     }];
 }
 
@@ -45,13 +43,10 @@
         weakSelf.view.backgroundColor = color;
     }];
     
-    [UIColor artModule4ForKey:kUIStyleModule4Test strongSelf:self block:^(UIColor *color, ArtModule4ViewController *weakSelf) {
-        weakSelf.testview.backgroundColor = color;
-    }];
-    
-    [ArtLayoutInfo artModule4ForKey:kUIStyleModule4Test strongSelf:self block:^(ArtLayoutInfo *layoutInfo, ArtModule4ViewController *weakSelf) {
-        weakSelf.testviewWidth.constant = layoutInfo.width;
-        weakSelf.testviewHeight.constant = layoutInfo.height;
+    [ArtUIStyle artModule4ForKey:kUIStyleModule4Test strongSelf:self block:^(ArtUIStyle *style, ArtModule4ViewController *weakSelf) {
+        weakSelf.testview.backgroundColor = style.styleColor;
+        weakSelf.testviewWidth.constant = style.width;
+        weakSelf.testviewHeight.constant = style.height;
     }];
 }
 

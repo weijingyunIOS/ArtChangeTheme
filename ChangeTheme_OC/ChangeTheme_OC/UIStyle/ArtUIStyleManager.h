@@ -32,7 +32,9 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) EArtUIStyleType styleType;
 @property (nonatomic, copy) NSString *stylePath;
 @property (nonatomic, strong,readonly) NSMutableDictionary* styles;
-- (ArtUIStyle *)styleForKey:(NSString *)aKey;
+
+- (ArtUIStyle *)artStyleModule:(NSString *)aModule styleKey:(NSString *)aStylekey;
+- (ArtUIStyle *)artImageModule:(NSString *)aModule imageString:(NSString *)aImageString;
 
 #pragma mark - 外部使用
 // 清理间隔 默认 60s 设置 < 1s 不清理

@@ -163,15 +163,32 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     self.stylePath = path;
 }
 
-- (ArtUIStyle *)styleForKey:(NSString *)aKey {
+- (ArtUIStyle *)artStyleModule:(NSString *)aModule styleKey:(NSString *)aStylekey {
     
-    ArtUIStyle* style = [self.styleCache objectForKey:aKey];
+    NSString *key = [NSString stringWithFormat:@"%@_Style_%@",aModule,aStylekey];
+    ArtUIStyle* style = [self.styleCache objectForKey:key];
     if (style == nil) {
-        style = [[ArtUIStyle alloc] initWithStyle:[self.styles objectForKey:aKey]];
-        [self.styleCache setObject:style forKey:aKey];
+        NSDictionary *dic = self.styles[aModule][@"Style"][aStylekey];
+        NSAssert(dic != nil, @"找不到%@-%@",aModule,aStylekey);
+        style = [[ArtUIStyle alloc] initWithStyle:dic];
+        [self.styleCache setObject:style forKey:key];
     }
     return style;
 }
+
+- (ArtUIStyle *)artImageModule:(NSString *)aModule imageString:(NSString *)aImageString {
+    
+    NSString *key = [NSString stringWithFormat:@"%@_Image_%@",aModule,aImageString];
+    ArtUIStyle* style = [self.styleCache objectForKey:aModule];
+    if (style == nil) {
+        NSDictionary *dic = self.styles[aModule][@"Image"];
+        NSAssert(dic != nil, @"找不到%@",aModule);
+        style = [[ArtUIStyle alloc] initWithStyle:dic imageString:aImageString];
+        [self.styleCache setObject:style forKey:key];
+    }
+    return style;
+}
+
 
 - (void)saveStrongSelf:(id)strongSelf block:(void(^)(id weakSelf))aBlock {
     

@@ -21,6 +21,18 @@
 
 @end
 
+@implementation ArtUIStyle (UIStyleModule4)
+
++ (instancetype)artModule4ForKey:(NSString *)aStyleKey {
+    return [self artModule:@"Module4" styleForKey:aStyleKey];
+}
+
++ (void)artModule4ForKey:(NSString *)aStyleKey strongSelf:(id)strongSelf block:(void(^)(ArtUIStyle *style, id weakSelf))aBlock {
+    [self artModule:@"Module4" styleForKey:aStyleKey strongSelf:strongSelf block:aBlock];
+}
+
+@end
+
 
 @implementation UIColor (UIStyleModule4)
 
@@ -46,14 +58,3 @@
 
 @end
 
-@implementation ArtLayoutInfo (UIStyleModule4)
-
-+ (ArtLayoutInfo *)artModule4ForKey:(NSString *)aLayoutKey {
-    return [self artModule:@"Module4" layoutForKey:aLayoutKey];
-}
-
-+ (void)artModule4ForKey:(NSString *)aLayoutKey strongSelf:(id)strongSelf block:(void(^)(ArtLayoutInfo *layoutInfo, id weakSelf))aBlock {
-    [self artModule:@"Module4" layoutForKey:aLayoutKey strongSelf:strongSelf block:aBlock];
-}
-
-@end

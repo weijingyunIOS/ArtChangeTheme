@@ -17,6 +17,14 @@
 
 #define kUIStyleModule4Test  @"Test" // 备注
 
+@interface ArtUIStyle (UIStyleModule4)
+
++ (instancetype)artModule4ForKey:(NSString *)aStyleKey;
++ (void)artModule4ForKey:(NSString *)aStyleKey strongSelf:(id)strongSelf block:(void(^)(ArtUIStyle *style, id weakSelf))aBlock;
+
+@end
+
+
 @interface UIColor (UIStyleModule4)
 
 + (UIColor *)artModule4ForKey:(NSString *)aColorKey;
@@ -32,9 +40,3 @@
 
 @end
 
-@interface ArtLayoutInfo (UIStyleModule4)
-
-+ (ArtLayoutInfo *)artModule4ForKey:(NSString *)aLayoutKey;
-+ (void)artModule4ForKey:(NSString *)aLayoutKey strongSelf:(id)strongSelf block:(void(^)(ArtLayoutInfo *layoutInfo, id weakSelf))aBlock;
-
-@end
