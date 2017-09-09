@@ -31,10 +31,10 @@ typedef enum : NSUInteger {
 // 以下两字段记录当前配置
 @property (nonatomic, assign) EArtUIStyleType styleType;
 @property (nonatomic, copy) NSString *stylePath;
-@property (nonatomic, strong,readonly) NSMutableDictionary* styles;
 
 - (ArtUIStyle *)artStyleModule:(NSString *)aModule styleKey:(NSString *)aStylekey;
 - (ArtUIStyle *)artImageModule:(NSString *)aModule imageString:(NSString *)aImageString;
+- (void)addEntriesFromPath:(NSString *)aPath;
 
 #pragma mark - 外部使用
 // 清理间隔 默认 60s 设置 < 1s 不清理

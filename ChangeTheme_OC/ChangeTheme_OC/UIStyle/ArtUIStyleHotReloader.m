@@ -70,8 +70,7 @@
     NSString *watchPath = [filepath stringByDeletingLastPathComponent];
     SGDirWatchdog *watchDog =
     [[SGDirWatchdog alloc] initWithPath:watchPath update:^{
-        NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:filepath];
-        [[ArtUIStyleManager shared].styles addEntriesFromDictionary:dic];
+        [[ArtUIStyleManager shared] addEntriesFromPath:filepath];
         [[ArtUIStyleManager shared] reload];
         NSLog(@"change======");
     }];

@@ -277,6 +277,7 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 }
 
 - (void)addEntriesFromPath:(NSString *)aPath {
+    NSAssert([[NSFileManager defaultManager] fileExistsAtPath:aPath], @"文件不存在");
     [self.styles addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:aPath]];
 }
 
