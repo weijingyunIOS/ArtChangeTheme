@@ -239,6 +239,7 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 - (void)reloadStyleBundle:(NSBundle *)aStyleBundle {
     
     if (aStyleBundle == nil || aStyleBundle == [NSBundle mainBundle]) {
+        aStyleBundle = [NSBundle mainBundle];
         self.styleType = EArtUIStyleTypeDefault;
         self.stylePath = nil;
     }else {
