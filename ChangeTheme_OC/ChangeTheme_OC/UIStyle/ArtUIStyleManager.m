@@ -37,6 +37,8 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
 @interface ArtUIStyleManager ()
 
 @property (nonatomic, strong) ArtThreadSafeDictionary* styles;
+@property (nonatomic, strong) ArtThreadSafeDictionary* defaultStyles;
+
 @property (nonatomic, strong) ArtThreadSafeArray *blocks;
 @property (nonatomic, strong) NSCache *styleCache;
 @property (nonatomic, strong) NSTimer *timer;
@@ -169,7 +171,10 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     ArtUIStyle* style = [self.styleCache objectForKey:key];
     if (style == nil) {
         NSDictionary *dic = self.styles[aModule][@"Style"][aStylekey];
-        NSAssert(dic != nil, @"找不到%@-%@",aModule,aStylekey);
+        if (dic == nil) {
+            dic = self.defaultStyles[aModule][@"Style"][aStylekey];
+            NSAssert(NO, @"找不到%@-%@",aModule,aStylekey);
+        }
         style = [[ArtUIStyle alloc] initWithStyle:dic];
         [self.styleCache setObject:style forKey:key];
     }
@@ -182,7 +187,10 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     ArtUIStyle* style = [self.styleCache objectForKey:aModule];
     if (style == nil) {
         NSDictionary *dic = self.styles[aModule][@"Image"];
-        NSAssert(dic != nil, @"找不到%@",aModule);
+        if (dic == nil) {
+            dic = self.defaultStyles[aModule][@"Image"];
+            NSAssert(NO, @"找不到%@",aModule);
+        }
         style = [[ArtUIStyle alloc] initWithStyle:dic imageString:aImageString];
         [self.styleCache setObject:style forKey:key];
     }
@@ -294,6 +302,18 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
             aBlock(styleName);
         }
     }];
+}
+
+#pragma mark - 懒加载
+- (ArtThreadSafeDictionary *)defaultStyles {
+    if (!_defaultStyles) {
+        _defaultStyles = [ArtThreadSafeDictionary new];
+        [self buildAppStyle:^(NSString *styleName) {
+            NSString *path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
+            [_defaultStyles addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:path]];
+        }];
+    }
+    return _defaultStyles;
 }
 
 @end
