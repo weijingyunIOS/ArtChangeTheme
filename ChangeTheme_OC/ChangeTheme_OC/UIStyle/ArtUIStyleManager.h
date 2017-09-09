@@ -34,7 +34,11 @@ typedef enum : NSUInteger {
 
 - (ArtUIStyle *)artStyleModule:(NSString *)aModule styleKey:(NSString *)aStylekey;
 - (ArtUIStyle *)artImageModule:(NSString *)aModule imageString:(NSString *)aImageString;
+
+// 为HotReloader
 - (void)addEntriesFromPath:(NSString *)aPath;
+// 对已有界面重新刷一遍
+- (void)reload;
 
 #pragma mark - 外部使用
 // 清理间隔 默认 60s 设置 < 1s 不清理
@@ -46,9 +50,6 @@ typedef enum : NSUInteger {
 - (void)reloadStylePath:(NSString *)aStylePath;
 - (void)reloadStyleBundleName:(NSString *)aStyleBundleName;
 - (void)reloadStyleBundle:(NSBundle *)aStyleBundle;
-
-// 对已有界面重新刷一遍
-- (void)reload;
 
 #pragma mark - 分类方法命名
 //- (NSString *)getStyleName_模块名;  需要返回动态加载的plist名称

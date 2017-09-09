@@ -216,16 +216,14 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     self.stylePath = aStylePath;
     [self saveConfig];
     
-    [self reloadStyle:^(ArtUIStyleManager *manager) {
-        [manager buildAppStyle:^(NSString *styleName) {
-            
-            NSString *path = [aStylePath stringByAppendingPathComponent:styleName];
-            if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-                NSLog(@"waring--该bundle无 %@",styleName);
-                path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
-            }
-            [manager addEntriesFromPath:path];
-        }];
+    [self reloadAppStyle:^(NSString *styleName) {
+
+        NSString *path = [aStylePath stringByAppendingPathComponent:styleName];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+            NSLog(@"waring--该bundle无 %@",styleName);
+            path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
+        }
+        [self addEntriesFromPath:path];
     }];
 }
 
@@ -248,25 +246,21 @@ id weakReferenceNonretainedObjectValue(ArtWeakReference ref) {
     }
     [self saveConfig];
     
-    [self reloadStyle:^(ArtUIStyleManager *manager) {
-        [manager buildAppStyle:^(NSString *styleName) {
-            
-            NSString *path = [aStyleBundle pathForResource:styleName ofType:nil];
-            if (path.length <= 0) {
-                NSLog(@"waring--该bundle无 %@",styleName);
-                path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
-            }
-            [manager addEntriesFromPath:path];
-        }];
+    [self reloadAppStyle:^(NSString *styleName) {
+        
+        NSString *path = [aStyleBundle pathForResource:styleName ofType:nil];
+        if (path.length <= 0) {
+            NSLog(@"waring--该bundle无 %@",styleName);
+            path = [[NSBundle mainBundle] pathForResource:styleName ofType:nil];
+        }
+        [self addEntriesFromPath:path];
     }];
 }
 
-- (void)reloadStyle:(void(^)(ArtUIStyleManager *manager))aBlock {
+- (void)reloadAppStyle:(void(^)(NSString *styleName))aBlock {
     NSAssert([NSThread isMainThread], @"界面相关操作请放主线程");
     [self.styles removeAllObjects];
-    if (aBlock) {
-        aBlock(self);
-    }
+    [self buildAppStyle:aBlock];
     [self reload];
 }
 
