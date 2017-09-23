@@ -1,1 +1,1 @@
-*.swift linguist-language=objective-c
+*.m linguist-language=swift
